@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Security Headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data: https:; connect-src 'self' https://raw.githubusercontent.com;">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <title>Test Simulator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .mode-selector {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .mode-btn {
+            padding: 15px 30px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .mode-btn.admin {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+            color: white;
+        }
+
+        .mode-btn.student {
+            background: linear-gradient(45deg, #4ecdc4, #44a08d);
+            color: white;
+        }
+
+        .mode-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .mode-btn.active {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        .panel {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e1e1e1;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .options-container {
+            display: grid;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .option-input {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .option-input:hover {
+            background: #e9ecef;
+        }
+
+        .option-input.correct {
+            background: #d4edda;
+            border-color: #28a745;
+        }
+
+        .option-input input[type="text"] {
+            flex: 1;
+            border: 1px solid #ddd;
+            padding: 8px;
+            border-radius: 4px;
+        }
+
+        .option-input input[type="checkbox"], .option-input input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            background: linear-gradient(45deg, #28a745, #20c997);
+            color: white;
+        }
+
+        .btn-danger {
+            background: linear-gradient(45deg, #dc3545, #e74c3c);
+            color: white;
+        }
+
+        .btn-warning {
+            background: linear-gradient(45deg, #ffc107, #ff8c00);
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .question-bank {
+            max-height: 400px;
+            overflow-y: auto;
+            border: 2px solid #e1e1e1;
+            border-radius: 8px;
+            padding: 20px;
+            background: #f8f9fa;
+        }
+
+        .question-item {
+            background: white;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-left: 4px solid #667eea;
+        }
+
+        .question-item h4 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .question-item .options {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .question-item .correct-answer {
+            color: #28a745;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .test-interface .question {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .test-interface .question h3 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+        }
+
+        .test-interface .question img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 15px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .test-interface .options {
+            display: grid;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .test-interface .option {
+            padding: 15px;
+            background: #f8f9fa;
+            border: 2px solid #e1e1e1;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .test-interface .option:hover {
+            background: #e9ecef;
+            border-color: #667eea;
+        }
+
+        .test-interface .option.selected {
+            background: #e7f3ff;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .test-interface .option input[type="radio"] {
+            width: 18px;
+            height: 18px;
+        }
+
+        .progress-bar {
+            background: #e1e1e1;
+            height: 8px;
+            border-radius: 4px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .score-display {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .score-display h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .score-display .score {
+            font-size: 4em;
+            font-weight: bold;
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .stat-card h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .stat-card .value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .mode-selector {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .controls {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎓 Test Simulator</h1>
+            <p>Professional Question Management & Testing Platform</p>
+        </div>
+
+        <div class="mode-selector">
+            <button class="mode-btn admin active" onclick="switchMode('admin')">
+                👨‍💼 Administrator
+            </button>
+            <button class="mode-btn student" onclick="switchMode('student')">
+                👨‍🎓 Take Test
+            </button>
+        </div>
+
+        <!-- Admin Panel -->
+        <div id="admin-panel" class="panel">
+            <h2>📝 Question Management</h2>
+            
+            <div class="form-group">
+                <label for="question-text">Question:</label>
+                <textarea id="question-text" placeholder="Enter your question here..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="question-image">Question Image URL (optional):</label>
+                <input type="url" id="question-image" placeholder="https://example.com/image.jpg">
+            </div>
+
+            <div class="form-group">
+                <label for="question-type">Question Type:</label>
+                <select id="question-type" onchange="updateOptionsDisplay()">
+                    <option value="multiple">Multiple Choice</option>
+                    <option value="single">Single Choice</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Answer Options:</label>
+                <div class="options-container" id="options-container">
+                    <div class="option-input">
+                        <input type="checkbox" class="correct-checkbox" onchange="updateCorrectStyles()">
+                        <input type="text" placeholder="Option 1" class="option-text">
+                        <span>✓ Correct</span>
+                    </div>
+                    <div class="option-input">
+                        <input type="checkbox" class="correct-checkbox" onchange="updateCorrectStyles()">
+                        <input type="text" placeholder="Option 2" class="option-text">
+                        <span>✓ Correct</span>
+                    </div>
+                    <div class="option-input">
+                        <input type="checkbox" class="correct-checkbox" onchange="updateCorrectStyles()">
+                        <input type="text" placeholder="Option 3" class="option-text">
+                        <span>✓ Correct</span>
+                    </div>
+                    <div class="option-input">
+                        <input type="checkbox" class="correct-checkbox" onchange="updateCorrectStyles()">
+                        <input type="text" placeholder="Option 4" class="option-text">
+                        <span>✓ Correct</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button class="btn btn-success" onclick="addQuestion()">➕ Add Question</button>
+                <button class="btn btn-warning" onclick="addOption()">📋 Add Option</button>
+                <button class="btn btn-danger" onclick="clearForm()">🗑️ Clear Form</button>
+            </div>
+
+            <div class="controls" style="margin-top: 15px;">
+                <button class="btn btn-primary" onclick="exportQuestions()">💾 Export Questions</button>
+                <button class="btn btn-danger" onclick="clearAllQuestions()">🗑️ Clear All Questions</button>
+            </div>
+
+            <div style="margin-top: 20px; border-top: 2px solid #eee; padding-top: 20px;">
+                <h3>📥 Import Questions</h3>
+                <div style="display: grid; gap: 15px; margin-top: 15px;">
+                    <div class="form-group">
+                        <label>From Local File:</label>
+                        <div style="display: flex; gap: 10px; align-items: center;">
+                            <button class="btn btn-primary" onclick="document.getElementById('import-file').click()">
+                                📁 Choose File
+                            </button>
+                            <span id="selected-file-name" style="color: #666;">No file selected</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>From Sample Questions:</label>
+                        <div style="display: flex; gap: 10px; align-items: center;">
+                            <button class="btn btn-primary" onclick="importSampleQuestions()">
+                                📥 Load Sample Questions
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>From GitHub:</label>
+                        <div style="display: flex; gap: 10px; align-items: center;">
+                            <select id="github-url" style="flex: 1;">
+                                <option value="">Select an exam...</option>
+                                <option value="https://raw.githubusercontent.com/vitkovit/exam_simulator/refs/heads/main/exams/google_associate_cloud_engineer.json">Google Associate Cloud Engineer</option>
+                            </select>
+                            <button class="btn btn-primary" onclick="importFromGitHub()">
+                                📥 Load
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+                <input type="file" id="import-file" accept=".json" style="display: none;" onchange="handleImport(event)">
+            </div>
+
+            <div class="stats">
+                <div class="stat-card">
+                    <h3>Total Questions</h3>
+                    <div class="value" id="total-questions">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Multiple Choice</h3>
+                    <div class="value" id="multiple-choice">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Single Choice</h3>
+                    <div class="value" id="single-choice">0</div>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 30px;">📚 Question Bank</h3>
+            <div class="question-bank" id="question-bank">
+                <p style="text-align: center; color: #666;">No questions added yet. Create your first question above!</p>
+            </div>
+        </div>
+
+        <!-- Student Panel -->
+        <div id="student-panel" class="panel hidden">
+            <div id="test-setup">
+                <h2>🎯 Test Configuration</h2>
+                
+                <div class="form-group">
+                    <label for="shuffle-questions">
+                        <input type="checkbox" id="shuffle-questions" checked> 
+                        Shuffle Questions
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label for="shuffle-answers">
+                        <input type="checkbox" id="shuffle-answers" checked> 
+                        Shuffle Answer Options
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label for="show-answers">
+                        <input type="checkbox" id="show-answers"> 
+                        Show Correct Answers After Each Question
+                    </label>
+                </div>
+
+                <div class="controls">
+                    <button class="btn btn-primary" onclick="startTest()">🚀 Start Test</button>
+                </div>
+
+                <div class="stat-card" style="margin-top: 20px;">
+                    <h3>Available Questions</h3>
+                    <div class="value" id="available-questions">0</div>
+                </div>
+            </div>
+
+            <div id="test-interface" class="test-interface hidden">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                
+                <div class="question" id="current-question">
+                    <!-- Question content will be inserted here -->
+                </div>
+
+                <div class="controls">
+                    <button class="btn btn-primary" onclick="nextQuestion()">Next Question ➡️</button>
+                    <button class="btn btn-warning" onclick="skipQuestion()">Skip ⏭️</button>
+                    <button class="btn btn-danger" onclick="endTest()">🏁 Finish Test</button>
+                </div>
+            </div>
+
+            <div id="test-results" class="score-display hidden">
+                <h2>🎉 Test Complete!</h2>
+                <div class="score" id="final-score">0%</div>
+                <div id="detailed-results"></div>
+                <div class="controls">
+                    <button class="btn btn-primary" onclick="retakeTest()">🔄 Retake Test</button>
+                    <button class="btn btn-success" onclick="backToSetup()">⬅️ Back to Setup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global variables
+        let questions = [];
+        let currentTest = [];
+        let currentQuestionIndex = 0;
+        let userAnswers = [];
+        let testStartTime = null;
+
+        // Initialize the application
+        function init() {
+            loadQuestions();
+            updateStats();
+            updateQuestionBank();
+        }
+
+        // Save questions to localStorage
+        function saveQuestions() {
+            localStorage.setItem('testSimulatorQuestions', JSON.stringify(questions));
+        }
+
+        // Load questions from localStorage
+        function loadQuestions() {
+            const savedQuestions = localStorage.getItem('testSimulatorQuestions');
+            if (savedQuestions) {
+                questions = JSON.parse(savedQuestions);
+            }
+        }
+
+        // Mode switching
+        function switchMode(mode) {
+            const adminBtn = document.querySelector('.mode-btn.admin');
+            const studentBtn = document.querySelector('.mode-btn.student');
+            const adminPanel = document.getElementById('admin-panel');
+            const studentPanel = document.getElementById('student-panel');
+
+            if (mode === 'admin') {
+                adminBtn.classList.add('active');
+                studentBtn.classList.remove('active');
+                adminPanel.classList.remove('hidden');
+                studentPanel.classList.add('hidden');
+            } else {
+                studentBtn.classList.add('active');
+                adminBtn.classList.remove('active');
+                studentPanel.classList.remove('hidden');
+                adminPanel.classList.add('hidden');
+                document.getElementById('available-questions').textContent = questions.length;
+            }
+        }
+
+        // Update correct answer styling
+        function updateCorrectStyles() {
+            const optionInputs = document.querySelectorAll('.option-input');
+            optionInputs.forEach(optionInput => {
+                const checkbox = optionInput.querySelector('.correct-checkbox');
+                if (checkbox.checked) {
+                    optionInput.classList.add('correct');
+                } else {
+                    optionInput.classList.remove('correct');
+                }
+            });
+        }
+
+        // Update options display based on question type
+        function updateOptionsDisplay() {
+            const questionType = document.getElementById('question-type').value;
+            const checkboxes = document.querySelectorAll('.correct-checkbox');
+            
+            if (questionType === 'single') {
+                checkboxes.forEach((checkbox, index) => {
+                    checkbox.type = 'radio';
+                    checkbox.name = 'correct-answer';
+                });
+            } else {
+                checkboxes.forEach(checkbox => {
+                    checkbox.type = 'checkbox';
+                    checkbox.name = '';
+                });
+            }
+        }
+
+        // Add a new option field
+        function addOption() {
+            const container = document.getElementById('options-container');
+            const optionCount = container.children.length + 1;
+            const questionType = document.getElementById('question-type').value;
+            
+            const optionDiv = document.createElement('div');
+            optionDiv.className = 'option-input';
+            
+            const inputType = questionType === 'single' ? 'radio' : 'checkbox';
+            const nameAttr = questionType === 'single' ? 'name="correct-answer"' : '';
+            
+            optionDiv.innerHTML = `
+                <input type="${inputType}" class="correct-checkbox" onchange="updateCorrectStyles()" ${nameAttr}>
+                <input type="text" placeholder="Option ${optionCount}" class="option-text">
+                <span>✓ Correct</span>
+            `;
+            
+            container.appendChild(optionDiv);
+        }
+
+        // Add question to the bank
+        function addQuestion() {
+            const questionText = document.getElementById('question-text').value.trim();
+            const questionImage = document.getElementById('question-image').value.trim();
+            const questionType = document.getElementById('question-type').value;
+            
+            if (!questionText) {
+                alert('Please enter a question!');
+                return;
+            }
+
+            const options = [];
+            const correctAnswers = [];
+            const optionInputs = document.querySelectorAll('.option-input');
+            
+            optionInputs.forEach((optionInput, index) => {
+                const text = optionInput.querySelector('.option-text').value.trim();
+                const isCorrect = optionInput.querySelector('.correct-checkbox').checked;
+                
+                if (text) {
+                    options.push(text);
+                    if (isCorrect) {
+                        correctAnswers.push(index);
+                    }
+                }
+            });
+
+            if (options.length < 2) {
+                alert('Please provide at least 2 options!');
+                return;
+            }
+
+            if (correctAnswers.length === 0) {
+                alert('Please mark at least one correct answer!');
+                return;
+            }
+
+            const question = {
+                id: Date.now(),
+                text: questionText,
+                image: questionImage,
+                type: questionType,
+                options: options,
+                correctAnswers: correctAnswers,
+                createdAt: new Date().toISOString()
+            };
+
+            questions.push(question);
+            saveQuestions(); // Save to localStorage
+            updateStats();
+            updateQuestionBank();
+            clearForm();
+            
+            alert('Question added successfully!');
+        }
+
+        // Clear the form
+        function clearForm() {
+            document.getElementById('question-text').value = '';
+            document.getElementById('question-image').value = '';
+            document.getElementById('question-type').value = 'multiple';
+            
+            const container = document.getElementById('options-container');
+            container.innerHTML = `
+                <div class="option-input">
+                    <input type="checkbox" class="correct-checkbox" onchange="updateCorrectStyles()">
+                    <input type="text" placeholder="Option 1" class="option-text">
+                    <span>✓ Correct</span>
+                </div>
+                <div class="option-input">
+                    <input type="checkbox" class="correct-checkbox" onchange="updateCorrectStyles()">
+                    <input type="text" placeholder="Option 2" class="option-text">
+                    <span>✓ Correct</span>
+                </div>
+                <div class="option-input">
+                    <input type="checkbox" class="correct-checkbox" onchange="updateCorrectStyles()">
+                    <input type="text" placeholder="Option 3" class="option-text">
+                    <span>✓ Correct</span>
+                </div>
+                <div class="option-input">
+                    <input type="checkbox" class="correct-checkbox" onchange="updateCorrectStyles()">
+                    <input type="text" placeholder="Option 4" class="option-text">
+                    <span>✓ Correct</span>
+                </div>
+            `;
+        }
+
+        // Update statistics
+        function updateStats() {
+            const total = questions.length;
+            const multiple = questions.filter(q => q.type === 'multiple').length;
+            const single = questions.filter(q => q.type === 'single').length;
+            
+            document.getElementById('total-questions').textContent = total;
+            document.getElementById('multiple-choice').textContent = multiple;
+            document.getElementById('single-choice').textContent = single;
+        }
+
+        // Update question bank display
+        function updateQuestionBank() {
+            const bank = document.getElementById('question-bank');
+            
+            if (questions.length === 0) {
+                bank.innerHTML = '<p style="text-align: center; color: #666;">No questions added yet. Create your first question above!</p>';
+                return;
+            }
+
+            const statusMessage = `<p style="text-align: center; color: #28a745; margin-bottom: 15px; font-weight: bold;">✅ ${questions.length} questions saved to browser storage</p>`;
+
+            bank.innerHTML = statusMessage + questions.map((question, qIndex) => `
+                <div class="question-item">
+                    <h4>${question.text}</h4>
+                    ${question.image ? `<img src="${question.image}" alt="Question Image" style="max-width: 200px; height: auto; margin: 10px 0;">` : ''}
+                    <div class="options">
+                        <strong>Options:</strong> ${question.options.join(', ')}
+                    </div>
+                    <div class="correct-answer">
+                        <strong>Correct Answer(s):</strong> ${question.correctAnswers.map(i => question.options[i]).join(', ')}
+                    </div>
+                    <small style="color: #999;">Type: ${question.type} choice | Created: ${new Date(question.createdAt).toLocaleString()}</small>
+                    <div style="margin-top: 10px;">
+                        <button class="btn btn-danger" onclick="deleteQuestion(${qIndex})" style="padding: 5px 10px; font-size: 12px;">Delete</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Delete question
+        function deleteQuestion(index) {
+            if (confirm('Are you sure you want to delete this question?')) {
+                questions.splice(index, 1);
+                saveQuestions(); // Save to localStorage
+                updateStats();
+                updateQuestionBank();
+            }
+        }
+
+        // Start the test
+        function startTest() {
+            if (questions.length === 0) {
+                alert('No questions available! Please add some questions first.');
+                return;
+            }
+
+            currentTest = [...questions];
+            
+            if (document.getElementById('shuffle-questions').checked) {
+                shuffleArray(currentTest);
+            }
+
+            // Create shuffled options mapping for each question if enabled
+            if (document.getElementById('shuffle-answers').checked) {
+                currentTest = currentTest.map(question => {
+                    const shuffledIndices = [...Array(question.options.length).keys()];
+                    shuffleArray(shuffledIndices);
+                    
+                    return {
+                        ...question,
+                        originalOptions: [...question.options],
+                        options: shuffledIndices.map(i => question.options[i]),
+                        shuffleMap: shuffledIndices,
+                        correctAnswers: question.correctAnswers.map(
+                            ca => shuffledIndices.findIndex(i => i === ca)
+                        )
+                    };
+                });
+            }
+
+            currentQuestionIndex = 0;
+            userAnswers = [];
+            testStartTime = new Date();
+
+            document.getElementById('test-setup').classList.add('hidden');
+            document.getElementById('test-interface').classList.remove('hidden');
+            
+            displayCurrentQuestion();
+        }
+
+        // Shuffle array function
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        // Display current question
+        function displayCurrentQuestion() {
+            if (currentQuestionIndex >= currentTest.length) {
+                finishTest();
+                return;
+            }
+
+            const question = currentTest[currentQuestionIndex];
+            const progress = ((currentQuestionIndex + 1) / currentTest.length) * 100;
+            
+            document.getElementById('progress-fill').style.width = progress + '%';
+
+            const questionHtml = `
+                <h3>Question ${currentQuestionIndex + 1} of ${currentTest.length}</h3>
+                <p>${question.text}</p>
+                ${question.image ? `<img src="${question.image}" alt="Question Image">` : ''}
+                <div class="options">
+                    ${question.options.map((option, index) => `
+                        <div class="option" onclick="selectOption(${index})">
+                            <input type="${question.type === 'single' ? 'radio' : 'checkbox'}" 
+                                   name="question-${question.id}" 
+                                   id="option-${index}" 
+                                   value="${index}">
+                            <label for="option-${index}">${option}</label>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+
+            document.getElementById('current-question').innerHTML = questionHtml;
+        }
+
+        // Select option
+        function selectOption(optionIndex) {
+            const question = currentTest[currentQuestionIndex];
+            const option = document.getElementById(`option-${optionIndex}`);
+            const optionDiv = option.closest('.option');
+
+            if (question.type === 'single') {
+                // Single choice - clear all selections first
+                document.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+                document.querySelectorAll('input[type="radio"]').forEach(radio => radio.checked = false);
+                
+                option.checked = true;
+                optionDiv.classList.add('selected');
+            } else {
+                // Multiple choice - toggle selection
+                option.checked = !option.checked;
+                optionDiv.classList.toggle('selected', option.checked);
+            }
+        }
+
+        // Next question
+        function nextQuestion() {
+            const question = currentTest[currentQuestionIndex];
+            const selectedOptions = [];
+            
+            document.querySelectorAll(`input[name="question-${question.id}"]:checked`).forEach(input => {
+                selectedOptions.push(parseInt(input.value));
+            });
+
+            // Map selected options back to original indices if answers were shuffled
+            const originalSelectedOptions = document.getElementById('shuffle-answers').checked ? 
+                selectedOptions.map(so => question.shuffleMap[so]) :
+                selectedOptions;
+
+            userAnswers.push({
+                questionId: question.id,
+                selectedOptions: originalSelectedOptions,
+                isCorrect: arraysEqual(originalSelectedOptions.sort(), question.correctAnswers.sort())
+            });
+
+            if (document.getElementById('show-answers').checked) {
+                showAnswerFeedback(question, selectedOptions);
+                return;
+            }
+
+            currentQuestionIndex++;
+            displayCurrentQuestion();
+        }
+
+        // Skip question
+        function skipQuestion() {
+            const question = currentTest[currentQuestionIndex];
+            userAnswers.push({
+                questionId: question.id,
+                selectedOptions: [],
+                isCorrect: false
+            });
+
+            currentQuestionIndex++;
+            displayCurrentQuestion();
+        }
+
+        // Show answer feedback
+        function showAnswerFeedback(question, selectedOptions) {
+            const isCorrect = arraysEqual(selectedOptions.sort(), question.correctAnswers.sort());
+            const correctAnswers = question.correctAnswers.map(i => question.options[i]);
+            
+            const feedbackHtml = `
+                <div style="text-align: center; padding: 20px;">
+                    <h3 style="color: ${isCorrect ? '#28a745' : '#dc3545'};">
+                        ${isCorrect ? '✅ Correct!' : '❌ Incorrect'}
+                    </h3>
+                    <p><strong>Correct Answer(s):</strong> ${correctAnswers.join(', ')}</p>
+                    <button class="btn btn-primary" onclick="continueToNext()" style="margin-top: 15px;">
+                        Continue ➡️
+                    </button>
+                </div>
+            `;
+
+            document.getElementById('current-question').innerHTML = feedbackHtml;
+        }
+
+        // Continue to next question after feedback
+        function continueToNext() {
+            currentQuestionIndex++;
+            displayCurrentQuestion();
+        }
+
+        // End test early
+        function endTest() {
+            if (confirm('Are you sure you want to end the test early?')) {
+                finishTest();
+            }
+        }
+
+        // Finish the test
+        function finishTest() {
+            const correctAnswers = userAnswers.filter(answer => answer.isCorrect).length;
+            const totalQuestions = userAnswers.length;
+            const score = totalQuestions > 0 ? Math.round((correctAnswers / totalQuestions) * 100) : 0;
+            const testDuration = new Date() - testStartTime;
+            const minutes = Math.floor(testDuration / 60000);
+            const seconds = Math.floor((testDuration % 60000) / 1000);
+
+            document.getElementById('test-interface').classList.add('hidden');
+            document.getElementById('test-results').classList.remove('hidden');
+            
+            document.getElementById('final-score').textContent = score + '%';
+            
+            const detailedResults = `
+                <div class="stats">
+                    <div class="stat-card">
+                        <h3>Score</h3>
+                        <div class="value">${score}%</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Correct</h3>
+                        <div class="value" style="color: #28a745;">${correctAnswers}</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Incorrect</h3>
+                        <div class="value" style="color: #dc3545;">${totalQuestions - correctAnswers}</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Time</h3>
+                        <div class="value">${minutes}:${seconds.toString().padStart(2, '0')}</div>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('detailed-results').innerHTML = detailedResults;
+        }
+
+        // Retake test
+        function retakeTest() {
+            document.getElementById('test-results').classList.add('hidden');
+            document.getElementById('test-setup').classList.remove('hidden');
+        }
+
+        // Back to setup
+        function backToSetup() {
+            document.getElementById('test-results').classList.add('hidden');
+            document.getElementById('test-setup').classList.remove('hidden');
+        }
+
+        // Export questions to JSON file
+        function exportQuestions() {
+            if (questions.length === 0) {
+                alert('No questions to export!');
+                return;
+            }
+
+            const dataStr = JSON.stringify(questions, null, 2);
+            const dataBlob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(dataBlob);
+            
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `test-questions-${new Date().toISOString().split('T')[0]}.json`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+            
+            alert('Questions exported successfully!');
+        }
+
+        // Sample questions for demo
+        const sampleQuestions = [
+            {
+                id: 1,
+                text: "What is the capital of France?",
+                type: "single",
+                options: ["London", "Berlin", "Paris", "Madrid"],
+                correctAnswers: [2],
+                createdAt: new Date().toISOString()
+            },
+            {
+                id: 2,
+                text: "Which of these are primary colors?",
+                type: "multiple",
+                options: ["Red", "Green", "Blue", "Orange"],
+                correctAnswers: [0, 2],
+                createdAt: new Date().toISOString()
+            }
+        ];
+
+        // Import from GitHub
+        function importFromGitHub() {
+            const select = document.getElementById('github-url');
+            const githubUrl = select.value.trim();
+            
+            if (!githubUrl) {
+                alert('Please select an exam to load!');
+                return;
+            }
+            
+            fetch(githubUrl)
+                .then(response => response.json())
+                .then(importedQuestions => {
+                    if (Array.isArray(importedQuestions)) {
+                        const confirmMessage = `This will add ${importedQuestions.length} questions to your existing ${questions.length} questions. Continue?`;
+                        if (confirm(confirmMessage)) {
+                            questions.push(...importedQuestions);
+                            saveQuestions();
+                            updateStats();
+                            updateQuestionBank();
+                            alert('Questions imported successfully from GitHub!');
+                        }
+                    } else {
+                        alert('Invalid data format from GitHub!');
+                    }
+                })
+                .catch(error => {
+                    alert('Error loading questions from GitHub: ' + error.message);
+                });
+        }
+
+        // Import sample questions
+        function importSampleQuestions() {
+            const confirmMessage = `This will add ${sampleQuestions.length} sample questions to your existing ${questions.length} questions. Continue?`;
+            if (confirm(confirmMessage)) {
+                questions.push(...sampleQuestions);
+                saveQuestions();
+                updateStats();
+                updateQuestionBank();
+                alert('Sample questions imported successfully!');
+            }
+        }
+
+        // Handle local file import and update filename display
+        function handleImport(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            document.getElementById('selected-file-name').textContent = file.name;
+            reader.onload = function(e) {
+                try {
+                    const importedQuestions = JSON.parse(e.target.result);
+                    if (Array.isArray(importedQuestions)) {
+                        const confirmMessage = `This will add ${importedQuestions.length} questions to your existing ${questions.length} questions. Continue?`;
+                        if (confirm(confirmMessage)) {
+                            questions.push(...importedQuestions);
+                            saveQuestions();
+                            updateStats();
+                            updateQuestionBank();
+                            alert('Questions imported successfully!');
+                        }
+                    } else {
+                        alert('Invalid file format!');
+                    }
+                } catch (error) {
+                    alert('Error reading file: ' + error.message);
+                }
+            };
+            reader.readAsText(file);
+            
+            // Reset the input
+            event.target.value = '';
+        }
+
+        // Clear all questions
+        function clearAllQuestions() {
+            if (questions.length === 0) {
+                alert('No questions to clear!');
+                return;
+            }
+
+            if (confirm(`Are you sure you want to delete all ${questions.length} questions? This cannot be undone!`)) {
+                questions = [];
+                saveQuestions();
+                updateStats();
+                updateQuestionBank();
+                alert('All questions cleared!');
+            }
+        }
+
+        // Helper function to compare arrays
+        function arraysEqual(a, b) {
+            if (a.length !== b.length) return false;
+            for (let i = 0; i < a.length; i++) {
+                if (a[i] !== b[i]) return false;
+            }
+            return true;
+        }
+
+        // Initialize when page loads
+        window.onload = init;
+    </script>
+</body>
+</html>
