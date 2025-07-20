@@ -3453,7 +3453,7 @@
     "• Attach a single service account to the compute instances. • Add all required Identity and Access Management (IAM) permissions to this service account to create, update, or delete resources.",
     "• Create multiple service accounts, one for each pipeline with the appropriate minimal Identity and Access Management (IAM) permissions. • Use a secret manager service to store the key files of the service accounts. • Allow the CI/CD pipeline to request the appropriate secrets during the execution of the pipeline."
   ],
-  "correctAnswers": [20],
+  "correctAnswers": [3],
   "createdAt": "2025-06-14T22:51:22.476Z"
 },
 {
