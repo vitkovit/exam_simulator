@@ -543,13 +543,27 @@
                     </label>
                 </div>
 
+                <div class="form-group">
+                    <label for="question-range">Question Range (optional):</label>
+                    <input type="text" id="question-range" placeholder="e.g., 1-50 or 25-100 (leave empty for all questions)">
+                    <small style="color: #666; font-size: 12px; margin-top: 5px; display: block;">
+                        Format: start-end (e.g., 1-50). Range must be within available questions.
+                    </small>
+                </div>
+
                 <div class="controls">
                     <button class="btn btn-primary" onclick="startTest()">🚀 Start Test</button>
                 </div>
 
-                <div class="stat-card" style="margin-top: 20px;">
-                    <h3>Available Questions</h3>
-                    <div class="value" id="available-questions">0</div>
+                <div class="stats" style="margin-top: 20px;">
+                    <div class="stat-card">
+                        <h3>Available Questions</h3>
+                        <div class="value" id="available-questions">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Selected Range</h3>
+                        <div class="value" id="selected-range">All</div>
+                    </div>
                 </div>
             </div>
 
@@ -595,6 +609,38 @@
             loadQuestions();
             updateStats();
             updateQuestionBank();
+            
+            // Add event listener for question range input
+            const rangeInput = document.getElementById('question-range');
+            rangeInput.addEventListener('input', function() {
+                validateAndUpdateRange();
+            });
+        }
+
+        // Validate and update range display
+        function validateAndUpdateRange() {
+            const rangeInput = document.getElementById('question-range');
+            const rangeStr = rangeInput.value.trim();
+            
+            if (rangeStr === '') {
+                document.getElementById('selected-range').textContent = 'All';
+                document.getElementById('selected-range').style.color = '#333';
+                rangeInput.style.borderColor = '#e1e1e1';
+                return;
+            }
+
+            const rangeResult = parseQuestionRange(rangeStr, questions.length);
+            
+            if (rangeResult.valid) {
+                const count = rangeResult.end - rangeResult.start + 1;
+                document.getElementById('selected-range').textContent = `${rangeResult.start}-${rangeResult.end} (${count} questions)`;
+                document.getElementById('selected-range').style.color = '#28a745';
+                rangeInput.style.borderColor = '#28a745';
+            } else {
+                document.getElementById('selected-range').textContent = 'Invalid range';
+                document.getElementById('selected-range').style.color = '#dc3545';
+                rangeInput.style.borderColor = '#dc3545';
+            }
         }
 
         // Save questions
@@ -626,8 +672,50 @@
                 adminBtn.classList.remove('active');
                 studentPanel.classList.remove('hidden');
                 adminPanel.classList.add('hidden');
-                document.getElementById('available-questions').textContent = questions.length;
+                updateAvailableQuestions();
             }
+        }
+
+        // Update available questions display
+        function updateAvailableQuestions() {
+            document.getElementById('available-questions').textContent = questions.length;
+            // Re-validate range when questions change
+            validateAndUpdateRange();
+        }
+
+        // Parse and validate question range
+        function parseQuestionRange(rangeStr, totalQuestions) {
+            if (!rangeStr || rangeStr.trim() === '') {
+                return { start: 1, end: totalQuestions, valid: true };
+            }
+
+            const range = rangeStr.trim();
+            const parts = range.split('-');
+            
+            if (parts.length !== 2) {
+                return { valid: false, error: 'Invalid format. Use format: start-end (e.g., 1-50)' };
+            }
+
+            const start = parseInt(parts[0].trim());
+            const end = parseInt(parts[1].trim());
+
+            if (isNaN(start) || isNaN(end)) {
+                return { valid: false, error: 'Range values must be numbers' };
+            }
+
+            if (start < 1 || end < 1) {
+                return { valid: false, error: 'Range values must be positive numbers' };
+            }
+
+            if (start > totalQuestions || end > totalQuestions) {
+                return { valid: false, error: `Range values cannot exceed total questions (${totalQuestions})` };
+            }
+
+            if (start > end) {
+                return { valid: false, error: 'Start value cannot be greater than end value' };
+            }
+
+            return { start, end, valid: true };
         }
 
         // Update correct answer styling
@@ -733,6 +821,7 @@
             saveQuestions();
             updateStats();
             updateQuestionBank();
+            updateAvailableQuestions();
             clearForm();
             
             alert('Question added successfully!');
@@ -816,6 +905,7 @@
                 saveQuestions();
                 updateStats();
                 updateQuestionBank();
+                updateAvailableQuestions();
             }
         }
 
@@ -826,7 +916,31 @@
                 return;
             }
 
-            currentTest = [...questions];
+            // Parse and validate question range
+            const rangeInput = document.getElementById('question-range').value;
+            const rangeResult = parseQuestionRange(rangeInput, questions.length);
+            
+            if (!rangeResult.valid) {
+                alert('Invalid question range: ' + rangeResult.error);
+                return;
+            }
+
+            // Filter questions based on range (convert to 0-based indexing)
+            const startIndex = rangeResult.start - 1;
+            const endIndex = rangeResult.end - 1;
+            currentTest = questions.slice(startIndex, endIndex + 1);
+
+            // Update selected range display
+            if (rangeInput.trim() === '') {
+                document.getElementById('selected-range').textContent = 'All';
+            } else {
+                document.getElementById('selected-range').textContent = `${rangeResult.start}-${rangeResult.end}`;
+            }
+
+            if (currentTest.length === 0) {
+                alert('No questions in the specified range!');
+                return;
+            }
             
             if (document.getElementById('shuffle-questions').checked) {
                 shuffleArray(currentTest);
@@ -1184,6 +1298,7 @@
                             saveQuestions();
                             updateStats();
                             updateQuestionBank();
+                            updateAvailableQuestions();
                             alert('Questions imported successfully from GitHub!');
                         }
                     } else {
@@ -1203,6 +1318,7 @@
                 saveQuestions();
                 updateStats();
                 updateQuestionBank();
+                updateAvailableQuestions();
                 alert('Sample questions imported successfully!');
             }
         }
@@ -1224,6 +1340,7 @@
                             saveQuestions();
                             updateStats();
                             updateQuestionBank();
+                            updateAvailableQuestions();
                             alert('Questions imported successfully!');
                         }
                     } else {
@@ -1251,6 +1368,7 @@
                 saveQuestions();
                 updateStats();
                 updateQuestionBank();
+                updateAvailableQuestions();
                 alert('All questions cleared!');
             }
         }
