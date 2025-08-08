@@ -74,7 +74,7 @@
    "terraform validate null_resource.run_script",
    "terraform plan -target=null_resource.run_script"
  ],
- "correctAnswers": [0],
+ "correctAnswers": [1],
  "createdAt": "2025-08-08T22:51:22.476Z"
 },
 {
@@ -163,7 +163,7 @@
 {
  "id": 1013,
  "text": "What is the provider for this fictitious resource?",
- "image": "",
+ "image": "https://www.examtopics.com/assets/media/exam-media/04279/0000800001.png",
  "type": "single",
  "options": [
    "vpc",
