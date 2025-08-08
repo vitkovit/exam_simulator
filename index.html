@@ -189,6 +189,11 @@
             color: white;
         }
 
+        .btn-primary {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+        }
+
         .btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
@@ -558,6 +563,7 @@
                 </div>
 
                 <div class="controls">
+                    <button class="btn btn-warning" onclick="previousQuestion()" id="prev-btn" style="display: none;">⬅️ Previous Question</button>
                     <button class="btn btn-primary" onclick="nextQuestion()">Next Question ➡️</button>
                     <button class="btn btn-warning" onclick="skipQuestion()">Skip ⏭️</button>
                     <button class="btn btn-danger" onclick="endTest()">🏁 Finish Test</button>
@@ -591,17 +597,16 @@
             updateQuestionBank();
         }
 
-        // Save questions to localStorage
+        // Save questions
         function saveQuestions() {
-            localStorage.setItem('testSimulatorQuestions', JSON.stringify(questions));
+            // Using a simple approach since localStorage is not available in artifacts
+            // In a real environment, this would use localStorage.setItem('testSimulatorQuestions', JSON.stringify(questions));
         }
 
-        // Load questions from localStorage
+        // Load questions
         function loadQuestions() {
-            const savedQuestions = localStorage.getItem('testSimulatorQuestions');
-            if (savedQuestions) {
-                questions = JSON.parse(savedQuestions);
-            }
+            // Using a simple approach since localStorage is not available in artifacts
+            // In a real environment, this would use localStorage.getItem('testSimulatorQuestions');
         }
 
         // Mode switching
@@ -725,7 +730,7 @@
             };
 
             questions.push(question);
-            saveQuestions(); // Save to localStorage
+            saveQuestions();
             updateStats();
             updateQuestionBank();
             clearForm();
@@ -784,7 +789,7 @@
                 return;
             }
 
-            const statusMessage = `<p style="text-align: center; color: #28a745; margin-bottom: 15px; font-weight: bold;">✅ ${questions.length} questions saved to browser storage</p>`;
+            const statusMessage = `<p style="text-align: center; color: #28a745; margin-bottom: 15px; font-weight: bold;">✅ ${questions.length} questions stored in memory</p>`;
 
             bank.innerHTML = statusMessage + questions.map((question, qIndex) => `
                 <div class="question-item">
@@ -808,7 +813,7 @@
         function deleteQuestion(index) {
             if (confirm('Are you sure you want to delete this question?')) {
                 questions.splice(index, 1);
-                saveQuestions(); // Save to localStorage
+                saveQuestions();
                 updateStats();
                 updateQuestionBank();
             }
@@ -893,6 +898,32 @@
             `;
 
             document.getElementById('current-question').innerHTML = questionHtml;
+            
+            // Show/hide previous button
+            const prevBtn = document.getElementById('prev-btn');
+            if (prevBtn) {
+                prevBtn.style.display = currentQuestionIndex > 0 ? 'inline-block' : 'none';
+            }
+
+            // If there's a previous answer, restore it
+            if (userAnswers[currentQuestionIndex]) {
+                const prevAnswer = userAnswers[currentQuestionIndex];
+                const question = currentTest[currentQuestionIndex];
+                
+                // Map back to current options if answers were shuffled
+                const optionsToSelect = document.getElementById('shuffle-answers').checked ? 
+                    prevAnswer.selectedOptions.map(orig => question.shuffleMap ? question.shuffleMap.findIndex(i => i === orig) : orig) :
+                    prevAnswer.selectedOptions;
+                
+                // Restore previous selections after a short delay
+                setTimeout(() => {
+                    optionsToSelect.forEach(optionIndex => {
+                        if (optionIndex >= 0) {
+                            selectOption(optionIndex);
+                        }
+                    });
+                }, 100);
+            }
         }
 
         // Select option
@@ -915,7 +946,41 @@
             }
         }
 
-        // Next question
+        // Previous question
+        function previousQuestion() {
+            if (currentQuestionIndex > 0) {
+                // Save current answer before going back
+                const question = currentTest[currentQuestionIndex];
+                const selectedOptions = [];
+                
+                document.querySelectorAll(`input[name="question-${question.id}"]:checked`).forEach(input => {
+                    selectedOptions.push(parseInt(input.value));
+                });
+
+                // Map selected options back to original indices if answers were shuffled
+                const originalSelectedOptions = document.getElementById('shuffle-answers').checked ? 
+                    selectedOptions.map(so => question.shuffleMap ? question.shuffleMap[so] : so) :
+                    selectedOptions;
+
+                const answerData = {
+                    questionId: question.id,
+                    selectedOptions: originalSelectedOptions,
+                    isCorrect: arraysEqual(originalSelectedOptions.sort(), question.correctAnswers.sort())
+                };
+
+                // Update or add the answer
+                if (userAnswers[currentQuestionIndex]) {
+                    userAnswers[currentQuestionIndex] = answerData;
+                } else {
+                    userAnswers[currentQuestionIndex] = answerData;
+                }
+
+                currentQuestionIndex--;
+                displayCurrentQuestion();
+            }
+        }
+
+        // Next question (updated version)
         function nextQuestion() {
             const question = currentTest[currentQuestionIndex];
             const selectedOptions = [];
@@ -926,14 +991,21 @@
 
             // Map selected options back to original indices if answers were shuffled
             const originalSelectedOptions = document.getElementById('shuffle-answers').checked ? 
-                selectedOptions.map(so => question.shuffleMap[so]) :
+                selectedOptions.map(so => question.shuffleMap ? question.shuffleMap[so] : so) :
                 selectedOptions;
 
-            userAnswers.push({
+            const answerData = {
                 questionId: question.id,
                 selectedOptions: originalSelectedOptions,
-                isCorrect: arraysEqual(originalSelectedOptions.sort(), question.correctAnswers.sort())
-            });
+                isCorrect: arraysEqual(originalSelectedOptions.sort(), (question.originalOptions ? questions.find(q => q.id === question.id).correctAnswers : question.correctAnswers).sort())
+            };
+
+            // Update or add the answer
+            if (userAnswers[currentQuestionIndex]) {
+                userAnswers[currentQuestionIndex] = answerData;
+            } else {
+                userAnswers[currentQuestionIndex] = answerData;
+            }
 
             if (document.getElementById('show-answers').checked) {
                 showAnswerFeedback(question, selectedOptions);
@@ -947,11 +1019,18 @@
         // Skip question
         function skipQuestion() {
             const question = currentTest[currentQuestionIndex];
-            userAnswers.push({
+            
+            const answerData = {
                 questionId: question.id,
                 selectedOptions: [],
                 isCorrect: false
-            });
+            };
+
+            if (userAnswers[currentQuestionIndex]) {
+                userAnswers[currentQuestionIndex] = answerData;
+            } else {
+                userAnswers[currentQuestionIndex] = answerData;
+            }
 
             currentQuestionIndex++;
             displayCurrentQuestion();
@@ -959,6 +1038,7 @@
 
         // Show answer feedback
         function showAnswerFeedback(question, selectedOptions) {
+            const originalQuestion = questions.find(q => q.id === question.id);
             const isCorrect = arraysEqual(selectedOptions.sort(), question.correctAnswers.sort());
             const correctAnswers = question.correctAnswers.map(i => question.options[i]);
             
@@ -992,8 +1072,10 @@
 
         // Finish the test
         function finishTest() {
-            const correctAnswers = userAnswers.filter(answer => answer.isCorrect).length;
-            const totalQuestions = userAnswers.length;
+            // Ensure we have answers for all attempted questions
+            const answeredQuestions = Math.max(userAnswers.length, currentQuestionIndex);
+            const correctAnswers = userAnswers.filter(answer => answer && answer.isCorrect).length;
+            const totalQuestions = answeredQuestions;
             const score = totalQuestions > 0 ? Math.round((correctAnswers / totalQuestions) * 100) : 0;
             const testDuration = new Date() - testStartTime;
             const minutes = Math.floor(testDuration / 60000);
