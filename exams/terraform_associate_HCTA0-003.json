@@ -1,1 +1,272 @@
-
+[
+{
+ "id": 1001,
+ "text": "The terraform.tfstate file always matches your currently built infrastructure.",
+ "image": "",
+ "type": "single",
+ "options": [
+   "True",
+   "False"
+ ],
+ "correctAnswers": [1],
+ "createdAt": "2025-08-08T22:51:22.476Z"
+},
+{
+ "id": 1002,
+ "text": "One remote backend configuration always maps to a single remote workspace.",
+ "image": "",
+ "type": "single",
+ "options": [
+   "True",
+   "False"
+ ],
+ "correctAnswers": [1],
+ "createdAt": "2025-08-08T22:51:22.476Z"
+},
+{
+ "id": 1003,
+ "text": "How is the Terraform remote backend different than other state backends such as S3, Consul, etc.?",
+ "image": "",
+ "type": "single",
+ "options": [
+   "It can execute Terraform runs on dedicated infrastructure on premises or in Terraform Cloud",
+   "It doesn't show the output of a terraform apply locally",
+   "It is only available to paying customers",
+   "All of the above"
+ ],
+ "correctAnswers": [0],
+ "createdAt": "2025-08-08T22:51:22.476Z"
+},
+{
+ "id": 1004,
+ "text": "What is the workflow for deploying new infrastructure with Terraform?",
+ "image": "",
+ "type": "single",
+ "options": [
+   "terraform plan to import the current infrastructure to the state file, make code changes, and terraform apply to update the infrastructure.",
+   "Write a Terraform configuration, run terraform show to view proposed changes, and terraform apply to create new infrastructure.",
+   "terraform import to import the current infrastructure to the state file, make code changes, and terraform apply to update the infrastructure.",
+   "Write a Terraform configuration, run terraform init, run terraform plan to view planned infrastructure changes, and terraform apply to create new infrastructure."
+ ],
+ "correctAnswers": [3],
+ "createdAt": "2025-08-08T22:51:22.476Z"
+},
+{
+ "id": 1005,
+ "text": "A provider configuration block is required in every Terraform configuration.",
+ "image": "",
+ "type": "single",
+ "options": [
+   "True",
+   "False"
+ ],
+ "correctAnswers": [1],
+ "createdAt": "2025-08-08T22:51:22.476Z"
+},
+{
+ "id": 1006,
+ "text": "You run a local-exec provisioner in a null resource called null_resource.run_script and realize that you need to rerun the script. Which of the following commands would you use first?",
+ "image": "",
+ "type": "single",
+ "options": [
+   "terraform taint null_resource.run_script",
+   "terraform apply -target=null_resource.run_script",
+   "terraform validate null_resource.run_script",
+   "terraform plan -target=null_resource.run_script"
+ ],
+ "correctAnswers": [0],
+ "createdAt": "2025-08-08T22:51:22.476Z"
+},
+{
+ "id": 1007,
+ "text": "Which provisioner invokes a process on the resource created by Terraform?",
+ "image": "",
+ "type": "single",
+ "options": [
+   "remote-exec",
+   "null-exec",
+   "local-exec",
+   "file"
+ ],
+ "correctAnswers": [0],
+ "createdAt": "2025-08-08T22:51:22.476Z"
+},
+{
+ "id": 1008,
+ "text": "Which of the following is not true of Terraform providers?",
+ "image": "",
+ "type": "single",
+ "options": [
+   "Providers can be written by individuals",
+   "Providers can be maintained by a community of users",
+   "Some providers are maintained by HashiCorp",
+   "Major cloud vendors and non-cloud vendors can write, maintain, or collaborate on Terraform providers",
+   "None of the above"
+ ],
+ "correctAnswers": [4],
+ "createdAt": "2025-08-08T22:51:22.476Z"
+},
+{
+ "id": 1009,
+ "text": "What command does Terraform require the first time you run it within a configuration directory?",
+ "image": "",
+ "type": "single",
+ "options": [
+   "terraform import",
+   "terraform init",
+   "terraform plan",
+   "terraform workspace"
+ ],
+ "correctAnswers": [1],
+ "createdAt": "2025-08-08T22:51:22.476Z"
+},
+{
+ "id": 1010,
+ "text": "You have deployed a new webapp with a public IP address on a cloud provider. However, you did not create any outputs for your code. What is the best method to quickly find the IP address of the resource you deployed?",
+ "image": "",
+ "type": "single",
+ "options": [
+   "Run terraform output ip_address to view the result",
+   "In a new folder, use the terraform_remote_state data source to load in the state file, then write an output for each resource that you find the state file",
+   "Run terraform state list to find the name of the resource, then terraform state show to find the attributes including public IP address",
+   "Run terraform destroy then terraform apply and look for the IP address in stdout"
+ ],
+ "correctAnswers": [2],
+ "createdAt": "2025-08-08T22:51:22.476Z"
+},
+{
+ "id": 1011,
+ "text": "Which of the following is not a key principle of infrastructure as code?",
+ "image": "",
+ "type": "single",
+ "options": [
+   "Versioned infrastructure",
+   "Golden images",
+   "Idempotence",
+   "Self-describing infrastructure"
+ ],
+ "correctAnswers": [1],
+ "createdAt": "2025-08-08T22:51:22.476Z"
+},
+{
+ "id": 1012,
+ "text": "Terraform variables and outputs that set the \"description\" argument will store that description in the state file.",
+ "image": "",
+ "type": "single",
+ "options": [
+   "True",
+   "False"
+ ],
+ "correctAnswers": [1],
+ "createdAt": "2025-08-08T22:51:22.476Z"
+},
+{
+ "id": 1013,
+ "text": "What is the provider for this fictitious resource?",
+ "image": "",
+ "type": "single",
+ "options": [
+   "vpc",
+   "main",
+   "aws",
+   "test"
+ ],
+ "correctAnswers": [2],
+ "createdAt": "2025-08-08T22:51:22.476Z"
+},
+{
+ "id": 1014,
+ "text": "If you manually destroy infrastructure, what is the best practice reflecting this change in Terraform?",
+ "image": "",
+ "type": "single",
+ "options": [
+   "Run terraform refresh",
+   "It will happen automatically",
+   "Manually update the state fire",
+   "Run terraform import"
+ ],
+ "correctAnswers": [0],
+ "createdAt": "2025-08-08T22:51:22.476Z"
+},
+{
+ "id": 1015,
+ "text": "What is not processed when running a terraform refresh?",
+ "image": "",
+ "type": "single",
+ "options": [
+   "State file",
+   "Configuration file",
+   "Credentials",
+   "Cloud provider"
+ ],
+ "correctAnswers": [1],
+ "createdAt": "2025-08-08T22:51:22.476Z"
+},
+{
+ "id": 1016,
+ "text": "What information does the public Terraform Module Registry automatically expose about published modules?",
+ "image": "",
+ "type": "single",
+ "options": [
+   "Required input variables",
+   "Optional inputs variables and default values",
+   "Outputs",
+   "All of the above",
+   "None of the above"
+ ],
+ "correctAnswers": [3],
+ "createdAt": "2025-08-08T22:51:22.476Z"
+},
+{
+ "id": 1017,
+ "text": "If a module uses a local values, you can expose that value with a terraform output.",
+ "image": "",
+ "type": "single",
+ "options": [
+   "True",
+   "False"
+ ],
+ "correctAnswers": [0],
+ "createdAt": "2025-08-08T22:51:22.476Z"
+},
+{
+ "id": 1018,
+ "text": "You should store secret data in the same version control repository as your Terraform configuration.",
+ "image": "",
+ "type": "single",
+ "options": [
+   "True",
+   "False"
+ ],
+ "correctAnswers": [1],
+ "createdAt": "2025-08-08T22:51:22.476Z"
+},
+{
+ "id": 1019,
+ "text": "Which of the following is not a valid string function in Terraform?",
+ "image": "",
+ "type": "single",
+ "options": [
+   "split",
+   "join",
+   "slice",
+   "chomp"
+ ],
+ "correctAnswers": [2],
+ "createdAt": "2025-08-08T22:51:22.476Z"
+},
+{
+ "id": 1020,
+ "text": "You have provisioned some virtual machines (VMs) on Google Cloud Platform (GCP) using the gcloud command line tool. However, you are standardizing with Terraform and want to manage these VMs using Terraform instead. What are the two things you must do to achieve this? (Choose two.)",
+ "image": "",
+ "type": "multiple",
+ "options": [
+   "Provision new VMs using Terraform with the same VM names",
+   "Use the terraform import command for the existing VMs",
+   "Write Terraform configuration for the existing VMs",
+   "Run the terraform import-gcp command"
+ ],
+ "correctAnswers": [1, 2],
+ "createdAt": "2025-08-08T22:51:22.476Z"
+}
+]
