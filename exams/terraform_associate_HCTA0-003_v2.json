@@ -54,7 +54,7 @@
   {
     "id": 1005,
     "text": "A provider configuration block is required in every Terraform configuration.",
-    "image": "",
+    "image": "https://www.examtopics.com/assets/media/exam-media/04279/0000400001.png",
     "type": "single",
     "options": [
       "True",
@@ -101,7 +101,7 @@
       "Providers can be maintained by a community of users",
       "Some providers are maintained by HashiCorp",
       "Major cloud vendors and non-cloud vendors can write, maintain, or collaborate on Terraform providers",
-      "None of the above"
+      "None are correct"
     ],
     "correctAnswers": [4],
     "createdAt": "2025-08-20T10:00:00.000Z"
@@ -163,7 +163,7 @@
   {
     "id": 1013,
     "text": "What is the provider for this fictitious resource?",
-    "image": "",
+    "image": "https://www.examtopics.com/assets/media/exam-media/04279/0000800001.png",
     "type": "single",
     "options": [
       "vpc",
@@ -211,8 +211,8 @@
       "Required input variables",
       "Optional inputs variables and default values",
       "Outputs",
-      "All of the above",
-      "None of the above"
+      "All are correct",
+      "None are correct"
     ],
     "correctAnswers": [3],
     "createdAt": "2025-08-20T10:00:00.000Z"
