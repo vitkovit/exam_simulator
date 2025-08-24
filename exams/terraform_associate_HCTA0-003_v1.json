@@ -1,1361 +1,1878 @@
 [
-{
- "id": 1001,
- "text": "The terraform.tfstate file always matches your currently built infrastructure.",
- "image": "",
- "type": "single",
- "options": [
-   "True",
-   "False"
- ],
- "correctAnswers": [1],
- "createdAt": "2025-08-08T22:51:22.476Z"
-},
-{
- "id": 1002,
- "text": "One remote backend configuration always maps to a single remote workspace.",
- "image": "",
- "type": "single",
- "options": [
-   "True",
-   "False"
- ],
- "correctAnswers": [1],
- "createdAt": "2025-08-08T22:51:22.476Z"
-},
-{
- "id": 1003,
- "text": "How is the Terraform remote backend different than other state backends such as S3, Consul, etc.?",
- "image": "",
- "type": "single",
- "options": [
-   "It can execute Terraform runs on dedicated infrastructure on premises or in Terraform Cloud",
-   "It doesn't show the output of a terraform apply locally",
-   "It is only available to paying customers",
-   "All of the above"
- ],
- "correctAnswers": [0],
- "createdAt": "2025-08-08T22:51:22.476Z"
-},
-{
- "id": 1004,
- "text": "What is the workflow for deploying new infrastructure with Terraform?",
- "image": "",
- "type": "single",
- "options": [
-   "terraform plan to import the current infrastructure to the state file, make code changes, and terraform apply to update the infrastructure.",
-   "Write a Terraform configuration, run terraform show to view proposed changes, and terraform apply to create new infrastructure.",
-   "terraform import to import the current infrastructure to the state file, make code changes, and terraform apply to update the infrastructure.",
-   "Write a Terraform configuration, run terraform init, run terraform plan to view planned infrastructure changes, and terraform apply to create new infrastructure."
- ],
- "correctAnswers": [3],
- "createdAt": "2025-08-08T22:51:22.476Z"
-},
-{
- "id": 1005,
- "text": "A provider configuration block is required in every Terraform configuration.",
- "image": "",
- "type": "single",
- "options": [
-   "True",
-   "False"
- ],
- "correctAnswers": [1],
- "createdAt": "2025-08-08T22:51:22.476Z"
-},
-{
- "id": 1006,
- "text": "You run a local-exec provisioner in a null resource called null_resource.run_script and realize that you need to rerun the script. Which of the following commands would you use first?",
- "image": "",
- "type": "single",
- "options": [
-   "terraform taint null_resource.run_script",
-   "terraform apply -target=null_resource.run_script",
-   "terraform validate null_resource.run_script",
-   "terraform plan -target=null_resource.run_script"
- ],
- "correctAnswers": [1],
- "createdAt": "2025-08-08T22:51:22.476Z"
-},
-{
- "id": 1007,
- "text": "Which provisioner invokes a process on the resource created by Terraform?",
- "image": "",
- "type": "single",
- "options": [
-   "remote-exec",
-   "null-exec",
-   "local-exec",
-   "file"
- ],
- "correctAnswers": [0],
- "createdAt": "2025-08-08T22:51:22.476Z"
-},
-{
- "id": 1008,
- "text": "Which of the following is not true of Terraform providers?",
- "image": "",
- "type": "single",
- "options": [
-   "Providers can be written by individuals",
-   "Providers can be maintained by a community of users",
-   "Some providers are maintained by HashiCorp",
-   "Major cloud vendors and non-cloud vendors can write, maintain, or collaborate on Terraform providers",
-   "None of the above"
- ],
- "correctAnswers": [4],
- "createdAt": "2025-08-08T22:51:22.476Z"
-},
-{
- "id": 1009,
- "text": "What command does Terraform require the first time you run it within a configuration directory?",
- "image": "",
- "type": "single",
- "options": [
-   "terraform import",
-   "terraform init",
-   "terraform plan",
-   "terraform workspace"
- ],
- "correctAnswers": [1],
- "createdAt": "2025-08-08T22:51:22.476Z"
-},
-{
- "id": 1010,
- "text": "You have deployed a new webapp with a public IP address on a cloud provider. However, you did not create any outputs for your code. What is the best method to quickly find the IP address of the resource you deployed?",
- "image": "",
- "type": "single",
- "options": [
-   "Run terraform output ip_address to view the result",
-   "In a new folder, use the terraform_remote_state data source to load in the state file, then write an output for each resource that you find the state file",
-   "Run terraform state list to find the name of the resource, then terraform state show to find the attributes including public IP address",
-   "Run terraform destroy then terraform apply and look for the IP address in stdout"
- ],
- "correctAnswers": [2],
- "createdAt": "2025-08-08T22:51:22.476Z"
-},
-{
- "id": 1011,
- "text": "Which of the following is not a key principle of infrastructure as code?",
- "image": "",
- "type": "single",
- "options": [
-   "Versioned infrastructure",
-   "Golden images",
-   "Idempotence",
-   "Self-describing infrastructure"
- ],
- "correctAnswers": [1],
- "createdAt": "2025-08-08T22:51:22.476Z"
-},
-{
- "id": 1012,
- "text": "Terraform variables and outputs that set the \"description\" argument will store that description in the state file.",
- "image": "",
- "type": "single",
- "options": [
-   "True",
-   "False"
- ],
- "correctAnswers": [1],
- "createdAt": "2025-08-08T22:51:22.476Z"
-},
-{
- "id": 1013,
- "text": "What is the provider for this fictitious resource?",
- "image": "https://www.examtopics.com/assets/media/exam-media/04279/0000800001.png",
- "type": "single",
- "options": [
-   "vpc",
-   "main",
-   "aws",
-   "test"
- ],
- "correctAnswers": [2],
- "createdAt": "2025-08-08T22:51:22.476Z"
-},
-{
- "id": 1014,
- "text": "If you manually destroy infrastructure, what is the best practice reflecting this change in Terraform?",
- "image": "",
- "type": "single",
- "options": [
-   "Run terraform refresh",
-   "It will happen automatically",
-   "Manually update the state fire",
-   "Run terraform import"
- ],
- "correctAnswers": [0],
- "createdAt": "2025-08-08T22:51:22.476Z"
-},
-{
- "id": 1015,
- "text": "What is not processed when running a terraform refresh?",
- "image": "",
- "type": "single",
- "options": [
-   "State file",
-   "Configuration file",
-   "Credentials",
-   "Cloud provider"
- ],
- "correctAnswers": [1],
- "createdAt": "2025-08-08T22:51:22.476Z"
-},
-{
- "id": 1016,
- "text": "What information does the public Terraform Module Registry automatically expose about published modules?",
- "image": "",
- "type": "single",
- "options": [
-   "Required input variables",
-   "Optional inputs variables and default values",
-   "Outputs",
-   "All of the above",
-   "None of the above"
- ],
- "correctAnswers": [3],
- "createdAt": "2025-08-08T22:51:22.476Z"
-},
-{
- "id": 1017,
- "text": "If a module uses a local values, you can expose that value with a terraform output.",
- "image": "",
- "type": "single",
- "options": [
-   "True",
-   "False"
- ],
- "correctAnswers": [0],
- "createdAt": "2025-08-08T22:51:22.476Z"
-},
-{
- "id": 1018,
- "text": "You should store secret data in the same version control repository as your Terraform configuration.",
- "image": "",
- "type": "single",
- "options": [
-   "True",
-   "False"
- ],
- "correctAnswers": [1],
- "createdAt": "2025-08-08T22:51:22.476Z"
-},
-{
- "id": 1019,
- "text": "Which of the following is not a valid string function in Terraform?",
- "image": "",
- "type": "single",
- "options": [
-   "split",
-   "join",
-   "slice",
-   "chomp"
- ],
- "correctAnswers": [2],
- "createdAt": "2025-08-08T22:51:22.476Z"
-},
-{
- "id": 1020,
- "text": "You have provisioned some virtual machines (VMs) on Google Cloud Platform (GCP) using the gcloud command line tool. However, you are standardizing with Terraform and want to manage these VMs using Terraform instead. What are the two things you must do to achieve this? (Choose two.)",
- "image": "",
- "type": "multiple",
- "options": [
-   "Provision new VMs using Terraform with the same VM names",
-   "Use the terraform import command for the existing VMs",
-   "Write Terraform configuration for the existing VMs",
-   "Run the terraform import-gcp command"
- ],
- "correctAnswers": [1, 2],
- "createdAt": "2025-08-08T22:51:22.476Z"
-},
-{
-  "id": 1021,
-  "text": "You have recently started a new job at a retailer as an engineer. As part of this new role, you have been tasked with evaluating multiple outages that occurred during peak shopping time during the holiday season. Your investigation found that the team is manually deploying new compute instances and configuring each compute instance manually. This has led to inconsistent configuration between each compute instance. How would you solve this using infrastructure as code?",
-  "image": "",
-  "type": "single",
-  "options": [
-    "Implement a ticketing workflow that makes engineers submit a ticket before manually provisioning and configuring a resource",
-    "Implement a checklist that engineers can follow when configuring compute instances",
-    "Replace the compute instance type with a larger version to reduce the number of required deployments",
-    "Implement a provisioning pipeline that deploys infrastructure configurations committed to your version control system following code reviews"
-  ],
-  "correctAnswers": [3],
-  "createdAt": "2025-08-20T10:00:00.000Z"
-},
-{
-  "id": 1022,
-  "text": "terraform init initializes a sample main.tf file in the current directory.",
-  "image": "",
-  "type": "single",
-  "options": [
-    "True",
-    "False"
-  ],
-  "correctAnswers": [1],
-  "createdAt": "2025-08-20T10:00:00.000Z"
-},
-{
-  "id": 1023,
-  "text": "Which two steps are required to provision new infrastructure in the Terraform workflow? (Choose two.)",
-  "image": "",
-  "type": "multiple",
-  "options": [
-    "Destroy",
-    "Apply",
-    "Import",
-    "Init",
-    "Validate"
-  ],
-  "correctAnswers": [1, 3],
-  "createdAt": "2025-08-20T10:00:00.000Z"
-},
-{
-  "id": 1024,
-  "text": "Why would you use the terraform taint command?",
-  "image": "",
-  "type": "single",
-  "options": [
-    "When you want to force Terraform to destroy a resource on the next apply",
-    "When you want to force Terraform to destroy and recreate a resource on the next apply",
-    "When you want Terraform to ignore a resource on the next apply",
-    "When you want Terraform to destroy all the infrastructure in your workspace"
-  ],
-  "correctAnswers": [1],
-  "createdAt": "2025-08-20T10:00:00.000Z"
-},
-{
-  "id": 1025,
-  "text": "Terraform requires the Go runtime as a prerequisite for installation.",
-  "image": "",
-  "type": "single",
-  "options": [
-    "True",
-    "False"
-  ],
-  "correctAnswers": [1],
-  "createdAt": "2025-08-20T10:00:00.000Z"
-},
-{
-  "id": 1026,
-  "text": "When should you use the force-unlock command?",
-  "image": "",
-  "type": "single",
-  "options": [
-    "You see a status message that you cannot acquire the lock",
-    "You have a high priority change",
-    "Automatic unlocking failed",
-    "You apply failed due to a state lock"
-  ],
-  "correctAnswers": [2],
-  "createdAt": "2025-08-20T10:00:00.000Z"
-},
-{
-  "id": 1027,
-  "text": "Terraform can import modules from a number of sources - which of the following is not a valid source?",
-  "image": "",
-  "type": "single",
-  "options": [
-    "FTP server",
-    "GitHub repository",
-    "Local path",
-    "Terraform Module Registry"
-  ],
-  "correctAnswers": [0],
-  "createdAt": "2025-08-20T10:00:00.000Z"
-},
-{
-  "id": 1028,
-  "text": "Which of the following is available only in Terraform Enterprise or Cloud workspaces and not in Terraform CLI?",
-  "image": "",
-  "type": "single",
-  "options": [
-    "Secure variable storage",
-    "Support for multiple cloud providers",
-    "Dry runs with terraform plan",
-    "Using the workspace as a data source"
-  ],
-  "correctAnswers": [0],
-  "createdAt": "2025-08-20T10:00:00.000Z"
-},
-{
-  "id": 1029,
-  "text": "terraform validate validates the syntax of Terraform files.",
-  "image": "",
-  "type": "single",
-  "options": [
-    "True",
-    "False"
-  ],
-  "correctAnswers": [0],
-  "createdAt": "2025-08-20T10:00:00.000Z"
-},
-{
-  "id": 1030,
-  "text": "You have used Terraform to create an ephemeral development environment in the cloud and are now ready to destroy all the infrastructure described by your Terraform configuration. To be safe, you would like to first see all the infrastructure that will be deleted by Terraform. Which command should you use to show all of the resources that will be deleted? (Choose two.)",
-  "image": "",
-  "type": "multiple",
-  "options": [
-    "Run terraform plan -destroy.",
-    "This is not possible. You can only show resources that will be created.",
-    "Run terraform state rm *.",
-    "Run terraform destroy and it will first output all the resources that will be deleted before prompting for approval."
-  ],
-  "correctAnswers": [0, 3],
-  "createdAt": "2025-08-20T10:00:00.000Z"
-},
-{
-  "id": 1031,
-  "text": "Which of the following is the correct way to pass the value in the variable num_servers into a module with the input servers?",
-  "image": "",
-  "type": "single",
-  "options": [
-    "servers = num_servers",
-    "servers = variable.num_servers",
-    "servers = var(num_servers)",
-    "servers = var.num_servers"
-  ],
-  "correctAnswers": [3],
-  "createdAt": "2025-08-20T10:00:00.000Z"
-},
-{
-  "id": 1032,
-  "text": "A Terraform provisioner must be nested inside a resource configuration block.",
-  "image": "",
-  "type": "single",
-  "options": [
-    "True",
-    "False"
-  ],
-  "correctAnswers": [0],
-  "createdAt": "2025-08-20T10:00:00.000Z"
-},
-{
-  "id": 1033,
-  "text": "Terraform can run on Windows or Linux, but it requires a Server version of the Windows operating system.",
-  "image": "",
-  "type": "single",
-  "options": [
-    "True",
-    "False"
-  ],
-  "correctAnswers": [1],
-  "createdAt": "2025-08-20T10:00:00.000Z"
-},
-{
-  "id": 1034,
-  "text": "What does the default \"local\" Terraform backend store?",
-  "image": "",
-  "type": "single",
-  "options": [
-    "tfplan files",
-    "Terraform binary",
-    "Provider plugins",
-    "State file"
-  ],
-  "correctAnswers": [3],
-  "createdAt": "2025-08-20T10:00:00.000Z"
-},
-{
-  "id": 1035,
-  "text": "You have multiple team members collaborating on infrastructure as code (IaC) using Terraform, and want to apply formatting standards for readability. How can you format Terraform HCL (HashiCorp Configuration Language) code according to standard Terraform style convention?",
-  "image": "",
-  "type": "single",
-  "options": [
-    "Run the terraform fmt command during the code linting phase of your CI/CD process",
-    "Designate one person in each team to review and format everyone's code",
-    "Manually apply two spaces indentation and align equal sign \"=\" characters in every Terraform file (*.tf)",
-    "Write a shell script to transform Terraform files using tools such as AWK, Python, and sed"
-  ],
-  "correctAnswers": [0],
-  "createdAt": "2025-08-20T10:00:00.000Z"
-},
-{
-  "id": 1036,
-  "text": "What value does the Terraform Cloud/Terraform Enterprise private module registry provide over the public Terraform Module Registry?",
-  "image": "",
-  "type": "single",
-  "options": [
-    "The ability to share modules with public Terraform users and members of Terraform Enterprise Organizations",
-    "The ability to tag modules by version or release",
-    "The ability to restrict modules to members of Terraform Cloud or Enterprise organizations",
-    "The ability to share modules publicly with any user of Terraform"
-  ],
-  "correctAnswers": [2],
-  "createdAt": "2025-08-20T10:00:00.000Z"
-},
-{
-  "id": 1037,
-  "text": "Which task does terraform init not perform?",
-  "image": "",
-  "type": "single",
-  "options": [
-    "Sources all providers present in the configuration and ensures they are downloaded and available locally",
-    "Connects to the backend",
-    "Sources any modules and copies the configuration locally",
-    "Validates all required variables are present"
-  ],
-  "correctAnswers": [3],
-  "createdAt": "2025-08-20T10:00:00.000Z"
-},
-{
-  "id": 1038,
-  "text": "You have declared a variable called var.list which is a list of objects that all have an attribute id. Which options will produce a list of the IDs? (Choose two.)",
-  "image": "",
-  "type": "multiple",
-  "options": [
-    "{ for o in var.list : o => o.id }",
-    "var.list[*].id",
-    "[ var.list[*].id ]",
-    "[ for o in var.list : o.id ]"
-  ],
-  "correctAnswers": [1, 3],
-  "createdAt": "2025-08-20T10:00:00.000Z"
-},
-{
-  "id": 1039,
-  "text": "Which argument(s) is (are) required when declaring a Terraform variable?",
-  "image": "",
-  "type": "single",
-  "options": [
-    "type",
-    "default",
-    "description",
-    "All of the above",
-    "None of the above"
-  ],
-  "correctAnswers": [4],
-  "createdAt": "2025-08-20T10:00:00.000Z"
-},
-{
-  "id": 1040,
-  "text": "When using a module block to reference a module stored on the public Terraform Module Registry, how do you specify version 1.0.0?",
-  "image": "",
-  "type": "single",
-  "options": [
-    "Modules stored on the public Terraform Module Registry do not support versioning",
-    "Append ?ref=v1.0.0 argument to the source path",
-    "Add version = \"1.0.0\" attribute to module block",
-    "Nothing - modules stored on the public Terraform Module Registry always default to version 1.0.0"
-  ],
-  "correctAnswers": [2],
-  "createdAt": "2025-08-20T10:00:00.000Z"
-},
-{
-  "id": 1041,
-  "text": "What features does the hosted service Terraform Cloud provide? (Choose two.)",
-  "image": "",
-  "type": "multiple",
-  "options": [
-    "Automated infrastructure deployment visualization",
-    "Automatic backups",
-    "Remote state storage",
-    "A web-based user interface (UI)"
-  ],
-  "correctAnswers": [2, 3],
-  "createdAt": "2025-08-20T10:00:00.000Z"
-},
-{
-  "id": 1042,
-  "text": "Where does the Terraform local backend store its state?",
-  "image": "",
-  "type": "single",
-  "options": [
-    "In the /tmp directory",
-    "In the terraform file",
-    "In the terraform.tfstate file",
-    "In the user's terraform.state file"
-  ],
-  "correctAnswers": [2],
-  "createdAt": "2025-08-20T10:00:00.000Z"
-},
-{
-  "id": 1043,
-  "text": "Which option can not be used to keep secrets out of Terraform configuration files?",
-  "image": "",
-  "type": "single",
-  "options": [
-    "A Terraform provider",
-    "Environment variables",
-    "A -var flag",
-    "secure string"
-  ],
-  "correctAnswers": [3],
-  "createdAt": "2025-08-20T10:00:00.000Z"
-},
-{
-  "id": 1044,
-  "text": "What is one disadvantage of using dynamic blocks in Terraform?",
-  "image": "",
-  "type": "single",
-  "options": [
-    "They cannot be used to loop through a list of values",
-    "Dynamic blocks can construct repeatable nested blocks",
-    "They make configuration harder to read and understand",
-    "Terraform will run more slowly"
-  ],
-  "correctAnswers": [2],
-  "createdAt": "2025-08-20T10:00:00.000Z"
-},
-{
-  "id": 1045,
-  "text": "Only the user that generated a plan may apply it.",
-  "image": "",
-  "type": "single",
-  "options": [
-    "True",
-    "False"
-  ],
-  "correctAnswers": [1],
-  "createdAt": "2025-08-20T10:00:00.000Z"
-},
-{
-  "id": 1046,
-  "text": "Examine the following Terraform configuration, which uses the data source for an AWS AMI. What value should you enter for the ami argument in the AWS instance resource?",
-  "image": "https://www.examtopics.com/assets/media/exam-media/04279/0002600001.png",
-  "type": "single",
-  "options": [
-    "aws_ami.ubuntu",
-    "data.aws_ami.ubuntu",
-    "data.aws_ami.ubuntu.id",
-    "aws_ami.ubuntu.id"
-  ],
-  "correctAnswers": [2],
-  "createdAt": "2025-08-20T10:00:00.000Z"
-},
-{
-  "id": 1047,
-  "text": "You need to specify a dependency manually. What resource meta-parameter can you use to make sure Terraform respects the dependency?",
-  "image": "",
-  "type": "single",
-  "options": [
-    "depends_on",
-    "dependency",
-    "requires",
-    "needs"
-  ],
-  "correctAnswers": [0],
-  "createdAt": "2025-08-20T10:00:00.000Z"
-},
-{
-  "id": 1048,
-  "text": "You have never used Terraform before and would like to test it out using a shared team account for a cloud provider. The shared team account already contains 15 virtual machines (VM). You develop a Terraform configuration containing one VM, perform terraform apply, and see that your VM was created successfully. What should you do to delete the newly-created VM with Terraform?",
-  "image": "",
-  "type": "single",
-  "options": [
-    "The Terraform state file contains all 16 VMs in the team account. Execute terraform destroy and select the newly-created VM.",
-    "The Terraform state file only contains the one new VM. Execute terraform destroy.",
-    "Delete the Terraform state file and execute Terraform apply.",
-    "Delete the VM using the cloud provider console and terraform apply to apply the changes to the Terraform state file."
-  ],
-  "correctAnswers": [1],
-  "createdAt": "2025-08-20T10:00:00.000Z"
-},
-{
-  "id": 1049,
-  "text": "What is the name assigned by Terraform to reference this resource?",
-  "image": "https://www.examtopics.com/assets/media/exam-media/04279/0002800001.png",
-  "type": "single",
-  "options": [
-    "dev",
-    "azurerm_resource_group",
-    "azurerm",
-    "test"
-  ],
-  "correctAnswers": [3],
-  "createdAt": "2025-08-20T10:00:00.000Z"
-},
-{
-  "id": 1050,
-  "text": "Setting the TF_LOG environment variable to DEBUG causes debug messages to be logged into syslog.",
-  "image": "",
-  "type": "single",
-  "options": [
-    "True",
-    "False"
-  ],
-  "correctAnswers": [1],
-  "createdAt": "2025-08-20T10:00:00.000Z"
-},
-{
-   "id": 1051,
-   "text": "Where in your Terraform configuration do you specify a state backend?",
-   "image": "",
-   "type": "single",
-   "options": [
-     "The terraform block",
-     "The resource block", 
-     "The provider block",
-     "The datasource block"
-   ],
-   "correctAnswers": [0],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- },
- {
-   "id": 1052,
-   "text": "In Terraform 0.13 and above, outside of the required_providers block, Terraform configurations always refer to providers by their local names.",
-   "image": "",
-   "type": "single",
-   "options": [
-     "True",
-     "False"
-   ],
-   "correctAnswers": [0],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- },
- {
-   "id": 1053,
-   "text": "What command should you run to display all workspaces for the current configuration?",
-   "image": "",
-   "type": "single",
-   "options": [
-     "terraform workspace",
-     "terraform workspace show",
-     "terraform workspace list", 
-     "terraform show workspace"
-   ],
-   "correctAnswers": [2],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- },
- {
-   "id": 1054,
-   "text": "Terraform providers are always installed from the Internet.",
-   "image": "",
-   "type": "single",
-   "options": [
-     "True",
-     "False"
-   ],
-   "correctAnswers": [1],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- },
- {
-   "id": 1055,
-   "text": "Which of these is the best practice to protect sensitive values in state files?",
-   "image": "",
-   "type": "single",
-   "options": [
-     "Blockchain",
-     "Secure Sockets Layer (SSL)",
-     "Enhanced remote backends",
-     "Signed Terraform providers"
-   ],
-   "correctAnswers": [2],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- },
- {
-   "id": 1056,
-   "text": "When does terraform apply reflect changes in the cloud environment?",
-   "image": "",
-   "type": "single",
-   "options": [
-     "Immediately",
-     "However long it takes the resource provider to fulfill the request",
-     "After updating the state file",
-     "Based on the value provided to the -refresh command line argument",
-     "None of the above"
-   ],
-   "correctAnswers": [1],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- },
- {
-   "id": 1057,
-   "text": "How would you reference the \"name\" value of the second instance of this fictitious resource?",
-   "image": "",
-   "type": "single", 
-   "options": [
-     "element(aws_instance.web, 2)",
-     "aws_instance.web[1].name",
-     "aws_instance.web[1]",
-     "aws_instance.web[2].name",
-     "aws_instance.web.*.name"
-   ],
-   "correctAnswers": [1],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- },
- {
-   "id": 1058,
-   "text": "A Terraform provider is not responsible for:",
-   "image": "",
-   "type": "single",
-   "options": [
-     "Understanding API interactions with some service",
-     "Provisioning infrastructure in multiple clouds",
-     "Exposing resources and data sources based on an API",
-     "Managing actions to take based on resource differences"
-   ],
-   "correctAnswers": [1],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- },
- {
-   "id": 1059,
-   "text": "Terraform provisioners can be added to any resource block.",
-   "image": "",
-   "type": "single",
-   "options": [
-     "True",
-     "False"
-   ],
-   "correctAnswers": [0],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- },
- {
-   "id": 1060,
-   "text": "What is terraform refresh intended to detect?",
-   "image": "",
-   "type": "single",
-   "options": [
-     "Terraform configuration code changes",
-     "Empty state files",
-     "State file drift",
-     "Corrupt state files"
-   ],
-   "correctAnswers": [2],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- },
- {
-   "id": 1061,
-   "text": "Which flag would you add to terraform plan to save the execution plan to a file?",
-   "image": "",
-   "type": "single",
-   "options": [
-     "-out",
-     "-save",
-     "-file",
-     "-export"
-   ],
-   "correctAnswers": [0],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- },
- {
-   "id": 1062,
-   "text": "What is the name of the default file where Terraform stores the state?",
-   "image": "",
-   "type": "single",
-   "options": [
-     "terraform.tfstate",
-     "terraform.state",
-     "state.tf",
-     "default.tfstate"
-   ],
-   "correctAnswers": [0],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- },
- {
-   "id": 1063,
-   "text": "A Terraform local value can reference other Terraform local values.",
-   "image": "",
-   "type": "single",
-   "options": [
-     "True",
-     "False"
-   ],
-   "correctAnswers": [0],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- },
- {
-   "id": 1064,
-   "text": "Which of the following is not a valid Terraform collection type?",
-   "image": "",
-   "type": "single",
-   "options": [
-     "list",
-     "map",
-     "tree",
-     "set"
-   ],
-   "correctAnswers": [2],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- },
- {
-   "id": 1065,
-   "text": "When running the command terraform taint against a managed resource you want to force recreation upon, Terraform will immediately destroy and recreate the resource.",
-   "image": "",
-   "type": "single",
-   "options": [
-     "True",
-     "False"
-   ],
-   "correctAnswers": [1],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- },
- {
-   "id": 1066,
-   "text": "All standard backend types support state storage, locking, and remote operations like plan, apply and destroy.",
-   "image": "",
-   "type": "single",
-   "options": [
-     "True",
-     "False"
-   ],
-   "correctAnswers": [1],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- },
- {
-   "id": 1067,
-   "text": "How can terraform plan aid in the development process?",
-   "image": "",
-   "type": "single",
-   "options": [
-     "Validates your expectations against the execution plan without permanently modifying state",
-     "Initializes your working directory containing your Terraform configuration files",
-     "Formats your Terraform configuration files",
-     "Reconciles Terraform's state against deployed resources and permanently modifies state using the current status of deployed resources"
-   ],
-   "correctAnswers": [0],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- },
- {
-   "id": 1068,
-   "text": "You would like to reuse the same Terraform configuration for your development and production environments with a different state file for each. Which command would you use?",
-   "image": "",
-   "type": "single",
-   "options": [
-     "terraform import",
-     "terraform workspace",
-     "terraform state",
-     "terraform init"
-   ],
-   "correctAnswers": [1],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- },
- {
-   "id": 1069,
-   "text": "What is the name assigned by Terraform to reference this resource?",
-   "image": "https://www.examtopics.com/assets/media/exam-media/04279/0004000001.png",
-   "type": "single",
-   "options": [
-     "compute_instance",
-     "main",
-     "google",
-     "test"
-   ],
-   "correctAnswers": [3],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- },
- {
-   "id": 1070,
-   "text": "You're building a CI/CD (continuous integration/ continuous delivery) pipeline and need to inject sensitive variables into your Terraform run. How can you do this safely?",
-   "image": "",
-   "type": "single",
-   "options": [
-     "Pass variables to Terraform with a -var flag",
-     "Copy the sensitive variables into your Terraform code",
-     "Store the sensitive variables in a secure_vars.tf file",
-     "Store the sensitive variables as plain text in a source code repository"
-   ],
-   "correctAnswers": [0],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- },
- {
-   "id": 1071,
-   "text": "Your security team scanned some Terraform workspaces and found secrets stored in a plaintext in state files. How can you protect sensitive data stored in Terraform state files?",
-   "image": "",
-   "type": "single",
-   "options": [
-     "Delete the state file every time you run Terraform",
-     "Store the state in an encrypted backend",
-     "Edit your state file to scrub out the sensitive data",
-     "Always store your secrets in a secrets.tfvars file."
-   ],
-   "correctAnswers": [1],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- },
- {
-   "id": 1072,
-   "text": "In contrast to Terraform Open Source, when working with Terraform Enterprise and Cloud Workspaces, conceptually you could think about them as completely separate working directories.",
-   "image": "",
-   "type": "single",
-   "options": [
-     "True",
-     "False"
-   ],
-   "correctAnswers": [0],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- },
- {
-   "id": 1073,
-   "text": "You want to know from which paths Terraform is loading providers referenced in your Terraform configuration (*.tf files). You need to enable debug messages to find this out. Which of the following would achieve this?",
-   "image": "",
-   "type": "single",
-   "options": [
-     "Set the environment variable TF_LOG=TRACE",
-     "Set verbose logging for each provider in your Terraform configuration",
-     "Set the environment variable TF_VAR_log=TRACE",
-     "Set the environment variable TF_LOG_PATH"
-   ],
-   "correctAnswers": [0],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- },
- {
-   "id": 1074,
-   "text": "How is terraform import run?",
-   "image": "",
-   "type": "single",
-   "options": [
-     "As a part of terraform init",
-     "As a part of terraform plan",
-     "As a part of terraform refresh",
-     "By an explicit call",
-     "All of the above"
-   ],
-   "correctAnswers": [3],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- },
- {
-   "id": 1075,
-   "text": "You have a simple Terraform configuration containing one virtual machine (VM) in a cloud provider. You run terraform apply and the VM is created successfully. What will happen if you delete the VM using the cloud provider console, and run terraform apply again without changing any Terraform code?",
-   "image": "",
-   "type": "single",
-   "options": [
-     "Terraform will remove the VM from state file",
-     "Terraform will report an error",
-     "Terraform will not make any changes",
-     "Terraform will recreate the VM"
-   ],
-   "correctAnswers": [3],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- },
- {
-   "id": 1076,
-   "text": "Which of these options is the most secure place to store secrets for connecting to a Terraform remote backend?",
-   "image": "",
-   "type": "single",
-   "options": [
-     "Defined in Environment variables",
-     "Inside the backend block within the Terraform configuration",
-     "Defined in a connection configuration outside of Terraform",
-     "None of above"
-   ],
-   "correctAnswers": [0],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- },
- {
-   "id": 1077,
-   "text": "Your DevOps team is currently using the local backend for your Terraform configuration. You would like to move to a remote backend to begin storing the state file in a central location. Which of the following backends would not work?",
-   "image": "",
-   "type": "single",
-   "options": [
-     "Amazon S3",
-     "Artifactory",
-     "Git",
-     "Terraform Cloud"
-   ],
-   "correctAnswers": [2],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- },
- {
-   "id": 1078,
-   "text": "Which backend does the Terraform CLI use by default?",
-   "image": "",
-   "type": "single",
-   "options": [
-     "Terraform Cloud",
-     "Consul",
-     "Remote",
-     "Local"
-   ],
-   "correctAnswers": [3],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- },
- {
-   "id": 1079,
-   "text": "When you initialize Terraform, where does it cache modules from the public Terraform Module Registry?",
-   "image": "",
-   "type": "single",
-   "options": [
-     "On disk in the /tmp directory",
-     "In memory",
-     "On disk in the .terraform sub-directory",
-     "They are not cached"
-   ],
-   "correctAnswers": [2],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- },
- {
-   "id": 1080,
-   "text": "You write a new Terraform configuration and immediately run terraform apply in the CLI using the local backend. Why will the apply fail?",
-   "image": "",
-   "type": "single",
-   "options": [
-     "Terraform needs you to format your code according to best practices first",
-     "Terraform needs to install the necessary plugins first",
-     "The Terraform CLI needs you to log into Terraform cloud first",
-     "Terraform requires you to manually run terraform plan first"
-   ],
-   "correctAnswers": [1],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- },
- {
-   "id": 1081,
-   "text": "What features stops multiple admins from changing the Terraform state at the same time?",
-   "image": "",
-   "type": "single",
-   "options": [
-     "Version control",
-     "Backend types",
-     "Provider constraints",
-     "State locking"
-   ],
-   "correctAnswers": [3],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- },
- {
-   "id": 1082,
-   "text": "A fellow developer on your team is asking for some help in refactoring their Terraform code. As part of their application's architecture, they are going to tear down an existing deployment managed by Terraform and deploy new. However, there is a server resource named aws_instance.ubuntu[1] they would like to keep to perform some additional analysis. What command should be used to tell Terraform to no longer manage the resource?",
-   "image": "",
-   "type": "single",
-   "options": [
-     "terraform apply rm aws_instance.ubuntu[1]",
-     "terraform state rm aws_instance.ubuntu[1]",
-     "terraform plan rm aws_instance.ubuntu[1]",
-     "terraform delete aws_instance.ubuntu[1]"
-   ],
-   "correctAnswers": [1],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- },
- {
-   "id": 1083,
-   "text": "Terraform can only manage resource dependencies if you set them explicitly with the depends_on argument.",
-   "image": "",
-   "type": "single",
-   "options": [
-     "True",
-     "False"
-   ],
-   "correctAnswers": [1],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- },
- {
-   "id": 1084,
-   "text": "A terraform apply can not _________ infrastructure.",
-   "image": "",
-   "type": "single",
-   "options": [
-     "change",
-     "destroy",
-     "provision",
-     "import"
-   ],
-   "correctAnswers": [3],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- },
- {
-   "id": 1085,
-   "text": "You need to constrain the GitHub provider to version 2.1 or greater. Which of the following should you put into the Terraform 0.12 configuration's provider block?",
-   "image": "",
-   "type": "single",
-   "options": [
-     "version >= 2.1",
-     "version ~> 2.1",
-     "version = \"<= 2.1\"",
-     "version = \">= 2.1\""
-   ],
-   "correctAnswers": [3],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- },
- {
-   "id": 1086,
-   "text": "You just scaled your VM infrastructure and realized you set the count variable to the wrong value. You correct the value and save your change. What do you do next to make your infrastructure match your configuration?",
-   "image": "",
-   "type": "single",
-   "options": [
-     "Run an apply and confirm the planned changes",
-     "Inspect your Terraform state because you want to change it",
-     "Reinitialize because your configuration has changed",
-     "Inspect all Terraform outputs to make sure they are correct"
-   ],
-   "correctAnswers": [0],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- },
- {
-   "id": 1087,
-   "text": "Terraform provisioners that require authentication can use the ______ block.",
-   "image": "",
-   "type": "single",
-   "options": [
-     "connection",
-     "credentials",
-     "secrets",
-     "ssh"
-   ],
-   "correctAnswers": [0],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- },
- {
-   "id": 1088,
-   "text": "Terraform validate reports syntax check errors from which of the following scenarios?",
-   "image": "",
-   "type": "single",
-   "options": [
-     "Code contains tabs indentation instead of spaces",
-     "There is missing value for a variable",
-     "The state files does not match the current infrastructure",
-     "None of the above"
-   ],
-   "correctAnswers": [3],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- },
- {
-   "id": 1089,
-   "text": "Which of the following is allowed as a Terraform variable name?",
-   "image": "",
-   "type": "single",
-   "options": [
-     "count",
-     "name",
-     "source",
-     "version"
-   ],
-   "correctAnswers": [1],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- },
- {
-   "id": 1090,
-   "text": "What type of block is used to construct a collection of nested configuration blocks?",
-   "image": "",
-   "type": "single",
-   "options": [
-     "for_each",
-     "repeated",
-     "nesting",
-     "dynamic"
-   ],
-   "correctAnswers": [3],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- },
- {
-   "id": 1091,
-   "text": "Module variable assignments are inherited from the parent module and do not need to be explicitly set.",
-   "image": "",
-   "type": "single",
-   "options": [
-     "True",
-     "False"
-   ],
-   "correctAnswers": [1],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- },
- {
-   "id": 1092,
-   "text": "If writing Terraform code that adheres to the Terraform style conventions, how would you properly indent each nesting level compared to the one above it?",
-   "image": "",
-   "type": "single",
-   "options": [
-     "With four spaces",
-     "With a tab",
-     "With three spaces",
-     "With two spaces"
-   ],
-   "correctAnswers": [3],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- },
- {
-   "id": 1093,
-   "text": "Which of the following is not an action performed by terraform init?",
-   "image": "",
-   "type": "single",
-   "options": [
-     "Create a sample main.tf file",
-     "Initialize a configured backend",
-     "Retrieve the source code for all referenced modules",
-     "Load required provider plugins"
-   ],
-   "correctAnswers": [0],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- },
- {
-   "id": 1094,
-   "text": "HashiCorp Configuration Language (HCL) supports user-defined functions.",
-   "image": "",
-   "type": "single",
-   "options": [
-     "True",
-     "False"
-   ],
-   "correctAnswers": [1],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- },
- {
-   "id": 1095,
-   "text": "How can you trigger a run in a Terraform Cloud workspace that is connected to a Version Control System (VCS) repository?",
-   "image": "",
-   "type": "single",
-   "options": [
-     "Only Terraform Cloud organization owners can set workspace variables on VCS connected workspaces",
-     "Commit a change to the VCS working directory and branch that the Terraform Cloud workspace is connected to",
-     "Only members of a VCS organization can open a pull request against repositories that are connected to Terraform Cloud workspaces",
-     "Only Terraform Cloud organization owners can approve plans in VCS connected workspaces"
-   ],
-   "correctAnswers": [1],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- },
- {
-   "id": 1096,
-   "text": "Terraform and Terraform providers must use the same major version number in a single configuration.",
-   "image": "",
-   "type": "single",
-   "options": [
-     "True",
-     "False"
-   ],
-   "correctAnswers": [1],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- },
- {
-   "id": 1097,
-   "text": "Which statement describes a goal of infrastructure as code?",
-   "image": "",
-   "type": "single",
-   "options": [
-     "An abstraction from vendor specific APIs",
-     "Write once, run anywhere",
-     "A pipeline process to test and deliver software",
-     "The programmatic configuration of resources"
-   ],
-   "correctAnswers": [3],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- },
- {
-   "id": 1098,
-   "text": "When using Terraform to deploy resources into Azure, which scenarios are true regarding state files? (Choose two.)",
-   "image": "",
-   "type": "multiple",
-   "options": [
-     "When a change is made to the resources via the Azure Cloud Console, the changes are recorded in a new state file",
-     "When a change is made to the resources via the Azure Cloud Console, Terraform will update the state file to reflect them during the next plan or apply",
-     "When a change is made to the resources via the Azure Cloud Console, the current state file will not be updated",
-     "When a change is made to the resources via the Azure Cloud Console, the changes are recorded in the current state file"
-   ],
-   "correctAnswers": [1, 2],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- },
- {
-   "id": 1099,
-   "text": "You need to deploy resources into two different cloud regions in the same Terraform configuration. To do that, you declare multiple provider configurations. What meta-argument do you need to configure in a resource block to deploy the resource to the us-west-2 AWS region?",
-   "image": "https://www.examtopics.com/assets/media/exam-media/04279/0005900001.png",
-   "type": "single",
-   "options": [
-     "alias = west",
-     "provider = west",
-     "provider = aws.west",
-     "alias = aws.west"
-   ],
-   "correctAnswers": [2],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- },
- {
-   "id": 1100,
-   "text": "You have declared an input variable called environment in your parent module. What must you do to pass the value to a child module in the configuration?",
-   "image": "",
-   "type": "single",
-   "options": [
-     "Add node_count = var.node_count",
-     "Declare the variable in a terraform.tfvars file",
-     "Declare a node_count input variable for child module", 
-     "Nothing, child modules inherit variables of parent module"
-   ],
-   "correctAnswers": [2],
-   "createdAt": "2025-08-20T10:00:00.000Z"
- }
+    {
+        "id": 1001,
+        "text": "The terraform.tfstate file always matches your currently built infrastructure.",
+        "image": "",
+        "type": "single",
+        "options": [
+            "True",
+            "False"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "createdAt": "2025-08-08T22:51:22.476Z"
+    },
+    {
+        "id": 1002,
+        "text": "One remote backend configuration always maps to a single remote workspace.",
+        "image": "",
+        "type": "single",
+        "options": [
+            "True",
+            "False"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "createdAt": "2025-08-08T22:51:22.476Z"
+    },
+    {
+        "id": 1003,
+        "text": "How is the Terraform remote backend different than other state backends such as S3, Consul, etc.?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "It can execute Terraform runs on dedicated infrastructure on premises or in Terraform Cloud",
+            "It doesn't show the output of a terraform apply locally",
+            "It is only available to paying customers",
+            "All anwsers are correct"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "createdAt": "2025-08-08T22:51:22.476Z"
+    },
+    {
+        "id": 1004,
+        "text": "What is the workflow for deploying new infrastructure with Terraform?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "terraform plan to import the current infrastructure to the state file, make code changes, and terraform apply to update the infrastructure.",
+            "Write a Terraform configuration, run terraform show to view proposed changes, and terraform apply to create new infrastructure.",
+            "terraform import to import the current infrastructure to the state file, make code changes, and terraform apply to update the infrastructure.",
+            "Write a Terraform configuration, run terraform init, run terraform plan to view planned infrastructure changes, and terraform apply to create new infrastructure."
+        ],
+        "correctAnswers": [
+            3
+        ],
+        "createdAt": "2025-08-08T22:51:22.476Z"
+    },
+    {
+        "id": 1005,
+        "text": "A provider configuration block is required in every Terraform configuration.",
+        "image": "",
+        "type": "single",
+        "options": [
+            "True",
+            "False"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "createdAt": "2025-08-08T22:51:22.476Z"
+    },
+    {
+        "id": 1006,
+        "text": "You run a local-exec provisioner in a null resource called null_resource.run_script and realize that you need to rerun the script. Which of the following commands would you use first?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "terraform taint null_resource.run_script",
+            "terraform apply -target=null_resource.run_script",
+            "terraform validate null_resource.run_script",
+            "terraform plan -target=null_resource.run_script"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "createdAt": "2025-08-08T22:51:22.476Z"
+    },
+    {
+        "id": 1007,
+        "text": "Which provisioner invokes a process on the resource created by Terraform?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "remote-exec",
+            "null-exec",
+            "local-exec",
+            "file"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "createdAt": "2025-08-08T22:51:22.476Z"
+    },
+    {
+        "id": 1008,
+        "text": "Which of the following is not true of Terraform providers?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "Providers can be written by individuals",
+            "Providers can be maintained by a community of users",
+            "Some providers are maintained by HashiCorp",
+            "Major cloud vendors and non-cloud vendors can write, maintain, or collaborate on Terraform providers",
+            "None of anwsers are correct"
+        ],
+        "correctAnswers": [
+            4
+        ],
+        "createdAt": "2025-08-08T22:51:22.476Z"
+    },
+    {
+        "id": 1009,
+        "text": "What command does Terraform require the first time you run it within a configuration directory?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "terraform import",
+            "terraform init",
+            "terraform plan",
+            "terraform workspace"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "createdAt": "2025-08-08T22:51:22.476Z"
+    },
+    {
+        "id": 1010,
+        "text": "You have deployed a new webapp with a public IP address on a cloud provider. However, you did not create any outputs for your code. What is the best method to quickly find the IP address of the resource you deployed?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "Run terraform output ip_address to view the result",
+            "In a new folder, use the terraform_remote_state data source to load in the state file, then write an output for each resource that you find the state file",
+            "Run terraform state list to find the name of the resource, then terraform state show to find the attributes including public IP address",
+            "Run terraform destroy then terraform apply and look for the IP address in stdout"
+        ],
+        "correctAnswers": [
+            2
+        ],
+        "createdAt": "2025-08-08T22:51:22.476Z"
+    },
+    {
+        "id": 1011,
+        "text": "Which of the following is not a key principle of infrastructure as code?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "Versioned infrastructure",
+            "Golden images",
+            "Idempotence",
+            "Self-describing infrastructure"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "createdAt": "2025-08-08T22:51:22.476Z"
+    },
+    {
+        "id": 1012,
+        "text": "Terraform variables and outputs that set the \"description\" argument will store that description in the state file.",
+        "image": "",
+        "type": "single",
+        "options": [
+            "True",
+            "False"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "createdAt": "2025-08-08T22:51:22.476Z"
+    },
+    {
+        "id": 1013,
+        "text": "What is the provider for this fictitious resource?",
+        "image": "https://www.examtopics.com/assets/media/exam-media/04279/0000800001.png",
+        "type": "single",
+        "options": [
+            "vpc",
+            "main",
+            "aws",
+            "test"
+        ],
+        "correctAnswers": [
+            2
+        ],
+        "createdAt": "2025-08-08T22:51:22.476Z"
+    },
+    {
+        "id": 1014,
+        "text": "If you manually destroy infrastructure, what is the best practice reflecting this change in Terraform?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "Run terraform refresh",
+            "It will happen automatically",
+            "Manually update the state fire",
+            "Run terraform import"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "createdAt": "2025-08-08T22:51:22.476Z"
+    },
+    {
+        "id": 1015,
+        "text": "What is not processed when running a terraform refresh?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "State file",
+            "Configuration file",
+            "Credentials",
+            "Cloud provider"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "createdAt": "2025-08-08T22:51:22.476Z"
+    },
+    {
+        "id": 1016,
+        "text": "What information does the public Terraform Module Registry automatically expose about published modules?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "Required input variables",
+            "Optional inputs variables and default values",
+            "Outputs",
+            "All anwsers are correct",
+            "None of anwsers are correct"
+        ],
+        "correctAnswers": [
+            3
+        ],
+        "createdAt": "2025-08-08T22:51:22.476Z"
+    },
+    {
+        "id": 1017,
+        "text": "If a module uses a local values, you can expose that value with a terraform output.",
+        "image": "",
+        "type": "single",
+        "options": [
+            "True",
+            "False"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "createdAt": "2025-08-08T22:51:22.476Z"
+    },
+    {
+        "id": 1018,
+        "text": "You should store secret data in the same version control repository as your Terraform configuration.",
+        "image": "",
+        "type": "single",
+        "options": [
+            "True",
+            "False"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "createdAt": "2025-08-08T22:51:22.476Z"
+    },
+    {
+        "id": 1019,
+        "text": "Which of the following is not a valid string function in Terraform?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "split",
+            "join",
+            "slice",
+            "chomp"
+        ],
+        "correctAnswers": [
+            2
+        ],
+        "createdAt": "2025-08-08T22:51:22.476Z"
+    },
+    {
+        "id": 1020,
+        "text": "You have provisioned some virtual machines (VMs) on Google Cloud Platform (GCP) using the gcloud command line tool. However, you are standardizing with Terraform and want to manage these VMs using Terraform instead. What are the two things you must do to achieve this? (Choose two.)",
+        "image": "",
+        "type": "multiple",
+        "options": [
+            "Provision new VMs using Terraform with the same VM names",
+            "Use the terraform import command for the existing VMs",
+            "Write Terraform configuration for the existing VMs",
+            "Run the terraform import-gcp command"
+        ],
+        "correctAnswers": [
+            1,
+            2
+        ],
+        "createdAt": "2025-08-08T22:51:22.476Z"
+    },
+    {
+        "id": 1021,
+        "text": "You have recently started a new job at a retailer as an engineer. As part of this new role, you have been tasked with evaluating multiple outages that occurred during peak shopping time during the holiday season. Your investigation found that the team is manually deploying new compute instances and configuring each compute instance manually. This has led to inconsistent configuration between each compute instance. How would you solve this using infrastructure as code?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "Implement a ticketing workflow that makes engineers submit a ticket before manually provisioning and configuring a resource",
+            "Implement a checklist that engineers can follow when configuring compute instances",
+            "Replace the compute instance type with a larger version to reduce the number of required deployments",
+            "Implement a provisioning pipeline that deploys infrastructure configurations committed to your version control system following code reviews"
+        ],
+        "correctAnswers": [
+            3
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1022,
+        "text": "terraform init initializes a sample main.tf file in the current directory.",
+        "image": "",
+        "type": "single",
+        "options": [
+            "True",
+            "False"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1023,
+        "text": "Which two steps are required to provision new infrastructure in the Terraform workflow? (Choose two.)",
+        "image": "",
+        "type": "multiple",
+        "options": [
+            "Destroy",
+            "Apply",
+            "Import",
+            "Init",
+            "Validate"
+        ],
+        "correctAnswers": [
+            1,
+            3
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1024,
+        "text": "Why would you use the terraform taint command?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "When you want to force Terraform to destroy a resource on the next apply",
+            "When you want to force Terraform to destroy and recreate a resource on the next apply",
+            "When you want Terraform to ignore a resource on the next apply",
+            "When you want Terraform to destroy all the infrastructure in your workspace"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1025,
+        "text": "Terraform requires the Go runtime as a prerequisite for installation.",
+        "image": "",
+        "type": "single",
+        "options": [
+            "True",
+            "False"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1026,
+        "text": "When should you use the force-unlock command?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "You see a status message that you cannot acquire the lock",
+            "You have a high priority change",
+            "Automatic unlocking failed",
+            "You apply failed due to a state lock"
+        ],
+        "correctAnswers": [
+            2
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1027,
+        "text": "Terraform can import modules from a number of sources - which of the following is not a valid source?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "FTP server",
+            "GitHub repository",
+            "Local path",
+            "Terraform Module Registry"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1028,
+        "text": "Which of the following is available only in Terraform Enterprise or Cloud workspaces and not in Terraform CLI?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "Secure variable storage",
+            "Support for multiple cloud providers",
+            "Dry runs with terraform plan",
+            "Using the workspace as a data source"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1029,
+        "text": "terraform validate validates the syntax of Terraform files.",
+        "image": "",
+        "type": "single",
+        "options": [
+            "True",
+            "False"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1030,
+        "text": "You have used Terraform to create an ephemeral development environment in the cloud and are now ready to destroy all the infrastructure described by your Terraform configuration. To be safe, you would like to first see all the infrastructure that will be deleted by Terraform. Which command should you use to show all of the resources that will be deleted? (Choose two.)",
+        "image": "",
+        "type": "multiple",
+        "options": [
+            "Run terraform plan -destroy.",
+            "This is not possible. You can only show resources that will be created.",
+            "Run terraform state rm *.",
+            "Run terraform destroy and it will first output all the resources that will be deleted before prompting for approval."
+        ],
+        "correctAnswers": [
+            0,
+            3
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1031,
+        "text": "Which of the following is the correct way to pass the value in the variable num_servers into a module with the input servers?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "servers = num_servers",
+            "servers = variable.num_servers",
+            "servers = var(num_servers)",
+            "servers = var.num_servers"
+        ],
+        "correctAnswers": [
+            3
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1032,
+        "text": "A Terraform provisioner must be nested inside a resource configuration block.",
+        "image": "",
+        "type": "single",
+        "options": [
+            "True",
+            "False"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1033,
+        "text": "Terraform can run on Windows or Linux, but it requires a Server version of the Windows operating system.",
+        "image": "",
+        "type": "single",
+        "options": [
+            "True",
+            "False"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1034,
+        "text": "What does the default \"local\" Terraform backend store?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "tfplan files",
+            "Terraform binary",
+            "Provider plugins",
+            "State file"
+        ],
+        "correctAnswers": [
+            3
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1035,
+        "text": "You have multiple team members collaborating on infrastructure as code (IaC) using Terraform, and want to apply formatting standards for readability. How can you format Terraform HCL (HashiCorp Configuration Language) code according to standard Terraform style convention?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "Run the terraform fmt command during the code linting phase of your CI/CD process",
+            "Designate one person in each team to review and format everyone's code",
+            "Manually apply two spaces indentation and align equal sign \"=\" characters in every Terraform file (*.tf)",
+            "Write a shell script to transform Terraform files using tools such as AWK, Python, and sed"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1036,
+        "text": "What value does the Terraform Cloud/Terraform Enterprise private module registry provide over the public Terraform Module Registry?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "The ability to share modules with public Terraform users and members of Terraform Enterprise Organizations",
+            "The ability to tag modules by version or release",
+            "The ability to restrict modules to members of Terraform Cloud or Enterprise organizations",
+            "The ability to share modules publicly with any user of Terraform"
+        ],
+        "correctAnswers": [
+            2
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1037,
+        "text": "Which task does terraform init not perform?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "Sources all providers present in the configuration and ensures they are downloaded and available locally",
+            "Connects to the backend",
+            "Sources any modules and copies the configuration locally",
+            "Validates all required variables are present"
+        ],
+        "correctAnswers": [
+            3
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1038,
+        "text": "You have declared a variable called var.list which is a list of objects that all have an attribute id. Which options will produce a list of the IDs? (Choose two.)",
+        "image": "",
+        "type": "multiple",
+        "options": [
+            "{ for o in var.list : o => o.id }",
+            "var.list[*].id",
+            "[ var.list[*].id ]",
+            "[ for o in var.list : o.id ]"
+        ],
+        "correctAnswers": [
+            1,
+            3
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1039,
+        "text": "Which argument(s) is (are) required when declaring a Terraform variable?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "type",
+            "default",
+            "description",
+            "All anwsers are correct",
+            "None of anwsers are correct"
+        ],
+        "correctAnswers": [
+            4
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1040,
+        "text": "When using a module block to reference a module stored on the public Terraform Module Registry, how do you specify version 1.0.0?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "Modules stored on the public Terraform Module Registry do not support versioning",
+            "Append ?ref=v1.0.0 argument to the source path",
+            "Add version = \"1.0.0\" attribute to module block",
+            "Nothing - modules stored on the public Terraform Module Registry always default to version 1.0.0"
+        ],
+        "correctAnswers": [
+            2
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1041,
+        "text": "What features does the hosted service Terraform Cloud provide? (Choose two.)",
+        "image": "",
+        "type": "multiple",
+        "options": [
+            "Automated infrastructure deployment visualization",
+            "Automatic backups",
+            "Remote state storage",
+            "A web-based user interface (UI)"
+        ],
+        "correctAnswers": [
+            2,
+            3
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1042,
+        "text": "Where does the Terraform local backend store its state?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "In the /tmp directory",
+            "In the terraform file",
+            "In the terraform.tfstate file",
+            "In the user's terraform.state file"
+        ],
+        "correctAnswers": [
+            2
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1043,
+        "text": "Which option can not be used to keep secrets out of Terraform configuration files?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "A Terraform provider",
+            "Environment variables",
+            "A -var flag",
+            "secure string"
+        ],
+        "correctAnswers": [
+            3
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1044,
+        "text": "What is one disadvantage of using dynamic blocks in Terraform?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "They cannot be used to loop through a list of values",
+            "Dynamic blocks can construct repeatable nested blocks",
+            "They make configuration harder to read and understand",
+            "Terraform will run more slowly"
+        ],
+        "correctAnswers": [
+            2
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1045,
+        "text": "Only the user that generated a plan may apply it.",
+        "image": "",
+        "type": "single",
+        "options": [
+            "True",
+            "False"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1046,
+        "text": "Examine the following Terraform configuration, which uses the data source for an AWS AMI. What value should you enter for the ami argument in the AWS instance resource?",
+        "image": "https://www.examtopics.com/assets/media/exam-media/04279/0002600001.png",
+        "type": "single",
+        "options": [
+            "aws_ami.ubuntu",
+            "data.aws_ami.ubuntu",
+            "data.aws_ami.ubuntu.id",
+            "aws_ami.ubuntu.id"
+        ],
+        "correctAnswers": [
+            2
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1047,
+        "text": "You need to specify a dependency manually. What resource meta-parameter can you use to make sure Terraform respects the dependency?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "depends_on",
+            "dependency",
+            "requires",
+            "needs"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1048,
+        "text": "You have never used Terraform before and would like to test it out using a shared team account for a cloud provider. The shared team account already contains 15 virtual machines (VM). You develop a Terraform configuration containing one VM, perform terraform apply, and see that your VM was created successfully. What should you do to delete the newly-created VM with Terraform?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "The Terraform state file contains all 16 VMs in the team account. Execute terraform destroy and select the newly-created VM.",
+            "The Terraform state file only contains the one new VM. Execute terraform destroy.",
+            "Delete the Terraform state file and execute Terraform apply.",
+            "Delete the VM using the cloud provider console and terraform apply to apply the changes to the Terraform state file."
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1049,
+        "text": "What is the name assigned by Terraform to reference this resource?",
+        "image": "https://www.examtopics.com/assets/media/exam-media/04279/0002800001.png",
+        "type": "single",
+        "options": [
+            "dev",
+            "azurerm_resource_group",
+            "azurerm",
+            "test"
+        ],
+        "correctAnswers": [
+            3
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1050,
+        "text": "Setting the TF_LOG environment variable to DEBUG causes debug messages to be logged into syslog.",
+        "image": "",
+        "type": "single",
+        "options": [
+            "True",
+            "False"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1051,
+        "text": "Where in your Terraform configuration do you specify a state backend?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "The terraform block",
+            "The resource block",
+            "The provider block",
+            "The datasource block"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1052,
+        "text": "In Terraform 0.13 and above, outside of the required_providers block, Terraform configurations always refer to providers by their local names.",
+        "image": "",
+        "type": "single",
+        "options": [
+            "True",
+            "False"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1053,
+        "text": "What command should you run to display all workspaces for the current configuration?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "terraform workspace",
+            "terraform workspace show",
+            "terraform workspace list",
+            "terraform show workspace"
+        ],
+        "correctAnswers": [
+            2
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1054,
+        "text": "Terraform providers are always installed from the Internet.",
+        "image": "",
+        "type": "single",
+        "options": [
+            "True",
+            "False"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1055,
+        "text": "Which of these is the best practice to protect sensitive values in state files?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "Blockchain",
+            "Secure Sockets Layer (SSL)",
+            "Enhanced remote backends",
+            "Signed Terraform providers"
+        ],
+        "correctAnswers": [
+            2
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1056,
+        "text": "When does terraform apply reflect changes in the cloud environment?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "Immediately",
+            "However long it takes the resource provider to fulfill the request",
+            "After updating the state file",
+            "Based on the value provided to the -refresh command line argument",
+            "None of anwsers are correct"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1057,
+        "text": "How would you reference the \"name\" value of the second instance of this fictitious resource?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "element(aws_instance.web, 2)",
+            "aws_instance.web[1].name",
+            "aws_instance.web[1]",
+            "aws_instance.web[2].name",
+            "aws_instance.web.*.name"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1058,
+        "text": "A Terraform provider is not responsible for:",
+        "image": "",
+        "type": "single",
+        "options": [
+            "Understanding API interactions with some service",
+            "Provisioning infrastructure in multiple clouds",
+            "Exposing resources and data sources based on an API",
+            "Managing actions to take based on resource differences"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1059,
+        "text": "Terraform provisioners can be added to any resource block.",
+        "image": "",
+        "type": "single",
+        "options": [
+            "True",
+            "False"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1060,
+        "text": "What is terraform refresh intended to detect?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "Terraform configuration code changes",
+            "Empty state files",
+            "State file drift",
+            "Corrupt state files"
+        ],
+        "correctAnswers": [
+            2
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1061,
+        "text": "Which flag would you add to terraform plan to save the execution plan to a file?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "-out",
+            "-save",
+            "-file",
+            "-export"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1062,
+        "text": "What is the name of the default file where Terraform stores the state?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "terraform.tfstate",
+            "terraform.state",
+            "state.tf",
+            "default.tfstate"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1063,
+        "text": "A Terraform local value can reference other Terraform local values.",
+        "image": "",
+        "type": "single",
+        "options": [
+            "True",
+            "False"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1064,
+        "text": "Which of the following is not a valid Terraform collection type?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "list",
+            "map",
+            "tree",
+            "set"
+        ],
+        "correctAnswers": [
+            2
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1065,
+        "text": "When running the command terraform taint against a managed resource you want to force recreation upon, Terraform will immediately destroy and recreate the resource.",
+        "image": "",
+        "type": "single",
+        "options": [
+            "True",
+            "False"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1066,
+        "text": "All standard backend types support state storage, locking, and remote operations like plan, apply and destroy.",
+        "image": "",
+        "type": "single",
+        "options": [
+            "True",
+            "False"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1067,
+        "text": "How can terraform plan aid in the development process?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "Validates your expectations against the execution plan without permanently modifying state",
+            "Initializes your working directory containing your Terraform configuration files",
+            "Formats your Terraform configuration files",
+            "Reconciles Terraform's state against deployed resources and permanently modifies state using the current status of deployed resources"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1068,
+        "text": "You would like to reuse the same Terraform configuration for your development and production environments with a different state file for each. Which command would you use?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "terraform import",
+            "terraform workspace",
+            "terraform state",
+            "terraform init"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1069,
+        "text": "What is the name assigned by Terraform to reference this resource?",
+        "image": "https://www.examtopics.com/assets/media/exam-media/04279/0004000001.png",
+        "type": "single",
+        "options": [
+            "compute_instance",
+            "main",
+            "google",
+            "test"
+        ],
+        "correctAnswers": [
+            3
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1070,
+        "text": "You're building a CI/CD (continuous integration/ continuous delivery) pipeline and need to inject sensitive variables into your Terraform run. How can you do this safely?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "Pass variables to Terraform with a -var flag",
+            "Copy the sensitive variables into your Terraform code",
+            "Store the sensitive variables in a secure_vars.tf file",
+            "Store the sensitive variables as plain text in a source code repository"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1071,
+        "text": "Your security team scanned some Terraform workspaces and found secrets stored in a plaintext in state files. How can you protect sensitive data stored in Terraform state files?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "Delete the state file every time you run Terraform",
+            "Store the state in an encrypted backend",
+            "Edit your state file to scrub out the sensitive data",
+            "Always store your secrets in a secrets.tfvars file."
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1072,
+        "text": "In contrast to Terraform Open Source, when working with Terraform Enterprise and Cloud Workspaces, conceptually you could think about them as completely separate working directories.",
+        "image": "",
+        "type": "single",
+        "options": [
+            "True",
+            "False"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1073,
+        "text": "You want to know from which paths Terraform is loading providers referenced in your Terraform configuration (*.tf files). You need to enable debug messages to find this out. Which of the following would achieve this?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "Set the environment variable TF_LOG=TRACE",
+            "Set verbose logging for each provider in your Terraform configuration",
+            "Set the environment variable TF_VAR_log=TRACE",
+            "Set the environment variable TF_LOG_PATH"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1074,
+        "text": "How is terraform import run?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "As a part of terraform init",
+            "As a part of terraform plan",
+            "As a part of terraform refresh",
+            "By an explicit call",
+            "All anwsers are correct"
+        ],
+        "correctAnswers": [
+            3
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1075,
+        "text": "You have a simple Terraform configuration containing one virtual machine (VM) in a cloud provider. You run terraform apply and the VM is created successfully. What will happen if you delete the VM using the cloud provider console, and run terraform apply again without changing any Terraform code?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "Terraform will remove the VM from state file",
+            "Terraform will report an error",
+            "Terraform will not make any changes",
+            "Terraform will recreate the VM"
+        ],
+        "correctAnswers": [
+            3
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1076,
+        "text": "Which of these options is the most secure place to store secrets for connecting to a Terraform remote backend?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "Defined in Environment variables",
+            "Inside the backend block within the Terraform configuration",
+            "Defined in a connection configuration outside of Terraform",
+            "None of anwsers are correct"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1077,
+        "text": "Your DevOps team is currently using the local backend for your Terraform configuration. You would like to move to a remote backend to begin storing the state file in a central location. Which of the following backends would not work?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "Amazon S3",
+            "Artifactory",
+            "Git",
+            "Terraform Cloud"
+        ],
+        "correctAnswers": [
+            2
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1078,
+        "text": "Which backend does the Terraform CLI use by default?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "Terraform Cloud",
+            "Consul",
+            "Remote",
+            "Local"
+        ],
+        "correctAnswers": [
+            3
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1079,
+        "text": "When you initialize Terraform, where does it cache modules from the public Terraform Module Registry?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "On disk in the /tmp directory",
+            "In memory",
+            "On disk in the .terraform sub-directory",
+            "They are not cached"
+        ],
+        "correctAnswers": [
+            2
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1080,
+        "text": "You write a new Terraform configuration and immediately run terraform apply in the CLI using the local backend. Why will the apply fail?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "Terraform needs you to format your code according to best practices first",
+            "Terraform needs to install the necessary plugins first",
+            "The Terraform CLI needs you to log into Terraform cloud first",
+            "Terraform requires you to manually run terraform plan first"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1081,
+        "text": "What features stops multiple admins from changing the Terraform state at the same time?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "Version control",
+            "Backend types",
+            "Provider constraints",
+            "State locking"
+        ],
+        "correctAnswers": [
+            3
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1082,
+        "text": "A fellow developer on your team is asking for some help in refactoring their Terraform code. As part of their application's architecture, they are going to tear down an existing deployment managed by Terraform and deploy new. However, there is a server resource named aws_instance.ubuntu[1] they would like to keep to perform some additional analysis. What command should be used to tell Terraform to no longer manage the resource?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "terraform apply rm aws_instance.ubuntu[1]",
+            "terraform state rm aws_instance.ubuntu[1]",
+            "terraform plan rm aws_instance.ubuntu[1]",
+            "terraform delete aws_instance.ubuntu[1]"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1083,
+        "text": "Terraform can only manage resource dependencies if you set them explicitly with the depends_on argument.",
+        "image": "",
+        "type": "single",
+        "options": [
+            "True",
+            "False"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1084,
+        "text": "A terraform apply can not _________ infrastructure.",
+        "image": "",
+        "type": "single",
+        "options": [
+            "change",
+            "destroy",
+            "provision",
+            "import"
+        ],
+        "correctAnswers": [
+            3
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1085,
+        "text": "You need to constrain the GitHub provider to version 2.1 or greater. Which of the following should you put into the Terraform 0.12 configuration's provider block?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "version >= 2.1",
+            "version ~> 2.1",
+            "version = \"<= 2.1\"",
+            "version = \">= 2.1\""
+        ],
+        "correctAnswers": [
+            3
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1086,
+        "text": "You just scaled your VM infrastructure and realized you set the count variable to the wrong value. You correct the value and save your change. What do you do next to make your infrastructure match your configuration?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "Run an apply and confirm the planned changes",
+            "Inspect your Terraform state because you want to change it",
+            "Reinitialize because your configuration has changed",
+            "Inspect all Terraform outputs to make sure they are correct"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1087,
+        "text": "Terraform provisioners that require authentication can use the ______ block.",
+        "image": "",
+        "type": "single",
+        "options": [
+            "connection",
+            "credentials",
+            "secrets",
+            "ssh"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1088,
+        "text": "Terraform validate reports syntax check errors from which of the following scenarios?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "Code contains tabs indentation instead of spaces",
+            "There is missing value for a variable",
+            "The state files does not match the current infrastructure",
+            "None of anwsers are correct"
+        ],
+        "correctAnswers": [
+            3
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1089,
+        "text": "Which of the following is allowed as a Terraform variable name?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "count",
+            "name",
+            "source",
+            "version"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1090,
+        "text": "What type of block is used to construct a collection of nested configuration blocks?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "for_each",
+            "repeated",
+            "nesting",
+            "dynamic"
+        ],
+        "correctAnswers": [
+            3
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1091,
+        "text": "Module variable assignments are inherited from the parent module and do not need to be explicitly set.",
+        "image": "",
+        "type": "single",
+        "options": [
+            "True",
+            "False"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1092,
+        "text": "If writing Terraform code that adheres to the Terraform style conventions, how would you properly indent each nesting level compared to the one above it?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "With four spaces",
+            "With a tab",
+            "With three spaces",
+            "With two spaces"
+        ],
+        "correctAnswers": [
+            3
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1093,
+        "text": "Which of the following is not an action performed by terraform init?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "Create a sample main.tf file",
+            "Initialize a configured backend",
+            "Retrieve the source code for all referenced modules",
+            "Load required provider plugins"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1094,
+        "text": "HashiCorp Configuration Language (HCL) supports user-defined functions.",
+        "image": "",
+        "type": "single",
+        "options": [
+            "True",
+            "False"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1095,
+        "text": "How can you trigger a run in a Terraform Cloud workspace that is connected to a Version Control System (VCS) repository?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "Only Terraform Cloud organization owners can set workspace variables on VCS connected workspaces",
+            "Commit a change to the VCS working directory and branch that the Terraform Cloud workspace is connected to",
+            "Only members of a VCS organization can open a pull request against repositories that are connected to Terraform Cloud workspaces",
+            "Only Terraform Cloud organization owners can approve plans in VCS connected workspaces"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1096,
+        "text": "Terraform and Terraform providers must use the same major version number in a single configuration.",
+        "image": "",
+        "type": "single",
+        "options": [
+            "True",
+            "False"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1097,
+        "text": "Which statement describes a goal of infrastructure as code?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "An abstraction from vendor specific APIs",
+            "Write once, run anywhere",
+            "A pipeline process to test and deliver software",
+            "The programmatic configuration of resources"
+        ],
+        "correctAnswers": [
+            3
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1098,
+        "text": "When using Terraform to deploy resources into Azure, which scenarios are true regarding state files? (Choose two.)",
+        "image": "",
+        "type": "multiple",
+        "options": [
+            "When a change is made to the resources via the Azure Cloud Console, the changes are recorded in a new state file",
+            "When a change is made to the resources via the Azure Cloud Console, Terraform will update the state file to reflect them during the next plan or apply",
+            "When a change is made to the resources via the Azure Cloud Console, the current state file will not be updated",
+            "When a change is made to the resources via the Azure Cloud Console, the changes are recorded in the current state file"
+        ],
+        "correctAnswers": [
+            1,
+            2
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1099,
+        "text": "You need to deploy resources into two different cloud regions in the same Terraform configuration. To do that, you declare multiple provider configurations. What meta-argument do you need to configure in a resource block to deploy the resource to the us-west-2 AWS region?",
+        "image": "https://www.examtopics.com/assets/media/exam-media/04279/0005900001.png",
+        "type": "single",
+        "options": [
+            "alias = west",
+            "provider = west",
+            "provider = aws.west",
+            "alias = aws.west"
+        ],
+        "correctAnswers": [
+            2
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1100,
+        "text": "You have declared an input variable called environment in your parent module. What must you do to pass the value to a child module in the configuration?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "Add node_count = var.node_count",
+            "Declare the variable in a terraform.tfvars file",
+            "Declare a node_count input variable for child module",
+            "Nothing, child modules inherit variables of parent module"
+        ],
+        "correctAnswers": [
+            2
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1101,
+        "text": "If a module declares a variable with a default, that variable must also be defined within the module.",
+        "image": "",
+        "type": "single",
+        "options": [
+            "True",
+            "False"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1102,
+        "text": "Which option cannot be used to keep secrets out of Terraform configuration files?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "Environment Variables",
+            "Mark the variable as sensitive",
+            "A Terraform provider",
+            "A -var flag"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1103,
+        "text": "Which of the following arguments are required when declaring a Terraform output?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "sensitive",
+            "description",
+            "default",
+            "value"
+        ],
+        "correctAnswers": [
+            3
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1104,
+        "text": "Your risk management organization requires that new AWS S3 buckets must be private and encrypted at rest. How can Terraform Enterprise automatically and proactively enforce this security control?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "With a Sentinel policy, which runs before every apply",
+            "By adding variables to each TFE workspace to ensure these settings are always enabled",
+            "With an S3 module with proper settings for buckets",
+            "Auditing cloud storage buckets with a vulnerability scanning tool"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1105,
+        "text": "Most Terraform providers interact with ____________.",
+        "image": "",
+        "type": "single",
+        "options": [
+            "API",
+            "VCS Systems",
+            "Shell scripts",
+            "None of anwsers are correct"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1106,
+        "text": "terraform validate validates that your infrastructure matches the Terraform state file.",
+        "image": "",
+        "type": "single",
+        "options": [
+            "True",
+            "False"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1107,
+        "text": "What does terraform import allow you to do?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "Import a new Terraform module",
+            "Use a state file to import infrastructure to the cloud",
+            "Import provisioned infrastructure to your state file",
+            "Import an existing state file to a new Terraform workspace"
+        ],
+        "correctAnswers": [
+            2
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1108,
+        "text": "In the below configuration, how would you reference the module output vpc_id?",
+        "image": "https://www.examtopics.com/assets/media/exam-media/04279/0006300001.png",
+        "type": "single",
+        "options": [
+            "module.vpc.vpc_id",
+            "vpc.module.vpc_id",
+            "output.vpc.vpc_id",
+            "module.output.vpc_id"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1109,
+        "text": "How would you reference the Volume IDs associated with the ebs_block_device blocks in this configuration?",
+        "image": "https://www.examtopics.com/assets/media/exam-media/04279/0006400001.png",
+        "type": "single",
+        "options": [
+            "aws_instance.example.ebs_block_device.[*].volume_id",
+            "aws_instance.example.ebs_block_device.volume_id",
+            "aws_instance.example.ebs_block_device[sda2,sda3].volume_id",
+            "aws_instance.example.ebs_block_device.*.volume_id"
+        ],
+        "correctAnswers": [
+            3
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1110,
+        "text": "What does state locking accomplish?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "Copies the state file from memory to disk",
+            "Encrypts any credentials stored within the state file",
+            "Blocks Terraform commands from modifying the state file",
+            "Prevents accidental deletion of the state file"
+        ],
+        "correctAnswers": [
+            2
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1111,
+        "text": "You just upgraded the version of a provider in an existing Terraform project. What do you need to do to install the new provider?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "Run terraform apply -upgrade",
+            "Run terraform init -upgrade",
+            "Run terraform refresh",
+            "Upgrade your version of Terraform"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1112,
+        "text": "A module can always refer to all variables declared in its parent module.",
+        "image": "",
+        "type": "single",
+        "options": [
+            "True",
+            "False"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1113,
+        "text": "When you use a remote backend that needs authentication, HashiCorp recommends that you:",
+        "image": "",
+        "type": "single",
+        "options": [
+            "Use partial configuration to load the authentication credentials outside of the Terraform code",
+            "Push your Terraform configuration to an encrypted git repository",
+            "Write the authentication credentials in the Terraform configuration files",
+            "Keep the Terraform configuration files in a secret store"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1114,
+        "text": "You have a simple Terraform configuration containing one virtual machine (VM) in a cloud provider. You run terraform apply and the VM is created successfully. What will happen if you terraform apply again immediately afterwards without changing any Terraform code?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "Terraform will terminate and recreate the VM",
+            "Terraform will create another duplicate VM",
+            "Terraform will apply the VM to the state file",
+            "Nothing"
+        ],
+        "correctAnswers": [
+            3
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1115,
+        "text": "A junior admin accidentally deleted some of your cloud instances. What does Terraform do when you run terraform apply?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "Build a completely brand new set of infrastructure",
+            "Tear down the entire workspace infrastructure and rebuild it",
+            "Rebuild only the instances that were deleted",
+            "Stop and generate an error message about the missing instances"
+        ],
+        "correctAnswers": [
+            2
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1116,
+        "text": "You have created a main.tf Terraform configuration consisting of an application server, a database, and a load balancer. You ran terraform apply and all resources were created successfully. Now you realize that you do not actually need the load balancer so you run terraform destroy without any flags. What will happen?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "Terraform will destroy the application server because it is listed first in the code",
+            "Terraform will prompt you to confirm that you want to destroy all the infrastructure",
+            "Terraform will destroy the main.tf file",
+            "Terraform will prompt you to pick which resource you want to destroy",
+            "Terraform will immediately destroy all the infrastructure"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1117,
+        "text": "Which type of block fetches or computes information for use elsewhere in a Terraform configuration?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "provider",
+            "resource",
+            "local",
+            "data"
+        ],
+        "correctAnswers": [
+            3
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1118,
+        "text": "You have just developed a new Terraform configuration for two virtual machines with a cloud provider. You would like to create the infrastructure for the first time. Which Terraform command should you run first?",
+        "image": "",
+        "type": "single",
+        "options": [
+            "terraform apply",
+            "terraform plan",
+            "terraform show",
+            "terraform init"
+        ],
+        "correctAnswers": [
+            3
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1119,
+        "text": "All modules published on the official Terraform Module Registry have been verified by HashiCorp.",
+        "image": "",
+        "type": "single",
+        "options": [
+            "True",
+            "False"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    },
+    {
+        "id": 1120,
+        "text": "You have to initialize a Terraform backend before it can be configured.",
+        "image": "",
+        "type": "single",
+        "options": [
+            "True",
+            "False"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "createdAt": "2025-08-20T10:00:00.000Z"
+    }
 ]
