@@ -1874,5 +1874,144 @@
             1
         ],
         "createdAt": "2025-08-20T10:00:00.000Z"
-    }
+    },
+{
+    "id": 1121,
+    "text": "Which of the following does terraform apply change after you approve the execution plan? (Choose two.)",
+    "image": "",
+    "type": "multiple",
+    "options": [
+      "Cloud infrastructure",
+      "The .terraform directory",
+      "The execution plan",
+      "State file",
+      "Terraform code"
+    ],
+    "correctAnswers": [0, 3],
+    "createdAt": "2025-08-20T10:00:00.000Z"
+  },
+  {
+    "id": 1122,
+    "text": "A Terraform backend determines how Terraform loads state and stores updates when you execute ___________.",
+    "image": "",
+    "type": "single",
+    "options": [
+      "apply",
+      "taint",
+      "destroy",
+      "All of the above",
+      "None of the above"
+    ],
+    "correctAnswers": [3],
+    "createdAt": "2025-08-20T10:00:00.000Z"
+  },
+  {
+    "id": 1123,
+    "text": "What does Terraform use .terraform.lock.hcl file for?",
+    "image": "",
+    "type": "single",
+    "options": [
+      "Tracking provider dependencies",
+      "There is no such file",
+      "Preventing Terraform runs from occurring",
+      "Storing references to workspaces which are locked"
+    ],
+    "correctAnswers": [0],
+    "createdAt": "2025-08-20T10:00:00.000Z"
+  },
+  {
+    "id": 1124,
+    "text": "You've used Terraform to deploy a virtual machine and a database. You want to replace this virtual machine instance with an identical one without affecting the database. What is the best way to achieve this using Terraform?",
+    "image": "",
+    "type": "single",
+    "options": [
+      "Use the terraform state rm command to remove the VM from state file",
+      "Use the terraform taint command targeting the VMs then run terraform plan and terraform apply",
+      "Use the terraform apply command targeting the VM resources only",
+      "Delete the Terraform VM resources from your Terraform code then run terraform plan and terraform apply"
+    ],
+    "correctAnswers": [1],
+    "createdAt": "2025-08-20T10:00:00.000Z"
+  },
+  {
+    "id": 1125,
+    "text": "How do you specify a module's version when publishing it to the public Terraform Module Registry?",
+    "image": "",
+    "type": "single",
+    "options": [
+      "The module's configuration page on the Terraform Module Registry",
+      "Terraform Module Registry does not support versioning modules",
+      "The release tags in the associated repo",
+      "The module's Terraform code"
+    ],
+    "correctAnswers": [2],
+    "createdAt": "2025-08-20T10:00:00.000Z"
+  },
+  {
+    "id": 1126,
+    "text": "Terraform plan updates your state file.",
+    "image": "",
+    "type": "single",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correctAnswers": [1],
+    "createdAt": "2025-08-20T10:00:00.000Z"
+  },
+  {
+    "id": 1127,
+    "text": "To check if all code in a Terraform configuration with multiple modules is properly formatted without making changes, what command should be run?",
+    "image": "",
+    "type": "single",
+    "options": [
+      "terraform fmt -check",
+      "terraform fmt -write-false",
+      "terraform fmt -list -recursive",
+      "terraform fmt -check -recursive"
+    ],
+    "correctAnswers": [3],
+    "createdAt": "2025-08-20T10:00:00.000Z"
+  },
+  {
+    "id": 1128,
+    "text": "As a member of the operations team, you need to run a script on a virtual machine created by Terraform. Which provisioner is best to use in your Terraform code?",
+    "image": "",
+    "type": "single",
+    "options": [
+      "null-exec",
+      "local-exec",
+      "remote-exec",
+      "file"
+    ],
+    "correctAnswers": [2],
+    "createdAt": "2025-08-20T10:00:00.000Z"
+  },
+  {
+    "id": 1129,
+    "text": "You are using a networking module in your Terraform configuration with the name label my_network. In your main configuration you have the following code: When you run terraform validate, you get the following error: What must you do to successfully retrieve this value from your networking module?",
+    "image": "https://www.examtopics.com/assets/media/exam-media/04279/0007200001.png",
+    "image": "https://www.examtopics.com/assets/media/exam-media/04279/0007200002.png",
+    "type": "single",
+    "options": [
+      "Define the attribute vnet_id as a variable in the networking module",
+      "Change the referenced value to module.my_network.outputs.vnet_id",
+      "Define the attribute vnet_id as an output in the networking module",
+      "Change the referenced value to my_network.outputs.vnet_id"
+    ],
+    "correctAnswers": [2],
+    "createdAt": "2025-08-20T10:00:00.000Z"
+  },
+  {
+    "id": 1130,
+    "text": "You are writing a child Terraform module which provisions an AWS instance. You want to make use of the IP address returned in the root configuration. You name the instance resource \"main\". Which of these is the correct way to define the output value using HCL2?",
+    "image": "",
+    "type": "single",
+    "options": [
+      "output \"instance_ip_addr\" "\${ value = aws_instance.main.private_ip }\",
+      "output \"instance_ip_addr\" return = aws_instance.main.public_ip",
+    ],
+    "correctAnswers": [0],
+    "createdAt": "2025-08-20T10:00:00.000Z"
+  }
 ]
