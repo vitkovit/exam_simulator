@@ -401,6 +401,117 @@
             color: #333;
         }
 
+        /* Custom Modal Styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 10000;
+            backdrop-filter: blur(2px);
+        }
+
+        .modal-overlay.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        .modal-dialog {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: scale(0.7);
+            opacity: 0;
+            animation: modalSlideIn 0.3s ease forwards;
+        }
+
+        .modal-header {
+            padding: 25px 30px 15px;
+            border-bottom: 2px solid #f1f1f1;
+        }
+
+        .modal-title {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #333;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .modal-body {
+            padding: 25px 30px;
+            color: #555;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        .modal-footer {
+            padding: 15px 30px 25px;
+            display: flex;
+            gap: 15px;
+            justify-content: flex-end;
+            border-top: 2px solid #f1f1f1;
+        }
+
+        .modal-btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            min-width: 100px;
+        }
+
+        .modal-btn-primary {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .modal-btn-danger {
+            background: linear-gradient(45deg, #dc3545, #e74c3c);
+            color: white;
+        }
+
+        .modal-btn-secondary {
+            background: linear-gradient(45deg, #6c757d, #5a6268);
+            color: white;
+        }
+
+        .modal-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes modalSlideIn {
+            from { 
+                opacity: 0;
+                transform: scale(0.7) translateY(-50px);
+            }
+            to { 
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 10px;
@@ -419,6 +530,19 @@
             .btn {
                 width: 100%;
                 max-width: 300px;
+            }
+
+            .modal-dialog {
+                margin: 20px;
+                width: calc(100% - 40px);
+            }
+
+            .modal-footer {
+                flex-direction: column;
+            }
+
+            .modal-btn {
+                width: 100%;
             }
         }
     </style>
@@ -657,6 +781,21 @@
         </div>
     </div>
 
+    <!-- Custom Modal Dialog -->
+    <div id="modal-overlay" class="modal-overlay">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3 id="modal-title" class="modal-title"></h3>
+            </div>
+            <div class="modal-body">
+                <p id="modal-message"></p>
+            </div>
+            <div class="modal-footer" id="modal-footer">
+                <!-- Buttons will be added dynamically -->
+            </div>
+        </div>
+    </div>
+
     <script>
         // Global variables
         let questions = [];
@@ -664,6 +803,87 @@
         let currentQuestionIndex = 0;
         let userAnswers = [];
         let testStartTime = null;
+
+        // Custom Modal Functions
+        function showAlert(title, message, type = 'info') {
+            return new Promise((resolve) => {
+                const modal = document.getElementById('modal-overlay');
+                const modalTitle = document.getElementById('modal-title');
+                const modalMessage = document.getElementById('modal-message');
+                const modalFooter = document.getElementById('modal-footer');
+                
+                const icons = {
+                    info: '📋',
+                    success: '✅',
+                    warning: '⚠️',
+                    error: '❌'
+                };
+                
+                modalTitle.innerHTML = `${icons[type]} ${title}`;
+                modalMessage.textContent = message;
+                
+                modalFooter.innerHTML = `
+                    <button class="modal-btn modal-btn-primary" onclick="hideModal(); modalResolve(true);">OK</button>
+                `;
+                
+                window.modalResolve = resolve;
+                modal.classList.add('show');
+            });
+        }
+
+        function showConfirm(title, message, confirmText = 'Confirm', cancelText = 'Cancel', type = 'warning') {
+            return new Promise((resolve) => {
+                const modal = document.getElementById('modal-overlay');
+                const modalTitle = document.getElementById('modal-title');
+                const modalMessage = document.getElementById('modal-message');
+                const modalFooter = document.getElementById('modal-footer');
+                
+                const icons = {
+                    info: '📋',
+                    success: '✅',
+                    warning: '⚠️',
+                    error: '❌'
+                };
+                
+                modalTitle.innerHTML = `${icons[type]} ${title}`;
+                modalMessage.textContent = message;
+                
+                const buttonClass = type === 'error' ? 'modal-btn-danger' : 'modal-btn-primary';
+                
+                modalFooter.innerHTML = `
+                    <button class="modal-btn modal-btn-secondary" onclick="hideModal(); modalResolve(false);">${cancelText}</button>
+                    <button class="modal-btn ${buttonClass}" onclick="hideModal(); modalResolve(true);">${confirmText}</button>
+                `;
+                
+                window.modalResolve = resolve;
+                modal.classList.add('show');
+            });
+        }
+
+        function hideModal() {
+            const modal = document.getElementById('modal-overlay');
+            modal.classList.remove('show');
+        }
+
+        // Close modal when clicking outside
+        document.addEventListener('click', function(e) {
+            const modal = document.getElementById('modal-overlay');
+            if (e.target === modal) {
+                hideModal();
+                if (window.modalResolve) window.modalResolve(false);
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const modal = document.getElementById('modal-overlay');
+                if (modal.classList.contains('show')) {
+                    hideModal();
+                    if (window.modalResolve) window.modalResolve(false);
+                }
+            }
+        });
 
         // Initialize the application
         function init() {
@@ -1049,8 +1269,16 @@
         }
 
         // Delete question
-        function deleteQuestion(index) {
-            if (confirm('Are you sure you want to delete this question?')) {
+        async function deleteQuestion(index) {
+            const confirmed = await showConfirm(
+                'Delete Question', 
+                'Are you sure you want to delete this question? This action cannot be undone.',
+                'Delete',
+                'Cancel',
+                'error'
+            );
+            
+            if (confirmed) {
                 questions.splice(index, 1);
                 saveQuestions();
                 updateStats();
@@ -1060,9 +1288,9 @@
         }
 
         // Start the test
-        function startTest() {
+        async function startTest() {
             if (questions.length === 0) {
-                alert('No questions available! Please add some questions first.');
+                await showAlert('No Questions Available', 'No questions available! Please add some questions first.', 'warning');
                 return;
             }
 
@@ -1071,7 +1299,7 @@
             const rangeResult = parseQuestionRange(rangeInput, questions.length);
             
             if (!rangeResult.valid) {
-                alert('Invalid question range: ' + rangeResult.error);
+                await showAlert('Invalid Range', 'Invalid question range: ' + rangeResult.error, 'error');
                 return;
             }
 
@@ -1088,7 +1316,7 @@
             }
 
             if (currentTest.length === 0) {
-                alert('No questions in the specified range!');
+                await showAlert('No Questions', 'No questions in the specified range!', 'warning');
                 return;
             }
             
@@ -1342,8 +1570,16 @@
         }
 
         // End test early
-        function endTest() {
-            if (confirm('Are you sure you want to end the test early?')) {
+        async function endTest() {
+            const confirmed = await showConfirm(
+                'End Test Early', 
+                'Are you sure you want to end the test early? Your progress will be saved.',
+                'End Test',
+                'Continue Test',
+                'warning'
+            );
+            
+            if (confirmed) {
                 finishTest();
             }
         }
@@ -1401,9 +1637,9 @@
         }
 
         // Export questions to JSON file
-        function exportQuestions() {
+        async function exportQuestions() {
             if (questions.length === 0) {
-                alert('No questions to export!');
+                await showAlert('No Questions', 'No questions to export!', 'warning');
                 return;
             }
 
@@ -1419,7 +1655,7 @@
             document.body.removeChild(link);
             URL.revokeObjectURL(url);
             
-            alert('Questions exported successfully!');
+            await showAlert('Export Successful', 'Questions exported successfully!', 'success');
         }
 
         // Sample questions for demo (updated to include images array)
@@ -1445,64 +1681,77 @@
         ];
 
         // Import from GitHub
-        function importFromGitHub() {
+        async function importFromGitHub() {
             const select = document.getElementById('github-url');
             const githubUrl = select.value.trim();
             
             if (!githubUrl) {
-                alert('Please select an exam to load!');
+                await showAlert('No Selection', 'Please select an exam to load!', 'warning');
                 return;
             }
             
-            fetch(githubUrl)
-                .then(response => response.json())
-                .then(importedQuestions => {
-                    if (Array.isArray(importedQuestions)) {
-                        // Ensure backward compatibility by adding empty images array if not present
-                        const updatedQuestions = importedQuestions.map(q => ({
-                            ...q,
-                            images: q.images || (q.image ? [q.image] : [])
-                        }));
-                        
-                        const confirmMessage = `This will add ${updatedQuestions.length} questions to your existing ${questions.length} questions. Continue?`;
-                        if (confirm(confirmMessage)) {
-                            questions.push(...updatedQuestions);
-                            saveQuestions();
-                            updateStats();
-                            updateQuestionBank();
-                            updateAvailableQuestions();
-                            alert('Questions imported successfully from GitHub!');
-                        }
-                    } else {
-                        alert('Invalid data format from GitHub!');
+            try {
+                const response = await fetch(githubUrl);
+                const importedQuestions = await response.json();
+                
+                if (Array.isArray(importedQuestions)) {
+                    // Ensure backward compatibility by adding empty images array if not present
+                    const updatedQuestions = importedQuestions.map(q => ({
+                        ...q,
+                        images: q.images || (q.image ? [q.image] : [])
+                    }));
+                    
+                    const confirmed = await showConfirm(
+                        'Import Questions',
+                        `This will add ${updatedQuestions.length} questions to your existing ${questions.length} questions. Continue?`,
+                        'Import',
+                        'Cancel'
+                    );
+                    
+                    if (confirmed) {
+                        questions.push(...updatedQuestions);
+                        saveQuestions();
+                        updateStats();
+                        updateQuestionBank();
+                        updateAvailableQuestions();
+                        await showAlert('Import Successful', 'Questions imported successfully from GitHub!', 'success');
                     }
-                })
-                .catch(error => {
-                    alert('Error loading questions from GitHub: ' + error.message);
-                });
+                } else {
+                    await showAlert('Invalid Data', 'Invalid data format from GitHub!', 'error');
+                }
+            } catch (error) {
+                await showAlert('Import Error', 'Error loading questions from GitHub: ' + error.message, 'error');
+            }
         }
 
         // Import sample questions
-        function importSampleQuestions() {
-            const confirmMessage = `This will add ${sampleQuestions.length} sample questions to your existing ${questions.length} questions. Continue?`;
-            if (confirm(confirmMessage)) {
+        async function importSampleQuestions() {
+            const confirmed = await showConfirm(
+                'Import Sample Questions',
+                `This will add ${sampleQuestions.length} sample questions to your existing ${questions.length} questions. Continue?`,
+                'Import',
+                'Cancel'
+            );
+            
+            if (confirmed) {
                 questions.push(...sampleQuestions);
                 saveQuestions();
                 updateStats();
                 updateQuestionBank();
                 updateAvailableQuestions();
-                alert('Sample questions imported successfully!');
+                await showAlert('Import Successful', 'Sample questions imported successfully!', 'success');
             }
         }
 
         // Handle local file import and update filename display
-        function handleImport(event) {
+        async function handleImport(event) {
             const file = event.target.files[0];
             if (!file) return;
 
             const reader = new FileReader();
             document.getElementById('selected-file-name').textContent = file.name;
-            reader.onload = function(e) {
+            
+            reader.onload = async function(e) {
                 try {
                     const importedQuestions = JSON.parse(e.target.result);
                     if (Array.isArray(importedQuestions)) {
@@ -1512,22 +1761,29 @@
                             images: q.images || (q.image ? [q.image] : [])
                         }));
                         
-                        const confirmMessage = `This will add ${updatedQuestions.length} questions to your existing ${questions.length} questions. Continue?`;
-                        if (confirm(confirmMessage)) {
+                        const confirmed = await showConfirm(
+                            'Import Questions',
+                            `This will add ${updatedQuestions.length} questions to your existing ${questions.length} questions. Continue?`,
+                            'Import',
+                            'Cancel'
+                        );
+                        
+                        if (confirmed) {
                             questions.push(...updatedQuestions);
                             saveQuestions();
                             updateStats();
                             updateQuestionBank();
                             updateAvailableQuestions();
-                            alert('Questions imported successfully!');
+                            await showAlert('Import Successful', 'Questions imported successfully!', 'success');
                         }
                     } else {
-                        alert('Invalid file format!');
+                        await showAlert('Invalid File', 'Invalid file format!', 'error');
                     }
                 } catch (error) {
-                    alert('Error reading file: ' + error.message);
+                    await showAlert('File Error', 'Error reading file: ' + error.message, 'error');
                 }
             };
+            
             reader.readAsText(file);
             
             // Reset the input
@@ -1535,19 +1791,27 @@
         }
 
         // Clear all questions
-        function clearAllQuestions() {
+        async function clearAllQuestions() {
             if (questions.length === 0) {
-                alert('No questions to clear!');
+                await showAlert('No Questions', 'No questions to clear!', 'warning');
                 return;
             }
 
-            if (confirm(`Are you sure you want to delete all ${questions.length} questions? This cannot be undone!`)) {
+            const confirmed = await showConfirm(
+                'Clear All Questions',
+                `Are you sure you want to delete all ${questions.length} questions? This cannot be undone!`,
+                'Delete All',
+                'Cancel',
+                'error'
+            );
+            
+            if (confirmed) {
                 questions = [];
                 saveQuestions();
                 updateStats();
                 updateQuestionBank();
                 updateAvailableQuestions();
-                alert('All questions cleared!');
+                await showAlert('Questions Cleared', 'All questions cleared!', 'success');
             }
         }
 
