@@ -1063,7 +1063,7 @@
     {
         "id": 1069,
         "text": "What is the name assigned by Terraform to reference this resource?",
-        "images": [https://www.examtopics.com/assets/media/exam-media/04279/0004000001.png"],
+        "images": ["https://www.examtopics.com/assets/media/exam-media/04279/0004000001.png"],
         "type": "single",
         "options": [
             "compute_instance",
