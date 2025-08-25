@@ -596,34 +596,22 @@
                 <div class="options-container" id="options-container">
                     <div class="option-input">
                         <input type="checkbox" class="correct-checkbox" onchange="updateCorrectStyles()">
-                        <div style="flex: 1;">
-                            <input type="text" placeholder="Option 1" class="option-text" style="width: 100%; margin-bottom: 8px;">
-                            <input type="url" placeholder="Option image URL (optional)" class="option-image" style="width: 100%; font-size: 12px;">
-                        </div>
+                        <input type="text" placeholder="Option 1 (or image URL)" class="option-text">
                         <span>✓ Correct</span>
                     </div>
                     <div class="option-input">
                         <input type="checkbox" class="correct-checkbox" onchange="updateCorrectStyles()">
-                        <div style="flex: 1;">
-                            <input type="text" placeholder="Option 2" class="option-text" style="width: 100%; margin-bottom: 8px;">
-                            <input type="url" placeholder="Option image URL (optional)" class="option-image" style="width: 100%; font-size: 12px;">
-                        </div>
+                        <input type="text" placeholder="Option 2 (or image URL)" class="option-text">
                         <span>✓ Correct</span>
                     </div>
                     <div class="option-input">
                         <input type="checkbox" class="correct-checkbox" onchange="updateCorrectStyles()">
-                        <div style="flex: 1;">
-                            <input type="text" placeholder="Option 3" class="option-text" style="width: 100%; margin-bottom: 8px;">
-                            <input type="url" placeholder="Option image URL (optional)" class="option-image" style="width: 100%; font-size: 12px;">
-                        </div>
+                        <input type="text" placeholder="Option 3 (or image URL)" class="option-text">
                         <span>✓ Correct</span>
                     </div>
                     <div class="option-input">
                         <input type="checkbox" class="correct-checkbox" onchange="updateCorrectStyles()">
-                        <div style="flex: 1;">
-                            <input type="text" placeholder="Option 4" class="option-text" style="width: 100%; margin-bottom: 8px;">
-                            <input type="url" placeholder="Option image URL (optional)" class="option-image" style="width: 100%; font-size: 12px;">
-                        </div>
+                        <input type="text" placeholder="Option 4 (or image URL)" class="option-text">
                         <span>✓ Correct</span>
                     </div>
                 </div>
@@ -1082,10 +1070,7 @@
             
             optionDiv.innerHTML = `
                 <input type="${inputType}" class="correct-checkbox" onchange="updateCorrectStyles()" ${nameAttr}>
-                <div style="flex: 1;">
-                    <input type="text" placeholder="Option ${optionCount}" class="option-text" style="width: 100%; margin-bottom: 8px;">
-                    <input type="url" placeholder="Option image URL (optional)" class="option-image" style="width: 100%; font-size: 12px;">
-                </div>
+                <input type="text" placeholder="Option ${optionCount} (or image URL)" class="option-text">
                 <span>✓ Correct</span>
             `;
             
@@ -1147,7 +1132,6 @@
                 images: questionImages,
                 type: questionType,
                 options: options,
-                optionImages: optionImages,
                 correctAnswers: correctAnswers,
                 createdAt: new Date().toISOString()
             };
@@ -1180,34 +1164,22 @@
             container.innerHTML = `
                 <div class="option-input">
                     <input type="checkbox" class="correct-checkbox" onchange="updateCorrectStyles()">
-                    <div style="flex: 1;">
-                        <input type="text" placeholder="Option 1" class="option-text" style="width: 100%; margin-bottom: 8px;">
-                        <input type="url" placeholder="Option image URL (optional)" class="option-image" style="width: 100%; font-size: 12px;">
-                    </div>
+                    <input type="text" placeholder="Option 1 (or image URL)" class="option-text">
                     <span>✓ Correct</span>
                 </div>
                 <div class="option-input">
                     <input type="checkbox" class="correct-checkbox" onchange="updateCorrectStyles()">
-                    <div style="flex: 1;">
-                        <input type="text" placeholder="Option 2" class="option-text" style="width: 100%; margin-bottom: 8px;">
-                        <input type="url" placeholder="Option image URL (optional)" class="option-image" style="width: 100%; font-size: 12px;">
-                    </div>
+                    <input type="text" placeholder="Option 2 (or image URL)" class="option-text">
                     <span>✓ Correct</span>
                 </div>
                 <div class="option-input">
                     <input type="checkbox" class="correct-checkbox" onchange="updateCorrectStyles()">
-                    <div style="flex: 1;">
-                        <input type="text" placeholder="Option 3" class="option-text" style="width: 100%; margin-bottom: 8px;">
-                        <input type="url" placeholder="Option image URL (optional)" class="option-image" style="width: 100%; font-size: 12px;">
-                    </div>
+                    <input type="text" placeholder="Option 3 (or image URL)" class="option-text">
                     <span>✓ Correct</span>
                 </div>
                 <div class="option-input">
                     <input type="checkbox" class="correct-checkbox" onchange="updateCorrectStyles()">
-                    <div style="flex: 1;">
-                        <input type="text" placeholder="Option 4" class="option-text" style="width: 100%; margin-bottom: 8px;">
-                        <input type="url" placeholder="Option image URL (optional)" class="option-image" style="width: 100%; font-size: 12px;">
-                    </div>
+                    <input type="text" placeholder="Option 4 (or image URL)" class="option-text">
                     <span>✓ Correct</span>
                 </div>
             `;
