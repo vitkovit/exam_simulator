@@ -127,13 +127,13 @@
             resize: vertical;
         }
 
-        .options-container {
+        .options-container, .images-container {
             display: grid;
             gap: 15px;
             margin: 20px 0;
         }
 
-        .option-input {
+        .option-input, .image-input {
             display: flex;
             align-items: center;
             gap: 10px;
@@ -144,7 +144,7 @@
             transition: all 0.3s ease;
         }
 
-        .option-input:hover {
+        .option-input:hover, .image-input:hover {
             background: #e9ecef;
         }
 
@@ -153,7 +153,7 @@
             border-color: #28a745;
         }
 
-        .option-input input[type="text"] {
+        .option-input input[type="text"], .image-input input[type="url"] {
             flex: 1;
             border: 1px solid #ddd;
             padding: 8px;
@@ -164,6 +164,21 @@
             width: 18px;
             height: 18px;
             cursor: pointer;
+        }
+
+        .remove-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 6px 10px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: background 0.3s ease;
+        }
+
+        .remove-btn:hover {
+            background: #c82333;
         }
 
         .btn {
@@ -233,6 +248,20 @@
             margin-top: 5px;
         }
 
+        .question-item .images {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 10px 0;
+        }
+
+        .question-item .images img {
+            max-width: 100px;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
         .test-interface .question {
             background: white;
             padding: 30px;
@@ -247,12 +276,24 @@
             font-size: 1.3em;
         }
 
-        .test-interface .question img {
-            max-width: 100%;
+        .test-interface .question .question-images {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .test-interface .question .question-images img {
+            max-width: 300px;
             height: auto;
             border-radius: 8px;
-            margin: 15px 0;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .test-interface .question .question-images img:hover {
+            transform: scale(1.05);
         }
 
         .test-interface .options {
@@ -407,8 +448,14 @@
             </div>
 
             <div class="form-group">
-                <label for="question-image">Question Image URL (optional):</label>
-                <input type="url" id="question-image" placeholder="https://example.com/image.jpg">
+                <label>Question Images (optional):</label>
+                <div class="images-container" id="images-container">
+                    <div class="image-input">
+                        <input type="url" placeholder="https://example.com/image.jpg" class="image-url">
+                        <button type="button" class="remove-btn" onclick="removeImage(this)" style="display: none;">Remove</button>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-primary" onclick="addImageField()" style="margin-top: 10px; padding: 8px 16px; font-size: 14px;">➕ Add Another Image</button>
             </div>
 
             <div class="form-group">
@@ -618,6 +665,44 @@
             });
         }
 
+        // Add image field
+        function addImageField() {
+            const container = document.getElementById('images-container');
+            const imageDiv = document.createElement('div');
+            imageDiv.className = 'image-input';
+            
+            imageDiv.innerHTML = `
+                <input type="url" placeholder="https://example.com/image.jpg" class="image-url">
+                <button type="button" class="remove-btn" onclick="removeImage(this)">Remove</button>
+            `;
+            
+            container.appendChild(imageDiv);
+            updateRemoveButtons();
+        }
+
+        // Remove image field
+        function removeImage(button) {
+            const container = document.getElementById('images-container');
+            const imageDiv = button.closest('.image-input');
+            imageDiv.remove();
+            updateRemoveButtons();
+        }
+
+        // Update remove button visibility
+        function updateRemoveButtons() {
+            const container = document.getElementById('images-container');
+            const imageInputs = container.querySelectorAll('.image-input');
+            
+            imageInputs.forEach((input, index) => {
+                const removeBtn = input.querySelector('.remove-btn');
+                if (imageInputs.length > 1) {
+                    removeBtn.style.display = 'block';
+                } else {
+                    removeBtn.style.display = 'none';
+                }
+            });
+        }
+
         // Validate and update range display
         function validateAndUpdateRange() {
             const rangeInput = document.getElementById('question-range');
@@ -774,8 +859,17 @@
         // Add question to the bank
         function addQuestion() {
             const questionText = document.getElementById('question-text').value.trim();
-            const questionImage = document.getElementById('question-image').value.trim();
             const questionType = document.getElementById('question-type').value;
+            
+            // Collect all image URLs
+            const imageInputs = document.querySelectorAll('.image-url');
+            const questionImages = [];
+            imageInputs.forEach(input => {
+                const url = input.value.trim();
+                if (url) {
+                    questionImages.push(url);
+                }
+            });
             
             if (!questionText) {
                 alert('Please enter a question!');
@@ -811,7 +905,7 @@
             const question = {
                 id: Date.now(),
                 text: questionText,
-                image: questionImage,
+                images: questionImages,
                 type: questionType,
                 options: options,
                 correctAnswers: correctAnswers,
@@ -831,8 +925,16 @@
         // Clear the form
         function clearForm() {
             document.getElementById('question-text').value = '';
-            document.getElementById('question-image').value = '';
             document.getElementById('question-type').value = 'multiple';
+            
+            // Reset image inputs
+            const imagesContainer = document.getElementById('images-container');
+            imagesContainer.innerHTML = `
+                <div class="image-input">
+                    <input type="url" placeholder="https://example.com/image.jpg" class="image-url">
+                    <button type="button" class="remove-btn" onclick="removeImage(this)" style="display: none;">Remove</button>
+                </div>
+            `;
             
             const container = document.getElementById('options-container');
             container.innerHTML = `
@@ -884,7 +986,11 @@
             bank.innerHTML = statusMessage + questions.map((question, qIndex) => `
                 <div class="question-item">
                     <h4>${question.text}</h4>
-                    ${question.image ? `<img src="${question.image}" alt="Question Image" style="max-width: 200px; height: auto; margin: 10px 0;">` : ''}
+                    ${question.images && question.images.length > 0 ? `
+                        <div class="images">
+                            ${question.images.map(img => `<img src="${img}" alt="Question Image">`).join('')}
+                        </div>
+                    ` : ''}
                     <div class="options">
                         <strong>Options:</strong> ${question.options.join(', ')}
                     </div>
@@ -995,10 +1101,16 @@
             
             document.getElementById('progress-fill').style.width = progress + '%';
 
+            const imagesHtml = question.images && question.images.length > 0 ? `
+                <div class="question-images">
+                    ${question.images.map(img => `<img src="${img}" alt="Question Image">`).join('')}
+                </div>
+            ` : '';
+
             const questionHtml = `
                 <h3>Question ${currentQuestionIndex + 1} of ${currentTest.length}</h3>
                 <p>${question.text}</p>
-                ${question.image ? `<img src="${question.image}" alt="Question Image">` : ''}
+                ${imagesHtml}
                 <div class="options">
                     ${question.options.map((option, index) => `
                         <div class="option" onclick="selectOption(${index})">
@@ -1259,7 +1371,7 @@
             alert('Questions exported successfully!');
         }
 
-        // Sample questions for demo
+        // Sample questions for demo (updated to include images array)
         const sampleQuestions = [
             {
                 id: 1,
@@ -1267,6 +1379,7 @@
                 type: "single",
                 options: ["London", "Berlin", "Paris", "Madrid"],
                 correctAnswers: [2],
+                images: [],
                 createdAt: new Date().toISOString()
             },
             {
@@ -1275,6 +1388,7 @@
                 type: "multiple",
                 options: ["Red", "Green", "Blue", "Orange"],
                 correctAnswers: [0, 2],
+                images: [],
                 createdAt: new Date().toISOString()
             }
         ];
@@ -1293,9 +1407,15 @@
                 .then(response => response.json())
                 .then(importedQuestions => {
                     if (Array.isArray(importedQuestions)) {
-                        const confirmMessage = `This will add ${importedQuestions.length} questions to your existing ${questions.length} questions. Continue?`;
+                        // Ensure backward compatibility by adding empty images array if not present
+                        const updatedQuestions = importedQuestions.map(q => ({
+                            ...q,
+                            images: q.images || (q.image ? [q.image] : [])
+                        }));
+                        
+                        const confirmMessage = `This will add ${updatedQuestions.length} questions to your existing ${questions.length} questions. Continue?`;
                         if (confirm(confirmMessage)) {
-                            questions.push(...importedQuestions);
+                            questions.push(...updatedQuestions);
                             saveQuestions();
                             updateStats();
                             updateQuestionBank();
@@ -1335,9 +1455,15 @@
                 try {
                     const importedQuestions = JSON.parse(e.target.result);
                     if (Array.isArray(importedQuestions)) {
-                        const confirmMessage = `This will add ${importedQuestions.length} questions to your existing ${questions.length} questions. Continue?`;
+                        // Ensure backward compatibility by adding empty images array if not present
+                        const updatedQuestions = importedQuestions.map(q => ({
+                            ...q,
+                            images: q.images || (q.image ? [q.image] : [])
+                        }));
+                        
+                        const confirmMessage = `This will add ${updatedQuestions.length} questions to your existing ${questions.length} questions. Continue?`;
                         if (confirm(confirmMessage)) {
-                            questions.push(...importedQuestions);
+                            questions.push(...updatedQuestions);
                             saveQuestions();
                             updateStats();
                             updateQuestionBank();
