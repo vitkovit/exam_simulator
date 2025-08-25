@@ -1996,12 +1996,293 @@
     ],
     "type": "single",
     "options": [
-      "https://www.examtopics.com/assets/media/exam-media/04279/0007200001.png",
-      "https://www.examtopics.com/assets/media/exam-media/04279/0007200001.png",
-      "https://www.examtopics.com/assets/media/exam-media/04279/0007200001.png",
-      "https://www.examtopics.com/assets/media/exam-media/04279/0007200001.png"
+      "Define the attribute vnet_id as a variable in the networking module",
+      "Change the referenced value to module.my_network.outputs.vnet_id",
+      "Define the attribute vnet_id as an output in the networking module",
+      "Change the referenced value to my_network.outputs.vnet_id"
     ],
     "correctAnswers": [2],
+    "createdAt": "2025-08-20T10:00:00.000Z"
+  },
+  {
+    "id": 1130,
+    "text": "You are writing a child Terraform module which provisions an AWS instance. You want to make use of the IP address returned in the root configuration. You name the instance resource \"main\". Which of these is the correct way to define the output value using HCL2?",
+    "image": "",
+    "type": "single",
+    "options": [
+      "https://www.examtopics.com/assets/media/exam-media/04279/0007300001.jpg",
+      "https://www.examtopics.com/assets/media/exam-media/04279/0007300002.jpg"
+    ],
+    "correctAnswers": [0],
+    "createdAt": "2025-08-20T10:00:00.000Z"
+  },
+  {
+    "id": 131,
+    "text": "How can a ticket-based system slow down infrastructure provisioning and limit the ability to scale? (Choose two.)",
+    "images": [],
+    "type": "multiple",
+    "options": [
+      "A full audit trail of the request and fulfillment process is generated",
+      "A request must be submitted for infrastructure changes",
+      "As additional resources are required, more tickets are submitted",
+      "A catalog of approved resources can be accessed from drop down lists in a request form"
+    ],
+    "correctAnswers": [1, 2],
+    "createdAt": "2025-08-20T10:00:00.000Z"
+  },
+  {
+    "id": 132,
+    "text": "Which of the following statements about Terraform modules is not true?",
+    "images": [],
+    "type": "single",
+    "options": [
+      "Modules must be publicly accessible",
+      "Modules can be called multiple times",
+      "Module is a container for one or more resources",
+      "Modules can call other modules"
+    ],
+    "correctAnswers": [0],
+    "createdAt": "2025-08-20T10:00:00.000Z"
+  },
+  {
+    "id": 133,
+    "text": "Which Terraform collection type should you use to store key/value pairs?",
+    "images": [],
+    "type": "single",
+    "options": [
+      "tuple",
+      "set",
+      "map",
+      "list"
+    ],
+    "correctAnswers": [2],
+    "createdAt": "2025-08-20T10:00:00.000Z"
+  },
+  {
+    "id": 134,
+    "text": "You have used Terraform to create an ephemeral development environment in the cloud and are now ready to destroy all the infrastructure described by your Terraform configuration. To be safe, you would like to first see all the infrastructure that will be deleted by Terraform. Which command should you use to show all of the resources that will be deleted? (Choose two.)",
+    "images": [],
+    "type": "multiple",
+    "options": [
+      "Run terraform plan -destroy",
+      "Run terraform show -destroy",
+      "Run terraform destroy and it will first output all the resources that will be deleted before prompting for approval",
+      "Run terraform show -destroy"
+    ],
+    "correctAnswers": [0, 2],
+    "createdAt": "2025-08-20T10:00:00.000Z"
+  },
+  {
+    "id": 135,
+    "text": "When do you need to explicitly execute terraform refresh?",
+    "images": [],
+    "type": "single",
+    "options": [
+      "Before every terraform plan",
+      "Before every terraform apply",
+      "Before every terraform import",
+      "None of the anwsers are correct"
+    ],
+    "correctAnswers": [2],
+    "createdAt": "2025-08-20T10:00:00.000Z"
+  },
+  {
+    "id": 136,
+    "text": "All Terraform Cloud tiers support team management and governance.",
+    "images": [],
+    "type": "single",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correctAnswers": [1],
+    "createdAt": "2025-08-20T10:00:00.000Z"
+  },
+  {
+    "id": 137,
+    "text": "What advantage does an operations team that uses infrastructure as code have?",
+    "images": [],
+    "type": "single",
+    "options": [
+      "The ability to delete infrastructure",
+      "The ability to update existing infrastructure",
+      "The ability to reuse best practice configurations and settings",
+      "The ability to autoscale a group of servers"
+    ],
+    "correctAnswers": [2],
+    "createdAt": "2025-08-20T10:00:00.000Z"
+  },
+  {
+    "id": 138,
+    "text": "You have modified your Terraform configuration to fix a typo in the Terraform ID of a resource from aws_security_group.http to aws_security_group.http. Which of the following commands would you run to update the ID in state without destroying the resource?",
+    "images": ["https://www.examtopics.com/assets/media/exam-media/04279/0007700001.jpg"],
+    "type": "single",
+    "options": [
+      "terraform mv aws_security_group.htp aws_security_group.http",
+      "terraform apply",
+      "terraform refresh"
+    ],
+    "correctAnswers": [0],
+    "createdAt": "2025-08-20T10:00:00.000Z"
+  },
+  {
+    "id": 139,
+    "text": "You are creating a Terraform configuration which needs to make use of multiple providers, one for AWS and one for Datadog. Which of the following provider blocks would allow you to do this?",
+    "images": [],
+    "type": "single",
+    "options": [
+      "https://www.examtopics.com/assets/media/exam-media/04279/0007800001.jpg",
+      "https://www.examtopics.com/assets/media/exam-media/04279/0007900001.jpg",
+      "https://www.examtopics.com/assets/media/exam-media/04279/0008000001.jpg"
+    ],
+    "correctAnswers": [1],
+    "createdAt": "2025-08-20T10:00:00.000Z"
+  },
+  {
+    "id": 140,
+    "text": "Terraform variable names are saved in the state file.",
+    "images": [],
+    "type": "single",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correctAnswers": [1],
+    "createdAt": "2025-08-20T10:00:00.000Z"
+  },
+  {
+    "id": 141,
+    "text": "Terraform Cloud is available only as a paid offering from HashiCorp.",
+    "images": [],
+    "type": "single",
+    "options": [
+        "True", 
+        "False"
+    ],
+    "correctAnswers": [1],
+    "createdAt": "2025-08-20T10:00:00.000Z"
+  },
+  {
+    "id": 142,
+    "text": "Which of the following is not a way to trigger terraform destroy?",
+    "images": [],
+    "type": "single",
+    "options": [
+      "Using the destroy command with auto-approve",
+      "Running terraform destroy from the correct directory and then typing \"yes\" when prompted in the CLI",
+      "Passing --destroy at the end of a plan request",
+      "Delete the state file and run terraform apply"
+    ],
+    "correctAnswers": [3],
+    "createdAt": "2025-08-20T10:00:00.000Z"
+  },
+  {
+    "id": 143,
+    "text": "Which of the following is not an advantage of using infrastructure as code operations?",
+    "images": [],
+    "type": "single",
+    "options": [
+      "Self-service infrastructure deployment",
+      "Troubleshoot via a Linux diff command",
+      "Public cloud console configuration workflows",
+      "Modify a count parameter to scale resources",
+      "API driven workflows"
+    ],
+    "correctAnswers": [2],
+    "createdAt": "2025-08-20T10:00:00.000Z"
+  },
+  {
+    "id": 144,
+    "text": "You're writing a Terraform configuration that needs to read input from a local file called id_rsa.pub. Which built-in Terraform function can you use to import the file's contents as a string?",
+    "images": [],
+    "type": "single",
+    "options": [
+      "fileset(\"id_rsa.pub\")",
+      "filebase64(\"id_rsa.pub\")",
+      "templatefile(\"id_rsa.pub\")",
+      "file(\"id_rsa.pub\")"
+    ],
+    "correctAnswers": [3],
+    "createdAt": "2025-08-20T10:00:00.000Z"
+  },
+  {
+    "id": 145,
+    "text": "What does Terraform use providers for? (Choose three.)",
+    "images": [],
+    "type": "multiple",
+    "options": [
+      "Provision resources for on-premises infrastructure services",
+      "Simplify API interactions",
+      "Provision resources for public cloud infrastructure services",
+      "Enforce security and compliance policies",
+      "Group a collection of Terraform configuration files that map to a single state file"
+    ],
+    "correctAnswers": [0, 1, 2],
+    "createdAt": "2025-08-20T10:00:00.000Z"
+  },
+  {
+    "id": 146,
+    "text": "!! even chat is confused!! You can reference a resource created with for_each using a Splat (*) expression.",
+    "images": [],
+    "type": "single",
+    "options": ["True", "False"],
+    "correctAnswers": [0],
+    "createdAt": "2025-08-20T10:00:00.000Z"
+  },
+  {
+    "id": 147,
+    "text": "How does Terraform determine dependencies between resources?",
+    "images": [],
+    "type": "single",
+    "options": [
+      "Terraform automatically builds a resource graph based on resources, provisioners, special meta-parameters, and the state file, if present.",
+      "Terraform requires all dependencies between resources to be specified using the depends_on parameter",
+      "Terraform requires resources in a configuration to be listed in the order they will be created to determine dependencies",
+      "Terraform requires resource dependencies to be defined as modules and sourced in order"
+    ],
+    "correctAnswers": [0],
+    "createdAt": "2025-08-20T10:00:00.000Z"
+  },
+  {
+    "id": 148,
+    "text": "Which parameters does terraform import require? (Choose two.)",
+    "images": [],
+    "type": "multiple",
+    "options": [
+      "Path",
+      "Provider",
+      "Resource ID",
+      "Resource address"
+    ],
+    "correctAnswers": [2, 3],
+    "createdAt": "2025-08-20T10:00:00.000Z"
+  },
+  {
+    "id": 149,
+    "text": "Once a new Terraform backend is configured with a Terraform code block, which command(s) is (are) used to migrate the state file?",
+    "images": [],
+    "type": "single",
+    "options": [
+      "terraform apply",
+      "terraform push",
+      "terraform destroy, then terraform apply",
+      "terraform init"
+    ],
+    "correctAnswers": [3],
+    "createdAt": "2025-08-20T10:00:00.000Z"
+  },
+  {
+    "id": 150,
+    "text": "What does this code do?",
+    "images": ["https://www.examtopics.com/assets/media/exam-media/04279/0008400001.jpg"],
+    "type": "single",
+    "options": [
+      "Requires any version of the AWS provider >= 3.0 and < 4.0",
+      "Requires any version of the AWS provider >= 3.0",
+      "Requires any version of the AWS provider after the 3.0 major release, like 4.1",
+      "Requires any version of the AWS provider > 3.0"
+    ],
+    "correctAnswers": [0],
     "createdAt": "2025-08-20T10:00:00.000Z"
   }
 ]
