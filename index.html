@@ -472,22 +472,34 @@
                 <div class="options-container" id="options-container">
                     <div class="option-input">
                         <input type="checkbox" class="correct-checkbox" onchange="updateCorrectStyles()">
-                        <input type="text" placeholder="Option 1" class="option-text">
+                        <div style="flex: 1;">
+                            <input type="text" placeholder="Option 1" class="option-text" style="width: 100%; margin-bottom: 8px;">
+                            <input type="url" placeholder="Option image URL (optional)" class="option-image" style="width: 100%; font-size: 12px;">
+                        </div>
                         <span>✓ Correct</span>
                     </div>
                     <div class="option-input">
                         <input type="checkbox" class="correct-checkbox" onchange="updateCorrectStyles()">
-                        <input type="text" placeholder="Option 2" class="option-text">
+                        <div style="flex: 1;">
+                            <input type="text" placeholder="Option 2" class="option-text" style="width: 100%; margin-bottom: 8px;">
+                            <input type="url" placeholder="Option image URL (optional)" class="option-image" style="width: 100%; font-size: 12px;">
+                        </div>
                         <span>✓ Correct</span>
                     </div>
                     <div class="option-input">
                         <input type="checkbox" class="correct-checkbox" onchange="updateCorrectStyles()">
-                        <input type="text" placeholder="Option 3" class="option-text">
+                        <div style="flex: 1;">
+                            <input type="text" placeholder="Option 3" class="option-text" style="width: 100%; margin-bottom: 8px;">
+                            <input type="url" placeholder="Option image URL (optional)" class="option-image" style="width: 100%; font-size: 12px;">
+                        </div>
                         <span>✓ Correct</span>
                     </div>
                     <div class="option-input">
                         <input type="checkbox" class="correct-checkbox" onchange="updateCorrectStyles()">
-                        <input type="text" placeholder="Option 4" class="option-text">
+                        <div style="flex: 1;">
+                            <input type="text" placeholder="Option 4" class="option-text" style="width: 100%; margin-bottom: 8px;">
+                            <input type="url" placeholder="Option image URL (optional)" class="option-image" style="width: 100%; font-size: 12px;">
+                        </div>
                         <span>✓ Correct</span>
                     </div>
                 </div>
@@ -850,7 +862,10 @@
             
             optionDiv.innerHTML = `
                 <input type="${inputType}" class="correct-checkbox" onchange="updateCorrectStyles()" ${nameAttr}>
-                <input type="text" placeholder="Option ${optionCount}" class="option-text">
+                <div style="flex: 1;">
+                    <input type="text" placeholder="Option ${optionCount}" class="option-text" style="width: 100%; margin-bottom: 8px;">
+                    <input type="url" placeholder="Option image URL (optional)" class="option-image" style="width: 100%; font-size: 12px;">
+                </div>
                 <span>✓ Correct</span>
             `;
             
@@ -878,15 +893,18 @@
             }
 
             const options = [];
+            const optionImages = [];
             const correctAnswers = [];
             const optionInputs = document.querySelectorAll('.option-input');
             
             optionInputs.forEach((optionInput, index) => {
                 const text = optionInput.querySelector('.option-text').value.trim();
+                const image = optionInput.querySelector('.option-image').value.trim();
                 const isCorrect = optionInput.querySelector('.correct-checkbox').checked;
                 
                 if (text) {
                     options.push(text);
+                    optionImages.push(image);
                     if (isCorrect) {
                         correctAnswers.push(index);
                     }
@@ -909,6 +927,7 @@
                 images: questionImages,
                 type: questionType,
                 options: options,
+                optionImages: optionImages,
                 correctAnswers: correctAnswers,
                 createdAt: new Date().toISOString()
             };
@@ -941,22 +960,34 @@
             container.innerHTML = `
                 <div class="option-input">
                     <input type="checkbox" class="correct-checkbox" onchange="updateCorrectStyles()">
-                    <input type="text" placeholder="Option 1" class="option-text">
+                    <div style="flex: 1;">
+                        <input type="text" placeholder="Option 1" class="option-text" style="width: 100%; margin-bottom: 8px;">
+                        <input type="url" placeholder="Option image URL (optional)" class="option-image" style="width: 100%; font-size: 12px;">
+                    </div>
                     <span>✓ Correct</span>
                 </div>
                 <div class="option-input">
                     <input type="checkbox" class="correct-checkbox" onchange="updateCorrectStyles()">
-                    <input type="text" placeholder="Option 2" class="option-text">
+                    <div style="flex: 1;">
+                        <input type="text" placeholder="Option 2" class="option-text" style="width: 100%; margin-bottom: 8px;">
+                        <input type="url" placeholder="Option image URL (optional)" class="option-image" style="width: 100%; font-size: 12px;">
+                    </div>
                     <span>✓ Correct</span>
                 </div>
                 <div class="option-input">
                     <input type="checkbox" class="correct-checkbox" onchange="updateCorrectStyles()">
-                    <input type="text" placeholder="Option 3" class="option-text">
+                    <div style="flex: 1;">
+                        <input type="text" placeholder="Option 3" class="option-text" style="width: 100%; margin-bottom: 8px;">
+                        <input type="url" placeholder="Option image URL (optional)" class="option-image" style="width: 100%; font-size: 12px;">
+                    </div>
                     <span>✓ Correct</span>
                 </div>
                 <div class="option-input">
                     <input type="checkbox" class="correct-checkbox" onchange="updateCorrectStyles()">
-                    <input type="text" placeholder="Option 4" class="option-text">
+                    <div style="flex: 1;">
+                        <input type="text" placeholder="Option 4" class="option-text" style="width: 100%; margin-bottom: 8px;">
+                        <input type="url" placeholder="Option image URL (optional)" class="option-image" style="width: 100%; font-size: 12px;">
+                    </div>
                     <span>✓ Correct</span>
                 </div>
             `;
@@ -993,7 +1024,18 @@
                         </div>
                     ` : ''}
                     <div class="options">
-                        <strong>Options:</strong> ${question.options.join(', ')}
+                        <strong>Options:</strong><br>
+                        ${question.options.map((option, i) => {
+                            const isImageUrl = option.startsWith('http');
+                            return `
+                            <div style="margin: 5px 0; padding: 5px; background: #f0f0f0; border-radius: 4px;">
+                                ${isImageUrl ? 
+                                    `<img src="${option}" alt="Option ${i + 1}" style="max-width: 80px; height: auto; border-radius: 2px;">` :
+                                    option
+                                }
+                            </div>
+                            `;
+                        }).join('')}
                     </div>
                     <div class="correct-answer">
                         <strong>Correct Answer(s):</strong> ${question.correctAnswers.map(i => question.options[i]).join(', ')}
@@ -1113,15 +1155,23 @@
                 <p>${question.text}</p>
                 ${imagesHtml}
                 <div class="options">
-                    ${question.options.map((option, index) => `
+                    ${question.options.map((option, index) => {
+                        const isImageUrl = option.startsWith('http');
+                        return `
                         <div class="option" onclick="selectOption(${index})">
                             <input type="${question.type === 'single' ? 'radio' : 'checkbox'}" 
                                    name="question-${question.id}" 
                                    id="option-${index}" 
                                    value="${index}">
-                            <label for="option-${index}">${option}</label>
+                            <div style="flex: 1;">
+                                ${isImageUrl ? 
+                                    `<img src="${option}" alt="Option ${index + 1}" style="max-width: 300px; height: auto; border-radius: 4px;">` :
+                                    `<label for="option-${index}">${option}</label>`
+                                }
+                            </div>
                         </div>
-                    `).join('')}
+                        `;
+                    }).join('')}
                 </div>
             `;
 
