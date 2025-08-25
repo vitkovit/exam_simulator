@@ -1996,10 +1996,10 @@
     ],
     "type": "single",
     "options": [
-      "Define the attribute vnet_id as a variable in the networking module",
-      "Change the referenced value to module.my_network.outputs.vnet_id",
-      "Define the attribute vnet_id as an output in the networking module",
-      "Change the referenced value to my_network.outputs.vnet_id"
+      "https://www.examtopics.com/assets/media/exam-media/04279/0007200001.png",
+      "https://www.examtopics.com/assets/media/exam-media/04279/0007200001.png",
+      "https://www.examtopics.com/assets/media/exam-media/04279/0007200001.png",
+      "https://www.examtopics.com/assets/media/exam-media/04279/0007200001.png",
     ],
     "correctAnswers": [2],
     "createdAt": "2025-08-20T10:00:00.000Z"
