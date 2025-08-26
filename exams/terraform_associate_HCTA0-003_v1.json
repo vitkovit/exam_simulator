@@ -2638,9 +2638,9 @@
     "image": "",
     "type": "single",
     "options": [
-      "{\n  name = \"John\",\n  age = fifty two \n}",
-      "{\n  name = \"John\",\n  age = 52 \n }",
-    ], 
+      "{\\n  name = \\"John\\",\\n  age = fifty two \\n}",
+      "{\\n  name = \\"John\\",\\n  age = 52 \\n }"
+    ],
     "correctAnswers": [1],
     "createdAt": "2025-08-20T10:00:00.000Z"
   },
@@ -2683,7 +2683,7 @@
       "The Terraform code is copied to the target resources to be applied locally and could expose secrets if a target resource is compromised.",
       "All passwords should be rotated on a quarterly basis."
     ],
-    "correctAnswers": [0, 1],
+    "correctAnswers": [1, 2],
     "createdAt": "2025-08-20T10:00:00.000Z"
   },
   {
@@ -2731,7 +2731,7 @@
   {
     "id": 1183,
     "text": "Why does this backend configuration not follow best practices?",
-    "image": "",
+    "image": "https://www.examtopics.com/assets/media/exam-media/04279/0009900001.jpg",
     "type": "single",
     "options": [
       "You should not store credentials in Terraform Configuration",
@@ -2862,7 +2862,7 @@
       "Each of the module's dependencies (example: submodules)",
       "The version of the module"
     ],
-    "correctAnswers": [0, 1],
+    "correctAnswers": [1, 4],
     "createdAt": "2025-08-20T10:00:00.000Z"
   },
   {
@@ -2888,7 +2888,7 @@
       "True",
       "False"
     ],
-    "correctAnswers": [0],
+    "correctAnswers": [1],
     "createdAt": "2025-08-20T10:00:00.000Z"
   },
   {
