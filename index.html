@@ -1079,71 +1079,101 @@
 
         // Add question to the bank
         function addQuestion() {
-            const questionText = document.getElementById('question-text').value.trim();
-            const questionType = document.getElementById('question-type').value;
-            
-            // Collect all image URLs
-            const imageInputs = document.querySelectorAll('.image-url');
-            const questionImages = [];
-            imageInputs.forEach(input => {
-                const url = input.value.trim();
-                if (url) {
-                    questionImages.push(url);
-                }
-            });
-            
-            if (!questionText) {
-                alert('Please enter a question!');
-                return;
-            }
-
-            const options = [];
-            const optionImages = [];
-            const correctAnswers = [];
-            const optionInputs = document.querySelectorAll('.option-input');
-            
-            optionInputs.forEach((optionInput, index) => {
-                const text = optionInput.querySelector('.option-text').value.trim();
-                const image = optionInput.querySelector('.option-image').value.trim();
-                const isCorrect = optionInput.querySelector('.correct-checkbox').checked;
+            try {
+                console.log('addQuestion function called'); // Debug log
                 
-                if (text) {
-                    options.push(text);
-                    optionImages.push(image);
-                    if (isCorrect) {
-                        correctAnswers.push(index);
+                const questionText = document.getElementById('question-text').value.trim();
+                const questionType = document.getElementById('question-type').value;
+                
+                console.log('Question text:', questionText); // Debug log
+                
+                // Collect all image URLs
+                const imageInputs = document.querySelectorAll('.image-url');
+                const questionImages = [];
+                imageInputs.forEach(input => {
+                    const url = input.value.trim();
+                    if (url) {
+                        questionImages.push(url);
                     }
+                });
+                
+                if (!questionText) {
+                    alert('Please enter a question!');
+                    return;
                 }
-            });
 
-            if (options.length < 2) {
-                alert('Please provide at least 2 options!');
-                return;
+                const options = [];
+                const correctAnswers = [];
+                const optionInputs = document.querySelectorAll('.option-input');
+                
+                console.log('Found option inputs:', optionInputs.length); // Debug log
+                
+                optionInputs.forEach((optionInput, index) => {
+                    // Handle both old and new HTML structures
+                    let textInput = optionInput.querySelector('.option-text');
+                    if (!textInput) {
+                        // Fallback for old structure with nested divs
+                        textInput = optionInput.querySelector('input[type="text"]');
+                    }
+                    
+                    let checkboxInput = optionInput.querySelector('.correct-checkbox');
+                    if (!checkboxInput) {
+                        // Fallback for old structure
+                        checkboxInput = optionInput.querySelector('input[type="checkbox"], input[type="radio"]');
+                    }
+                    
+                    if (textInput && checkboxInput) {
+                        const text = textInput.value.trim();
+                        const isCorrect = checkboxInput.checked;
+                        
+                        console.log(`Option ${index}:`, text, 'Correct:', isCorrect); // Debug log
+                        
+                        if (text) {
+                            options.push(text);
+                            if (isCorrect) {
+                                correctAnswers.push(options.length - 1); // Use the actual index in options array
+                            }
+                        }
+                    } else {
+                        console.log(`Option ${index}: Could not find text or checkbox input`);
+                    }
+                });
+
+                if (options.length < 2) {
+                    alert('Please provide at least 2 options!');
+                    return;
+                }
+
+                if (correctAnswers.length === 0) {
+                    alert('Please mark at least one correct answer!');
+                    return;
+                }
+
+                const question = {
+                    id: Date.now(),
+                    text: questionText,
+                    images: questionImages,
+                    type: questionType,
+                    options: options,
+                    correctAnswers: correctAnswers,
+                    createdAt: new Date().toISOString()
+                };
+
+                console.log('Created question:', question); // Debug log
+
+                questions.push(question);
+                saveQuestions();
+                updateStats();
+                updateQuestionBank();
+                updateAvailableQuestions();
+                clearForm();
+                
+                alert('Question added successfully!');
+                
+            } catch (error) {
+                console.error('Error in addQuestion:', error);
+                alert('Error: ' + error.message);
             }
-
-            if (correctAnswers.length === 0) {
-                alert('Please mark at least one correct answer!');
-                return;
-            }
-
-            const question = {
-                id: Date.now(),
-                text: questionText,
-                images: questionImages,
-                type: questionType,
-                options: options,
-                correctAnswers: correctAnswers,
-                createdAt: new Date().toISOString()
-            };
-
-            questions.push(question);
-            saveQuestions();
-            updateStats();
-            updateQuestionBank();
-            updateAvailableQuestions();
-            clearForm();
-            
-            alert('Question added successfully!');
         }
 
         // Clear the form
