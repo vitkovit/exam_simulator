@@ -2638,8 +2638,8 @@
     "image": "",
     "type": "single",
     "options": [
-      "{\\n  name = \\"John\\",\\n  age = fifty two \\n}",
-      "{\\n  name = \\"John\\",\\n  age = 52 \\n }"
+      "https://www.examtopics.com/assets/media/exam-media/04279/0009600001.jpg",
+      "https://www.examtopics.com/assets/media/exam-media/04279/0009600002.jpg"
     ],
     "correctAnswers": [1],
     "createdAt": "2025-08-20T10:00:00.000Z"
