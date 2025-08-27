@@ -36,7 +36,7 @@
             "It can execute Terraform runs on dedicated infrastructure on premises or in Terraform Cloud",
             "It doesn't show the output of a terraform apply locally",
             "It is only available to paying customers",
-            "All anwsers are correct"
+            "All answers are correct"
         ],
         "correctAnswers": [
             0
@@ -115,7 +115,7 @@
             "Providers can be maintained by a community of users",
             "Some providers are maintained by HashiCorp",
             "Major cloud vendors and non-cloud vendors can write, maintain, or collaborate on Terraform providers",
-            "None of the anwsers are correct"
+            "None of the answers are correct"
         ],
         "correctAnswers": [
             4
@@ -241,8 +241,8 @@
             "Required input variables",
             "Optional inputs variables and default values",
             "Outputs",
-            "All anwsers are correct",
-            "None of the anwsers are correct"
+            "All answers are correct",
+            "None of the answers are correct"
         ],
         "correctAnswers": [
             3
@@ -601,8 +601,8 @@
             "type",
             "default",
             "description",
-            "All anwsers are correct",
-            "None of the anwsers are correct"
+            "All answers are correct",
+            "None of the answers are correct"
         ],
         "correctAnswers": [
             4
@@ -868,7 +868,7 @@
             "However long it takes the resource provider to fulfill the request",
             "After updating the state file",
             "Based on the value provided to the -refresh command line argument",
-            "None of the anwsers are correct"
+            "None of the answers are correct"
         ],
         "correctAnswers": [
             1
@@ -1148,7 +1148,7 @@
             "As a part of terraform plan",
             "As a part of terraform refresh",
             "By an explicit call",
-            "All anwsers are correct"
+            "All answers are correct"
         ],
         "correctAnswers": [
             3
@@ -1180,7 +1180,7 @@
             "Defined in Environment variables",
             "Inside the backend block within the Terraform configuration",
             "Defined in a connection configuration outside of Terraform",
-            "None of the anwsers are correct"
+            "None of the answers are correct"
         ],
         "correctAnswers": [
             0
@@ -1370,7 +1370,7 @@
             "Code contains tabs indentation instead of spaces",
             "There is missing value for a variable",
             "The state files does not match the current infrastructure",
-            "None of the anwsers are correct"
+            "None of the answers are correct"
         ],
         "correctAnswers": [
             3
@@ -1635,7 +1635,7 @@
             "API",
             "VCS Systems",
             "Shell scripts",
-            "None of the anwsers are correct"
+            "None of the answers are correct"
         ],
         "correctAnswers": [
             0
@@ -1899,8 +1899,8 @@
       "apply",
       "taint",
       "destroy",
-      "All anwser are correct",
-      "None of the anwsers are correct"
+      "All answer are correct",
+      "None of the answers are correct"
     ],
     "correctAnswers": [3],
     "createdAt": "2025-08-20T10:00:00.000Z"
@@ -2081,7 +2081,7 @@
       "Before every terraform plan",
       "Before every terraform apply",
       "Before every terraform import",
-      "None of the anwsers are correct"
+      "None of the answers are correct"
     ],
     "correctAnswers": [2],
     "createdAt": "2025-08-20T10:00:00.000Z"
@@ -2337,8 +2337,8 @@
       "Local modules are not cached by terraform init command",
       "Local modules are sourced from a directory on disk",
       "Local modules support versions",
-      "All anwser are correct",
-      "None of the anwsers are correct"
+      "All answer are correct",
+      "None of the answers are correct"
     ],
     "correctAnswers": [2],
     "createdAt": "2025-08-20T10:00:00.000Z"
@@ -2408,7 +2408,7 @@
       "kubernetes_namespace.test.name",
       "kubernetes_namespace.example.name",
       "data.kubernetes_namespace.name",
-      "None of the anwsers are correct"
+      "None of the answers are correct"
     ],
     "correctAnswers": [2],
     "createdAt": "2025-08-20T10:00:00.000Z"
@@ -2450,7 +2450,7 @@
       "Plan",
       "Init",
       "Refresh",
-      "All anwser are correct"
+      "All answer are correct"
     ],
     "correctAnswers": [1],
     "createdAt": "2025-08-20T10:00:00.000Z"
@@ -2575,7 +2575,7 @@
       "Using environment variables",
       "Specifying the login credentials in the provider block",
       "Setting credentials as Terraform variables",
-      "None of the anwsers are correct"
+      "None of the answers are correct"
     ],
     "correctAnswers": [0],
     "createdAt": "2025-08-20T10:00:00.000Z"
@@ -3392,7 +3392,7 @@
       "Local path",
       "GitHub Repository",
       "Terraform Module Registry",
-      "All anwser are correct"
+      "All answer are correct"
     ],
     "correctAnswers": [3],
     "createdAt": "2025-08-20T10:00:00.000Z"
@@ -3406,7 +3406,7 @@
       "Declare the output in the root configuration",
       "Declare the output in the child module",
       "Declare the output in both the root and child module",
-      "None of the anwsers are correct"
+      "None of the answers are correct"
     ],
     "correctAnswers": [2],
     "createdAt": "2025-08-20T10:00:00.000Z"
@@ -3526,7 +3526,7 @@
       "Terraform local values",
       "Terraform modules",
       "Terraform workspaces",
-      "None of the anwsers are correct"
+      "None of the answers are correct"
     ],
     "correctAnswers": [3],
     "createdAt": "2025-08-20T10:00:00.000Z"
@@ -3581,7 +3581,7 @@
     "options": [
       "version >= 3.1",
       "version = \">= 3.1\"",
-      "version ~> 3.1",
+      "version ~> 3.1"
     ],
     "correctAnswers": [1],
     "createdAt": "2025-08-20T10:00:00.000Z"
