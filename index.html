@@ -1077,7 +1077,7 @@
         }
 
         // Add question to the bank
-        function addQuestion() {
+        async function addQuestion() {
             try {
                 console.log('addQuestion function called'); // Debug log
                 
@@ -1097,7 +1097,7 @@
                 });
                 
                 if (!questionText) {
-                    alert('Please enter a question!');
+                    await showAlert('Validation Error', 'Please enter a question!', 'warning');
                     return;
                 }
 
@@ -1139,12 +1139,12 @@
                 });
 
                 if (options.length < 2) {
-                    alert('Please provide at least 2 options!');
+                    await showAlert('Validation Error', 'Please provide at least 2 options!', 'warning');
                     return;
                 }
 
                 if (correctAnswers.length === 0) {
-                    alert('Please mark at least one correct answer!');
+                    await showAlert('Validation Error', 'Please mark at least one correct answer!', 'warning');
                     return;
                 }
 
@@ -1167,11 +1167,11 @@
                 updateAvailableQuestions();
                 clearForm();
                 
-                alert('Question added successfully!');
+                await showAlert('Success', 'Question added successfully!', 'success');
                 
             } catch (error) {
                 console.error('Error in addQuestion:', error);
-                alert('Error: ' + error.message);
+                await showAlert('Error', 'Error: ' + error.message, 'error');
             }
         }
 
