@@ -1561,12 +1561,24 @@
             const isCorrect = arraysEqual(selectedOptions.sort(), question.correctAnswers.sort());
             const correctAnswers = question.correctAnswers.map(i => question.options[i]);
             
+            const correctAnswersHtml = correctAnswers.map(answer => {
+                const isImageUrl = answer.startsWith('http');
+                return isImageUrl ? 
+                    `<img src="${answer}" alt="Correct Answer" style="max-width: 200px; height: auto; border-radius: 4px; margin: 5px;">` :
+                    answer;
+            }).join('<br>');
+            
             const feedbackHtml = `
                 <div style="text-align: center; padding: 20px;">
                     <h3 style="color: ${isCorrect ? '#28a745' : '#dc3545'};">
                         ${isCorrect ? '✅ Correct!' : '❌ Incorrect'}
                     </h3>
-                    <p><strong>Correct Answer(s):</strong> ${correctAnswers.join(', ')}</p>
+                    <div style="margin: 20px 0;">
+                        <strong>Correct Answer(s):</strong><br>
+                        <div style="margin-top: 10px;">
+                            ${correctAnswersHtml}
+                        </div>
+                    </div>
                     <button class="btn btn-primary" onclick="continueToNext()" style="margin-top: 15px;">
                         Continue ➡️
                     </button>
