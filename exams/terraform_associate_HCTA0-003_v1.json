@@ -341,24 +341,6 @@
         "createdAt": "2025-08-20T10:00:00.000Z"
     },
     {
-        "id": 1023,
-        "text": "Which two steps are required to provision new infrastructure in the Terraform workflow? (Choose two.)",
-        "images": [],
-        "type": "multiple",
-        "options": [
-            "Destroy",
-            "Apply",
-            "Import",
-            "Init",
-            "Validate"
-        ],
-        "correctAnswers": [
-            1,
-            3
-        ],
-        "createdAt": "2025-08-20T10:00:00.000Z"
-    },
-    {
         "id": 1024,
         "text": "Why would you use the terraform taint command?",
         "images": [],
@@ -2755,20 +2737,6 @@
     "createdAt": "2025-08-20T10:00:00.000Z"
   },
   {
-    "id": 1185,
-    "text": "What does terraform destroy do?",
-    "image": "",
-    "type": "single",
-    "options": [
-      "Destroy all infrastructure in the Terraform state file",
-      "Destroy all Terraform code files in the current directory while leaving the state file intact",
-      "Destroy all infrastructure in the configured Terraform provider",
-      "Destroy the Terraform state file while leaving infrastructure intact"
-    ],
-    "correctAnswers": [0],
-    "createdAt": "2025-08-20T10:00:00.000Z"
-  },
-  {
     "id": 1186,
     "text": "While attempting to deploy resources into your cloud provider using Terraform, you begin to see some odd behavior and experience sluggish responses. In order to troubleshoot you decide to turn on Terraform debugging. Which environment variables must be configured to make Terraform's logging more verbose?",
     "image": "",
@@ -2889,20 +2857,6 @@
       "False"
     ],
     "correctAnswers": [1],
-    "createdAt": "2025-08-20T10:00:00.000Z"
-  },
-  {
-    "id": 1195,
-    "text": "You have been working in a Cloud provider account that is shared with other team members. You previously used Terraform to create a load balancer that is listening on port 80. After some application changes, you updated the Terraform code to change the port to 443. You run terraform plan and see that the execution plan shows the port changing from 80 to 443 like you intended, and step away to grab some coffee. In the meantime, another team member manually changes the load balancer port to 443 through the Cloud provider console before you get back to your desk. What will happen when you terraform apply upon returning to your desk?",
-    "image": "",
-    "type": "single",
-    "options": [
-      "Terraform will fail with an error because the state file is no longer accurate.",
-      "Terraform will change the load balancer port to 80, and then change it back to 443.",
-      "Terraform will not make any changes to the Load Balancer and will update the state file to reflect any changes made.",
-      "Terraform will change the port back to 80 in your code."
-    ],
-    "correctAnswers": [2],
     "createdAt": "2025-08-20T10:00:00.000Z"
   },
   {
@@ -3203,21 +3157,6 @@
     "createdAt": "2025-08-20T10:00:00.000Z"
   },
   {
-    "id": 1218,
-    "text": "Which backend does the Terraform CLI use by default?",
-    "image": "",
-    "type": "single",
-    "options": [
-      "API",
-      "Remote",
-      "Terraform Cloud",
-      "Local",
-      "HTTP"
-    ],
-    "correctAnswers": [3],
-    "createdAt": "2025-08-20T10:00:00.000Z"
-  },
-  {
     "id": 1219,
     "text": "Using the terraform state rm command against a resource will destroy it.",
     "image": "",
@@ -3312,20 +3251,6 @@
     "createdAt": "2025-08-20T10:00:00.000Z"
   },
   {
-    "id": 1226,
-    "text": "You are making changes to existing Terraform code to add some new infrastructure. When is the best time to run terraform validate?",
-    "image": "",
-    "type": "single",
-    "options": [
-      "After you run terraform plan so you can validate that your state file is consistent with your infrastructure",
-      "Before you run terraform plan so you can validate your code syntax",
-      "Before you run terraform apply so you can validate your infrastructure changes",
-      "After you run terraform apply so you can validate that your infrastructure is reflected in your code"
-    ],
-    "correctAnswers": [1],
-    "createdAt": "2025-08-20T10:00:00.000Z"
-  },
-  {
     "id": 1227,
     "text": "How does Terraform manage most dependencies between resources?",
     "image": "",
@@ -3337,20 +3262,6 @@
       "Terraform will automatically manage most resource dependencies"
     ],
     "correctAnswers": [3],
-    "createdAt": "2025-08-20T10:00:00.000Z"
-  },
-  {
-    "id": 1228,
-    "text": "What does running a terraform plan do?",
-    "image": "",
-    "type": "single",
-    "options": [
-      "Imports all of your existing cloud provider resources to the state file",
-      "Compares the state file to your Terraform code and determines if any changes need to be made",
-      "Imports all of your existing cloud provider resources to your Terraform configuration file",
-      "Compares your Terraform code and local state file to the remote state file in a cloud provider and determines if any changes need to be made"
-    ],
-    "correctAnswers": [1],
     "createdAt": "2025-08-20T10:00:00.000Z"
   },
   {
@@ -3435,20 +3346,6 @@
       "False"
     ],
     "correctAnswers": [0],
-    "createdAt": "2025-08-20T10:00:00.000Z"
-  },
-  {
-    "id": 1235,
-    "text": "Which of these commands makes your code more human readable?",
-    "image": "",
-    "type": "single",
-    "options": [
-      "terraform validate",
-      "terraform output",
-      "terraform plan",
-      "terraform fmt"
-    ],
-    "correctAnswers": [3],
     "createdAt": "2025-08-20T10:00:00.000Z"
   },
   {
@@ -4819,20 +4716,6 @@
       "Before you start coding a new Terraform project"
     ],
     "correctAnswers": [2],
-    "createdAt": "2025-08-20T10:00:00.000Z"
-  },
-  {
-    "id": 1337,
-    "text": "You are making changes to existing Terraform code to add some new infrastructure. When is the best time to run terraform validate?",
-    "image": "",
-    "type": "single",
-    "options": [
-      "After you run terraform plan so you can validate that your state file is consistent with your infrastructure",
-      "Before you run terraform plan so you can validate your code syntax",
-      "Before you run terraform apply so you can validate your infrastructure",
-      "After you run terraform apply so you can validate your provider credentials"
-    ],
-    "correctAnswers": [1],
     "createdAt": "2025-08-20T10:00:00.000Z"
   },
   {
