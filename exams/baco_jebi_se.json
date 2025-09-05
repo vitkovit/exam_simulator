@@ -1,0 +1,156 @@
+[
+  {
+    "id": 1001,
+    "text": "Aeroprofil je dizajniran tako da pravi uzgon koji je posljedica razlike:",
+    "image": "",
+    "type": "single",
+    "options": [
+      "Višeg zračnog pritiska ispod površine i nižeg zračnog pritiska iznad površine aeroprofila.",
+      "Negativnog zračng pritiska ispod i vakuma iznad površine aeroprofila.",
+      "Vakuma ispod površine i višeg zračnog pritiska iznad površine.",
+      "Višeg zračnog pritiska na napadnoj ivici i nižeg zračnog pritiska na izlaznoj ivici."
+    ],
+    "correctAnswers": [0],
+    "createdAt": "2025-09-05T22:51:22.476Z"
+  },
+  {
+    "id": 1002,
+    "text": "Aeroprofil sa pozitivnom zakrivljenošcu srednje linije počinje da proizvodi uzgon pri napadnom kutu od otprilike:",
+    "image": "",
+    "type": "single",
+    "options": [
+      "-4 stupnja.",
+      "0 stupnjeva.",
+      "od 4 do 6 stupnjeva.",
+      "16 stupnjeva."
+    ],
+    "correctAnswers": [0],
+    "createdAt": "2025-09-05T22:51:22.476Z"
+  },
+  {
+    "id": 1003,
+    "text": "Ako u određenom danu temperatura zraka na 4000ft iznosi 23°C, kolika je približna razlika između stvarne i temperature u međunarodnoj standardnoj atmosferi (ISA):",
+    "image": "",
+    "type": "single",
+    "options": [
+      "16°C.",
+      "7°C.",
+      "15°C.",
+      "8°C."
+    ],
+    "correctAnswers": [0],
+    "createdAt": "2025-09-05T22:51:22.476Z"
+  },
+  {
+    "id": 1004,
+    "text": "Ako je aerodinamički centar krila ispred centra težišta:",
+    "image": "",
+    "type": "single",
+    "options": [
+      "Promjene u uzgonu izazivaju moment koji pokušava povećati projmenu u uzgonu.",
+      "Promjene u uzgonu izazivaju moment koji pokušava smanjiti promjenu u uzgonu.",
+      "Promjena u uzgonu ne radi promjenu u momentu na krilu.",
+      "Kada je avion u traverzi po pravcu, centar težišta izaziva okretanje nosa u pravcu traverze i tako primjenjuje"
+    ],
+    "correctAnswers": [0],
+    "createdAt": "2025-09-05T22:51:22.476Z"
+  },
+  {
+    "id": 1005,
+    "text": "Ako je brzina zračne mase povećana:",
+    "image": "",
+    "type": "single",
+    "options": [
+      "Kinetička energija se povećava, dinamički pritisak raste, a statički se smanjuje.",
+      "Dinamički pritisak se smanjuje, a statički se povećava.",
+      "Statički pritisak ostaje konstantan, a kinetička energija se povećava.",
+      "Masa protoka zraka ostaje ista, dinamički pritisak se smanjuje, a statički se povećava."
+    ],
+    "correctAnswers": [0],
+    "createdAt": "2025-09-05T22:51:22.476Z"
+  },
+  {
+    "id": 1006,
+    "text": "Ako je indikovana brzina vazduhoplova povecana sa 50 cvorova na 100 cvorova, parazitni otpor ce se:",
+    "image": "",
+    "type": "single",
+    "options": [
+      "Povecati cetiri puta.",
+      "Povecati šest puta.",
+      "Povecati dva puta.",
+      "Smanjiti za cetvrtinu."
+    ],
+    "correctAnswers": [0],
+    "createdAt": "2025-09-05T22:51:22.476Z"
+  },
+  {
+    "id": 1007,
+    "text": "Ako je napadni ugao povecan preko kriticnog napadnog ugla, krilo više nece proizvoditi dovoljan uzgon potreban da održi",
+    "image": "",
+    "type": "single",
+    "options": [
+      "Bez obzira na brzinu ili položaj u propinjanju.",
+      "Ukoliko brzina nije veca od brzine svaljivanja.",
+      "Ukoliko je ugao propinjanja na ili ispod horizonta.",
+      "U tom slucaju palicu treba povuci na sebe odmah."
+    ],
+    "correctAnswers": [0],
+    "createdAt": "2025-09-05T22:51:22.476Z"
+  },
+  {
+    "id": 1008,
+    "text": "Ako je napadni ugao povecan preko kriticnog napadnog ugla:",
+    "image": "",
+    "type": "single",
+    "options": [
+      "Uzgon ce se smanjiti, a otpor povecati.",
+      "Uzgon i otpor ce se smanjiti.",
+      "Uzgon ce se povecati, a otpor smanjiti.",
+      "Uzgon i otpor ce se povecati."
+    ],
+    "correctAnswers": [0],
+    "createdAt": "2025-09-05T22:51:22.476Z"
+  },
+  {
+    "id": 1009,
+    "text": "Ako je palica gurnuta napred i u levo:",
+    "image": "",
+    "type": "single",
+    "options": [
+      "Levi eleron ide gore, desni eleron ide dole, kormilo visine ide dole.",
+      "Levi eleron ide gore, desni eleron ide dole, kormilo visine ide gore.",
+      "Levi eleron ide dole, desni eleron ide gore, kormilo visine ide dole.",
+      "Levi eleron ide dole, desni eleron ide gore, kormilo visine ide gore."
+    ],
+    "correctAnswers": [0],
+    "createdAt": "2025-09-05T22:51:22.476Z"
+  },
+  {
+    "id": 1010,
+    "text": "Ako je palica pomerena levo, servo krilce na levom eleronu ce se:",
+    "image": "",
+    "type": "single",
+    "options": [
+      "Pomeriti gore u odnosu na eleron.",
+      "Pomeriti dole u odnosu na eleron.",
+      "Nece se pomerati ukoliko tocak trimera nije pomeren.",
+      "Otici u neutralnu poziciju."
+    ],
+    "correctAnswers": [0],
+    "createdAt": "2025-09-05T22:51:22.476Z"
+  },
+  {
+    "id": 1011,
+    "text": "Avion ima tendenciju spuštanja desnog krila kada su komande slobodne. Trimovano je sa trimerom koji se nalazi na levom",
+    "image": "",
+    "type": "single",
+    "options": [
+      "Pomeriti na dole, uzrokujuci da se levi eleron pomeri na gore, a desni na dole.",
+      "Pomeriti na gore, uzrokujuci da levi eleron pomeri na gore, a desni na dole.",
+      "Pomeriti na dole, uzrokujuci da se levi eleron pomeri na gore, a desni da ostane u neutrali.",
+      "Pomeriti na gore, uzrokujuci da se levo krilo spusti, a da eleroni ostanu neutralni."
+    ],
+    "correctAnswers": [0],
+    "createdAt": "2025-09-05T22:51:22.476Z"
+  }
+]
