@@ -1999,20 +1999,6 @@
     "createdAt": "2025-08-20T10:00:00.000Z"
   },
   {
-    "id": 131,
-    "text": "How can a ticket-based system slow down infrastructure provisioning and limit the ability to scale? (Choose two.)",
-    "images": [],
-    "type": "multiple",
-    "options": [
-      "A full audit trail of the request and fulfillment process is generated",
-      "A request must be submitted for infrastructure changes",
-      "As additional resources are required, more tickets are submitted",
-      "A catalog of approved resources can be accessed from drop down lists in a request form"
-    ],
-    "correctAnswers": [1, 2],
-    "createdAt": "2025-08-20T10:00:00.000Z"
-  },
-  {
     "id": 132,
     "text": "Which of the following statements about Terraform modules is not true?",
     "images": [],
