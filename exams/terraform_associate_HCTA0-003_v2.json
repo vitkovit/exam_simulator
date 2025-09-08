@@ -996,23 +996,6 @@
     "correctAnswers": [2],
     "createdAt": "2025-08-20T10:00:00.000Z"
   },
-    {
-        "id": 1008,
-        "text": "Which of the following is not true of Terraform providers?",
-        "images": [],
-        "type": "single",
-        "options": [
-            "Providers can be written by individuals",
-            "Providers can be maintained by a community of users",
-            "Some providers are maintained by HashiCorp",
-            "Major cloud vendors and non-cloud vendors can write, maintain, or collaborate on Terraform providers",
-            "None of the answers are correct"
-        ],
-        "correctAnswers": [
-            4
-        ],
-        "createdAt": "2025-08-08T22:51:22.476Z"
-    },
   {
     "id": 1309,
     "text": "Which of the following is not true of Terraform providers?",
